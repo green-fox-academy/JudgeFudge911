@@ -9,13 +9,13 @@ public class CodingHours {
         // Print the percentage of the coding hours in the semester if the average
         // work hours weekly is 52
         byte semesterWeeks = 17;
-        byte daysPerWeek = 5;
+        byte daysWeek = 5;
         byte dailyCodingHours = 6;
-        int codingPerSemester = semesterWeeks*daysPerWeek*dailyCodingHours;
+        int codingPerSemester = semesterWeeks*daysWeek*dailyCodingHours;
         byte avarageWorkPerWeek = 52;
-        int avarageWorkPerSemester = avarageWorkPerWeek*semesterWeeks;
+        int avarageWorkSemester = avarageWorkPerWeek*semesterWeeks;
 
         System.out.println(codingPerSemester);
-        System.out.println((double)codingPerSemester/avarageWorkPerSemester*100 + "%");
+        System.out.println((double)codingPerSemester/avarageWorkSemester*100 + "%");
     }
 }
