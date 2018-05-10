@@ -5,9 +5,9 @@ public class Cuboid {
 //
 // Surface Area: 600
 // Volume: 1000
-        double sideOne = 0;
-        double sideTwo = 0;
-        double sideThree = 0;
+        double sideOne = 10;
+        double sideTwo = 10;
+        double sideThree = 10;
 
         int surfaceArea = (int) (2 * sideOne * sideTwo + 2 * sideOne * sideThree + 2 * sideThree * sideTwo);
         int volume = (int) (sideOne * sideTwo * sideThree);
