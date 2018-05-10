@@ -10,8 +10,6 @@ public class OddEven {
 
         int number = scanner.nextInt();
 
-        String print = (number % 2 == 0) ? "This is an even number" : "This is an odd number";
-
-        System.out.println(print);
+        System.out.println((number % 2 == 0) ? "This is an even number" : "This is an odd number");
     }
 }
