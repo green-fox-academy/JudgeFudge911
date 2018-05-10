@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class CountFromTo {
     public static void main(String[] args) {
         // Create a program that asks for two numbers
@@ -13,6 +15,20 @@ public class CountFromTo {
         // 3
         // 4
         // 5
-        
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter two numbers.");
+        int numberOne = scanner.nextInt();
+        int numberTwo = scanner.nextInt();
+
+        if (numberTwo < numberOne) {
+            System.out.println("The second number should be bigger");
+        } else {
+            while (numberOne < numberTwo) {
+                System.out.println(numberOne);
+                numberOne++;
+            }
+        }
+
     }
 }
