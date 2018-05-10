@@ -4,6 +4,12 @@ public class FizzBuzz {
     // But for multiples of three print “Fizz” instead of the number
     // and for the multiples of five print “Buzz”.
     // For numbers which are multiples of both three and five print “FizzBuzz”.
+        int startNumber = 1;
+        int endNumber = 100;
 
+        while (startNumber < endNumber+1) {
+            System.out.println(startNumber);
+            startNumber++;
+        }
     }
 }
