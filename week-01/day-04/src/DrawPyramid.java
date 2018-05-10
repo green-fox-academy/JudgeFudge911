@@ -14,15 +14,17 @@ public class DrawPyramid {
         // The pyramid should have as many lines as the number was
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("How many rows should your pyramid have?");
+        System.out.println("How many rows should your triangle have?");
         int numberOfLines = scanner.nextInt();
 
-        int rowNumber = 1;
+        String pattern = "*";
+        int increment = 0;
 
-        int numberOfSpace = 0;
-        int numberOfStars = 1;
-
-        while (rowNumber < numberOfLines + 1) {
-            if ()System.out.print();
+        while (increment < numberOfLines) {
+            System.out.println(pattern);
+            pattern += "**";
+            increment++;
         }
+
+    }
 }
