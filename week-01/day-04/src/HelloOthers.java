@@ -6,5 +6,9 @@ public class HelloOthers {
         // Hello, Esther!
         // Hello, Mary!
         // Hello, Joe!
+        System.out.println("Hello, Márkusz!");
+        System.out.println("Hello, Evo!");
+        System.out.println("Hello, Juci!");
+
     }
 }
