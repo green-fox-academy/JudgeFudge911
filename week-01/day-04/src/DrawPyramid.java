@@ -19,18 +19,23 @@ public class DrawPyramid {
 
         String pattern = "*";
         int spaceIncrement = 0;
-        String space = "  ";
-        while (spaceIncrement < numberOfLines){
-         space += " ";
-         spaceIncrement++;
+        String space = " ";
+        while (spaceIncrement < numberOfLines - 1) {
+            space += " ";
+            spaceIncrement++;
         }
         int increment = 0;
-
+        int y = 0;
         while (increment < numberOfLines) {
-            System.out.println(space.substring(0,space.length()/2+1) + pattern + space.substring(0,space.length()/2+1));
+            System.out.println(space.substring(0, space.length() / 2) + pattern + space.substring(0, space.length() / 2));
             pattern += "**";
-            space = space.substring(0,numberOfLines-increment-1);
+            if(y <= numberOfLines) {
+                space = space.substring(0, numberOfLines - y);
+            } else {
+                space = "";
+            }
             increment++;
+            y += 2;
         }
 
     }
