@@ -8,7 +8,13 @@ public class FizzBuzz {
         int endNumber = 100;
 
         while (startNumber < endNumber+1) {
-            System.out.println(startNumber);
+            if (startNumber % 3 == 0){
+                System.out.println("Fizz");
+            } else if (startNumber % 5 == 0){
+                System.out.println("Buzz");
+            } else {
+                System.out.println(startNumber);
+            }
             startNumber++;
         }
     }
