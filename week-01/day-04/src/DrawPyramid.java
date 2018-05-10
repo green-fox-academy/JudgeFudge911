@@ -18,11 +18,16 @@ public class DrawPyramid {
         int numberOfLines = scanner.nextInt();
 
         String pattern = "*";
-        String space = "    ";
+        int spaceIncrement = 0;
+        String space = "  ";
+        while (spaceIncrement < numberOfLines){
+         space += " ";
+         spaceIncrement++;
+        }
         int increment = 0;
 
         while (increment < numberOfLines) {
-            System.out.println(space + pattern + space);
+            System.out.println(space.substring(0,space.length()/2+1) + pattern + space.substring(0,space.length()/2+1));
             pattern += "**";
             space = space.substring(0,numberOfLines-increment-1);
             increment++;
