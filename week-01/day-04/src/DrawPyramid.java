@@ -14,7 +14,7 @@ public class DrawPyramid {
         // The pyramid should have as many lines as the number was
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("How many rows should your triangle have?");
+        System.out.println("How many rows should your pyramid have?");
         int numberOfRows = scanner.nextInt();
 
         int columnIncrement = numberOfRows - 1;
