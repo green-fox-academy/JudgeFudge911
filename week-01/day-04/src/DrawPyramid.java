@@ -20,16 +20,17 @@ public class DrawPyramid {
         int numberOfColumn = 2 * numberOfRows - 1;
         int columnHalf = numberOfColumn/2;
 
-        String pattern = "*";
-        String antiPattern = "0";
+        String pattern = "0";
+        String patternIncrement = pattern + pattern;
+        String antiPattern = "*";
         String row = "";
 
         for (int i = 0; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfColumn; j++) {
                 if (j == columnHalf-i){
                     row += pattern;
-                    pattern += "**";
-                } else if (j < columnHalf-i){
+                    pattern +=  patternIncrement;
+                } else {
                     row += antiPattern;
                 }
             }
