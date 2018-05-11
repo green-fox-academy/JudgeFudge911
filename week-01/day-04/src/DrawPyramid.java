@@ -16,18 +16,26 @@ public class DrawPyramid {
 
         System.out.println("How many rows should your triangle have?");
         int numberOfRows = scanner.nextInt();
+
         int columnIncrement = numberOfRows - 1;
         int numberOfColumn = numberOfRows + columnIncrement;
 
+        int temp = 0;
+        String pattern = "*";
+
         for (int i = 0; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfColumn; j++) {
-                if (j >= numberOfRows-i-1) {
-                    System.out.print("*");
+                if (j == numberOfColumn/2-temp){
+                    System.out.print(pattern);
+                    pattern += "**";
                 } else {
                     System.out.print(" ");
                 }
             }
+            temp++;
             System.out.println();
         }
+
     }
 }
+
