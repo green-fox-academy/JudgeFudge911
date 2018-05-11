@@ -19,23 +19,29 @@ public class DrawPyramid {
 
         int columnIncrement = numberOfRows - 1;
         int numberOfColumn = numberOfRows + columnIncrement;
+        int columnHalf = numberOfColumn/2;
 
-        int temp = 0;
         String pattern = "*";
+        String antiPattern = "0";
+        String row = "";
 
         for (int i = 0; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfColumn; j++) {
-                if (j == numberOfColumn/2-temp){
-                    System.out.print(pattern);
+                if (j == columnHalf-i){
+                    row += pattern;
                     pattern += "**";
-                } else {
-                    System.out.print(" ");
+                } else if (j < columnHalf-i){
+                    row += antiPattern;
                 }
             }
-            temp++;
-            System.out.println();
+            if (i == 0) {
+              row = row.substring(0, columnHalf+1);
+            } else {
+                row = row.substring(columnHalf+i, 2*columnHalf+2*i+1);
+            }
+            System.out.println(row);
         }
-
+        System.out.println();
     }
 }
 

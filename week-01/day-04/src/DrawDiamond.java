@@ -25,27 +25,22 @@ public class DrawDiamond {
 
         int temp = 0;
         String pattern = "*";
+        String antiPattern = " ";
+        String row = "";
 
-        for (int i = 0; i < numberOfRows*2; i++) {
+        for (int i = 0; i < numberOfRows * 2; i++) {
             for (int j = 0; j < numberOfColumn; j++) {
-                if (i > numberOfRows/2){
+                if (i > numberOfRows / 2) {
                     if (j == numberOfColumn / 2 - temp) {
-                        System.out.print(pattern);
+                        row += pattern;
                         pattern += "**";
                     } else {
-                        System.out.print(" ");
-                    }
-                } else {
-                    if (j == numberOfColumn / 2 + temp ) {
-                        System.out.print(pattern);
-                        pattern += "**";
-                    } else {
-                        System.out.print(" ");
+                        row += antiPattern;
                     }
                 }
             }
             temp++;
-            System.out.println();
+            System.out.println(row);
         }
     }
 }
