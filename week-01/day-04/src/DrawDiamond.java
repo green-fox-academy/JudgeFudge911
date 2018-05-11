@@ -20,47 +20,24 @@ public class DrawDiamond {
         System.out.println("How many rows should your pyramid have?");
         int numberOfRows = scanner.nextInt();
 
-        int columnIncrement = numberOfRows - 1;
-        int numberOfColumn = numberOfRows + columnIncrement;
-        int columnHalf = numberOfColumn / 2;
-
-        String pattern = "*";
-        String antiPattern = "0";
-        String row = "";
-
-        for (int i = 0; i < numberOfRows; i++) {
-            for (int j = 0; j < numberOfColumn; j++) {
-                if (i < numberOfRows / 2) {
-                    if (j == columnHalf - i) {
-                        row += pattern;
-                        pattern += "**";
-                    } else if (j < columnHalf - i) {
-                        row += antiPattern;
-                    }
-
-                    if (i == 0) {
-                        row = row.substring(0, columnHalf + 1);
-                    } else {
-                        row = row.substring(columnHalf + i, 2 * columnHalf + 2 * i + 1);
-                    }
-                    System.out.println(row);
+        if (numberOfRows % 2 == 0){
+            for (int i = 0; i < numberOfRows; i++) {
+                if (i < numberOfRows / 2){
+                    //PYRAMID
+                } else if (i == numberOfRows / 2 +1) {
+                    //MID
                 } else {
-                    if (j == numberOfColumn - i) {
-                        row += pattern;
-                        pattern = pattern.substring(0, pattern.length()-3);
-                    } else if (j < numberOfColumn - i) {
-                        row += antiPattern;
-                    }
-
-                    if (i == 0) {
-                        row = row.substring(0, columnHalf + 1);
-                    } else {
-                        row = row.substring(columnHalf + i, 2 * columnHalf + 2 * i + 1);
-                    }
-                    System.out.println(row);
+                    //REVERSE PYRAMID
+                }
+            }
+        } else {
+            for (int i = 0; i < numberOfRows; i++) {
+                if (i < numberOfRows/2+1) {
+                    //PYRAMID
+                } else {
+                    //REVERSE PYRAMID
                 }
             }
         }
-        System.out.println();
     }
 }
