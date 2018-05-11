@@ -18,7 +18,7 @@ public class ReversePyramid {
         int numberOfRows = scanner.nextInt();
 
         int columnIncrement = numberOfRows - 1;
-        int numberOfColumn = numberOfRows + columnIncrement;
+        int numberOfColumn = 2* numberOfRows -1;
         int columnHalf = numberOfColumn/2;
         String pattern = "*";
         String row = "";

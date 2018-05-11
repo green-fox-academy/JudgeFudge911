@@ -17,8 +17,7 @@ public class DrawPyramid {
         System.out.println("How many rows should your pyramid have?");
         int numberOfRows = scanner.nextInt();
 
-        int columnIncrement = numberOfRows - 1;
-        int numberOfColumn = numberOfRows + columnIncrement;
+        int numberOfColumn = 2 * numberOfRows - 1;
         int columnHalf = numberOfColumn/2;
 
         String pattern = "*";
