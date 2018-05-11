@@ -11,15 +11,23 @@ public class ParametricAverage {
         Scanner scanner = new Scanner(System.in);
 
         int thisMany = 3;
+        int sum = 0;
+        int average = 0;
 
         for (int i = 0; i < thisMany; i++) {
             if (i != 0) {
                 System.out.println("Enter another number.");
                 int number = scanner.nextInt();
+                sum += number;
+                average++;
             } else {
                 System.out.println("Enter a number.");
                 int number = scanner.nextInt();
+                sum += number;
+                average++;
             }
         }
+
+        System.out.println("Sum: " + sum +", Average: " + sum/average);
     }
 }
