@@ -17,38 +17,32 @@ public class ReversePyramid {
         System.out.println("How many rows should your pyramid have?");
         int numberOfRows = scanner.nextInt();
         int numberOfColumn = 2 * numberOfRows - 1;
-        int columnHalf = numberOfColumn / 2;
+
 
         String pattern = "*";
-        for (int i = 3; i < numberOfColumn; i++) {
-            pattern += "**";
+        String patternIncrement = "**";
+        for (int i = 0; i < numberOfRows - 1; i++) {
+            pattern += patternIncrement;
         }
-        String row = "";
-        String antiPattern = "0";
+        String antiPattern = "";
+        String antiPatternIncrement = "0";
 
         for (int i = 0; i < numberOfRows; i++) {
-            for (int j = 0; j < numberOfColumn; j++) {
-                if(j == 0){
-                    row += pattern;
-                    System.out.println(pattern.length());
-                    pattern = pattern.substring(0, pattern.length() - 2);
-                    System.out.println(pattern.length());
-                    System.out.println(row);
-                }else if (j == columnHalf - i) {
-                    row += pattern;
-                    pattern = pattern.substring(0, pattern.length() - 2);
-                } else if (j < columnHalf - i) {
-                    row += antiPattern;
-                }
+            String row = "";
+            if (i != 0) {
+                antiPattern += antiPatternIncrement;
             }
-            if (i == 0) {
-                row = row.substring(0, numberOfColumn + 1);
-            } else {
-                row = row.substring(numberOfColumn + i, 2 * numberOfColumn + 2 * i + 1);
+            row += antiPattern;
+            row += pattern;
+            if (i != numberOfRows-1){
+                pattern = pattern.substring(0, pattern.length() - 2);
+            }
+            for (int j = 0; j < numberOfColumn; j++) {
+
             }
             System.out.println(row);
         }
-        System.out.println();
+
 
     }
 
