@@ -15,28 +15,15 @@ public class DrawPyramid {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("How many rows should your triangle have?");
-        int numberOfLines = scanner.nextInt();
+        int numberOfRows = scanner.nextInt();
+        int columnIncrement = numberOfRows-1;
+        int numberOfColumn = numberOfRows+columnIncrement;
 
-        String pattern = "*";
-        int spaceIncrement = 0;
-        String space = " ";
-        while (spaceIncrement < numberOfLines - 1) {
-            space += " ";
-            spaceIncrement++;
-        }
-        int increment = 0;
-        int y = 0;
-        while (increment < numberOfLines) {
-            System.out.println(space.substring(0, space.length() / 2) + pattern + space.substring(0, space.length() / 2));
-            pattern += "**";
-            if(y <= numberOfLines) {
-                space = space.substring(0, numberOfLines - y);
-            } else {
-                space = "";
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumn; j++) {
+                System.out.print("*");
             }
-            increment++;
-            y += 2;
+            System.out.println();
         }
-
     }
 }
