@@ -1,22 +1,19 @@
 package Diamond;
 
-import java.util.Scanner;
-
-import static Diamond.GetBuildingBlock.getBuildingBlock;
-import static Diamond.GetNumber.getNumber;
-
 public class ReversePyramid {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-       
-        //QUESTIONS FOR USER INPUT
-        String questionRows = "How many rows should your pyramid have?";
-        String questionBuildingBlock = "Enter a character for building block.";
+    //QUESTIONS FOR NUMBER OF ROWS AND BUILDING BLOCK CHARACTER
+    private static final String HOW_MANY_ROWS_SHOULD_YOUR_PYRAMID_HAVE = "How many rows should your pyramid have?";
+    static final String ENTER_A_CHARACTER_FOR_BUILDING_BLOCK = "Enter a character for building block.";
+
+    public static void main(String[] args) {
+
+        InputUtility input = new InputUtility();
+
 
         //GET NUMBER OF ROWS AND CHARACTER FOR BUILDING BLOCK
-        int numberOfRows = getNumber(questionRows);
-        String buildingBlock = getBuildingBlock(questionBuildingBlock);
+        int numberOfRows = input.getNumber(HOW_MANY_ROWS_SHOULD_YOUR_PYRAMID_HAVE);
+        String buildingBlock = input.getBuildingBlock(ENTER_A_CHARACTER_FOR_BUILDING_BLOCK);
 
         //FIRST ROW - BUILDING A FULL ROW
         String buildingBlockIncrement = buildingBlock + buildingBlock;
