@@ -1,4 +1,4 @@
-package Diamond;
+/*package Diamond;
 
 import java.util.Scanner;
 
@@ -43,3 +43,4 @@ public class DrawDiamond {
         }
     }
 }
+*/

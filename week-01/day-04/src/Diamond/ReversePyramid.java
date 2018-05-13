@@ -2,24 +2,29 @@ package Diamond;
 
 import java.util.Scanner;
 
+import static Diamond.GetBuildingBlock.getBuildingBlock;
+import static Diamond.GetNumber.getNumber;
+
 public class ReversePyramid {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        //GET NUMBER
-        System.out.println("How many rows should your pyramid have?");
-        int numberOfRows = scanner.nextInt();
+        String questionRows = "How many rows should your pyramid have?";
+        String questionBuildingBlock = "Enter a character for building block.";
+
+        int numberOfRows = getNumber(questionRows);
+        String buildingBlock = getBuildingBlock(questionBuildingBlock)
 
         //PATTERN
-        String pattern = "*";
-        String patternIncrement = "**";
+        String pattern = buildingBlock;
+        String patternIncrement = pattern + pattern;
         for (int i = 0; i < numberOfRows - 1; i++) {
             pattern += patternIncrement;
         }
 
         //ANTI PATTERN
         String antiPattern = "";
-        String antiPatternIncrement = "0";
+        String antiPatternIncrement = " ";
 
         for (int i = 0; i < numberOfRows; i++) {
 
@@ -28,7 +33,9 @@ public class ReversePyramid {
 
             //FIRST ROW DOESN'T GET SPACE EVERY OTHER DOES INCREASINGLY MORE
             if (i != 0) {
-                antiPattern += antiPatternIncrement;
+                antiPattern += antiPattern;
+            } else {
+                antiPattern = antiPattern.substring(0,pattern.length()-2);
             }
 
             //EVERY ROW DECREASINGLY LESS PATTERN
