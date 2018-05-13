@@ -1,50 +1,43 @@
-/*package Diamond;
-
-import java.util.Scanner;
+package Diamond;
 
 public class DrawPyramid {
+    
+    //QUESTIONS FOR NUMBER OF ROWS AND BUILDING BLOCK CHARACTER
+    private static final String HOW_MANY_ROWS_SHOULD_YOUR_PYRAMID_HAVE = "How many rows should your pyramid have?";
+    static final String ENTER_A_CHARACTER_FOR_BUILDING_BLOCK = "Enter a character for building block.";
+    
     public static void main(String[] args) {
-        // Write a program that reads a number from the standard input, then draws a
-        // pyramid like this:
-        //
-        //
-        //    *
-        //   ***
-        //  *****
-        // *******
-        //
-        // The pyramid should have as many lines as the number was
-        Scanner scanner = new Scanner(System.in);
+        
+        InputUtility input = new InputUtility();
+  
+        int numberOfRows = input.getNumber(HOW_MANY_ROWS_SHOULD_YOUR_PYRAMID_HAVE);
 
-        System.out.println("How many rows should your pyramid have?");
-        int numberOfRows = scanner.nextInt();
-
+        String buildingBlock = input.getBuildingBlock(ENTER_A_CHARACTER_FOR_BUILDING_BLOCK);
+                
         int numberOfColumn = 2 * numberOfRows - 1;
         int columnHalf = numberOfColumn/2;
 
-        String pattern = "0";
-        String patternIncrement = pattern + pattern;
-        String antiPattern = "*";
-        String row = "";
+        String empty = " ";
 
-        for (int i = 0; i < numberOfRows; i++) {
-            for (int j = 0; j < numberOfColumn; j++) {
-                if (j == columnHalf-i){
-                    row += pattern;
-                    pattern +=  patternIncrement;
+        String[][] pyramid;
+
+        pyramid = new String[numberOfRows][numberOfColumn];
+
+        for (int i = 0; i < numberOfColumn; i++) {
+            for (int j = 0; j < numberOfRows; j++) {
+                if (j < numberOfRows-1) {
+                    pyramid[i][j] = empty;
                 } else {
-                    row += antiPattern;
+                    pyramid[i][j] = buildingBlock;
                 }
             }
-            if (i == 0) {
-              row = row.substring(0, columnHalf+1);
-            } else {
-                row = row.substring(columnHalf+i, 2*columnHalf+2*i+1);
-            }
-            System.out.println(row);
         }
-        System.out.println();
+
+        for (int i = 0; i < pyramid.length; i++) {
+            System.out.println();
+            for (int j = 0; j < numberOfRows; j++) {
+                System.out.println(pyramid[i][j]);
+            }
+        }
     }
 }
-
-*/
