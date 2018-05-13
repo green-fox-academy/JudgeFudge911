@@ -14,7 +14,7 @@ public class ReversePyramid {
         String questionRows = "How many rows should your pyramid have?";
         String questionBuildingBlock = "Enter a character for building block.";
 
-        //GET NUMBER OF ROWS AND CHARACHTER FOR BUILDING BLOCK
+        //GET NUMBER OF ROWS AND CHARACTER FOR BUILDING BLOCK
         int numberOfRows = getNumber(questionRows);
         String buildingBlock = getBuildingBlock(questionBuildingBlock);
 
