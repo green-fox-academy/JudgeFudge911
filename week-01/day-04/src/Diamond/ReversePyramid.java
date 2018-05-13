@@ -9,43 +9,40 @@ public class ReversePyramid {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+       
+        //QUESTIONS FOR USER INPUT
         String questionRows = "How many rows should your pyramid have?";
         String questionBuildingBlock = "Enter a character for building block.";
 
+        //GET NUMBER OF ROWS AND CHARACHTER FOR BUILDING BLOCK
         int numberOfRows = getNumber(questionRows);
-        String buildingBlock = getBuildingBlock(questionBuildingBlock)
+        String buildingBlock = getBuildingBlock(questionBuildingBlock);
 
-        //PATTERN
-        String pattern = buildingBlock;
-        String patternIncrement = pattern + pattern;
+        //FIRST ROW - BUILDING A FULL ROW
+        String buildingBlockIncrement = buildingBlock + buildingBlock;
         for (int i = 0; i < numberOfRows - 1; i++) {
-            pattern += patternIncrement;
+            buildingBlock += buildingBlockIncrement;
         }
 
-        //ANTI PATTERN
-        String antiPattern = "";
-        String antiPatternIncrement = " ";
+        //EMPTY PARTS
+        String empty = "";
+        String emptyIncrement = " ";
 
         for (int i = 0; i < numberOfRows; i++) {
 
-            //RESET STRING AT EVERY ROW
+            //RESET ROW STRING BEFORE BUILDIN THE NEXT ROW
             String row = "";
 
-            //FIRST ROW DOESN'T GET SPACE EVERY OTHER DOES INCREASINGLY MORE
-            if (i != 0) {
-                antiPattern += antiPattern;
-            } else {
-                antiPattern = antiPattern.substring(0,pattern.length()-2);
-            }
+            //ADD EMPTY AND BUILDINGBLOCK TO ROW STRING
+            row += empty + buildingBlock;
 
-            //EVERY ROW DECREASINGLY LESS PATTERN
-            row += antiPattern;
-            row += pattern;
+            //INCREASE EMPTY BY 1 AND DECREASE BUILDINGBLOCK BY 2
             if (i != numberOfRows - 1) {
-                pattern = pattern.substring(0, pattern.length() - 2);
+                buildingBlock = buildingBlock.substring(0, buildingBlock.length() - 2);
+                empty += emptyIncrement;
             }
 
-            //PRINT OUT STRING ROW
+            //PRINTS OUT ROW
             System.out.println(row);
         }
     }
