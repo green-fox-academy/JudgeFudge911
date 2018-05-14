@@ -33,14 +33,14 @@ public class ReversePyramid {
             //ADD EMPTY AND BUILDINGBLOCK TO ROW STRING
             row += empty + buildingBlock;
 
+            //PRINTS OUT ROW
+            System.out.println(row);
+
             //INCREASE EMPTY BY 1 AND DECREASE BUILDINGBLOCK BY 2
             if (i != numberOfRows - 1) {
                 buildingBlock = buildingBlock.substring(0, buildingBlock.length() - 2);
                 empty += emptyIncrement;
             }
-
-            //PRINTS OUT ROW
-            System.out.println(row);
         }
     }
 
