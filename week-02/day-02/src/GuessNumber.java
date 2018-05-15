@@ -13,8 +13,11 @@ public class GuessNumber {
 
     Scanner scanner = new Scanner(System.in);
 
-    int randomNumber = rand.nextInt((100) + 1);
+    System.out.println("Enter two numbers, the system will generate a random number between the first and second!");
+    int rand1 = scanner.nextInt();
+    int rand2 = scanner.nextInt();
 
+    int randomNumber = rand.nextInt((rand2) + rand1);
     System.out.println("The random number is: " + randomNumber);
 
     System.out.println("Guess the number!");
