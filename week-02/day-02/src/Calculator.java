@@ -8,9 +8,11 @@ public class Calculator {
 
     getUserInput(expression);
 
+    calculate(expression);
 
   }
   public static void getUserInput(ArrayList expression){
+
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("Gimme operation!");
@@ -28,5 +30,21 @@ public class Calculator {
 
 
     }
+
+  public static void calculate(ArrayList<String> expression) {
+
+    if (expression.get(0).equals("+")){
+      System.out.println(Integer.parseInt(expression.get(1)) + Integer.parseInt(expression.get(2)));
+    } else if (expression.get(0).equals("-")) {
+      System.out.println(Integer.parseInt(expression.get(1)) - Integer.parseInt(expression.get(2)));
+    } else if (expression.get(0).equals("%")) {
+      System.out.println(Integer.parseInt(expression.get(1)) % Integer.parseInt(expression.get(2)));
+    } else if (expression.get(0).equals("/")){
+      System.out.println(Integer.parseInt(expression.get(1)) / Integer.parseInt(expression.get(2)));
+    } else {
+      System.out.println(Integer.parseInt(expression.get(1)) * Integer.parseInt(expression.get(2)));
+    }
+
+  }
 
   }
