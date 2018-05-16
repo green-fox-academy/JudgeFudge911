@@ -17,16 +17,16 @@ public class Doubled {
 
       List<String> lines = Files.readAllLines(path);
 
-      List<String> print = new ArrayList<>();
+      String print = "";
 
-      for {
-        for (int i = 0; i < s.length(); i =+ 2) {
-          print.add(s.substring(i,i+1));
+      for (String s :
+              lines) {
+        for (int i = 0; i < s.length(); i += 2) {
+          print +=(s.substring(i,i+1));
         }
-        System.out.println(print);
-
-
+        print += "\n";
       }
+      System.out.println(print);
 
     } catch (Exception e) {
 
