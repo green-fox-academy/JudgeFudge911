@@ -14,7 +14,7 @@ public class CopyFile {
 
     Path fileFromPath = Paths.get(fileFrom);
 
-    Path fileToPath = Paths.get(fileFrom);
+    Path fileToPath = Paths.get(fileTo);
 
     try {
 

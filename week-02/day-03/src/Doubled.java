@@ -19,8 +19,7 @@ public class Doubled {
 
       List<String> print = new ArrayList<>();
 
-      for (String s :
-              lines) {
+      for {
         for (int i = 0; i < s.length(); i =+ 2) {
           print.add(s.substring(i,i+1));
         }
