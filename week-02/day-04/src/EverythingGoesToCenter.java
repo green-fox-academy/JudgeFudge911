@@ -10,33 +10,32 @@ public class EverythingGoesToCenter {
     // The x and y coordinates of the line's starting point
     // and draws a line from that point to the center of the canvas.
     // Fill the canvas with lines from the edges, every 20 px, to the center.
-      int gapBetweenRows = 20;
-      int start = 0;
-      int end = 0;
-      for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
-        drawLine(graphics, start, end);
-        start += gapBetweenRows;
+    int gapBetweenRows = 20;
+    int start = 0;
+    int end = 0;
+
+    for (int i = 0; i < 4; i++) {
+      if (i < 2 && i % 2 == 0) {
+        for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
+          drawLine(graphics, start, end);
+          start += gapBetweenRows;
+        }
+      } else if (i < 2) {
+        for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
+          drawLine(graphics, start, end);
+          end += gapBetweenRows;
+        }
+      } else if (i % 2 == 0) {
+        for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
+          drawLine(graphics, start, end);
+          start -= gapBetweenRows;
+        }
+      } else {
+        for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
+          drawLine(graphics, start, end);
+          end -= gapBetweenRows;
+        }
       }
-    gapBetweenRows = 20;
-    start = 0;
-    end = 0;
-      for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
-        drawLine(graphics, start, end);
-        end += gapBetweenRows;
-      }
-    gapBetweenRows = 20;
-    start = HEIGHT;
-    end = HEIGHT;
-    for (int j = 0; j < HEIGHT / gapBetweenRows+1; j++) {
-      drawLine(graphics, start, end);
-      start -= gapBetweenRows;
-    }
-    gapBetweenRows = 20;
-    start = HEIGHT;
-    end = HEIGHT;
-    for (int j = 0; j < HEIGHT / gapBetweenRows+1; j++) {
-      drawLine(graphics, start, end);
-      end -= gapBetweenRows;
     }
   }
 
