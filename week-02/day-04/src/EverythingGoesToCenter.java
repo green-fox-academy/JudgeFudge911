@@ -12,7 +12,7 @@ public class EverythingGoesToCenter {
     // Fill the canvas with lines from the edges, every 20 px, to the center.
     int gapBetweenRows = 20;
     int start = 0;
-    int end = 0;
+    int end = start;
 
     for (int i = 0; i < 4; i++) {
       if (i < 2 && i % 2 == 0) {
