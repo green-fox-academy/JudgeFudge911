@@ -15,12 +15,12 @@ public class ConnectTheDots {
     int [][] box = {{10, 10}, {290,  10}, {290, 290}, {10, 290}};
     int [][] wut = {{50, 100}, {70, 70}, {80, 90}, {90, 90}, {100, 70}, {120, 100}, {85, 130}, {50, 100}};
 
-    connectTheDots(box);
-    connectTheDots(wut);
+    connectTheDots(graphics, box);
+    connectTheDots(graphics, wut);
 
   }
 
-  public static void connectTheDots(int[][] dots) {
+  public static void connectTheDots(Graphics graphics, int[][] dots) {
 
   }
 
