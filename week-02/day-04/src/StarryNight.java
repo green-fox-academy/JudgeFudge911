@@ -12,7 +12,22 @@ public class StarryNight {
     //  - The stars should have random positions on the canvas
     //  - The stars should have random color (some shade of grey)
 
+    int numberOfStars = 10;
 
+    for (int i = 0; i < numberOfStars; i++) {
+      int size = (int) (Math.random() * 100);
+      int color = (int) (Math.random() * 256);
+      drawStar(graphics, size, color);
+    }
+
+  }
+
+  public static void drawStar(Graphics graphics, int size, int color) {
+
+    int xPos = (int) (Math.random() * 100);
+    int yPos = (int) (Math.random() * 100);
+    graphics.setColor(new Color(color, color, color));
+    graphics.fillRect(xPos, yPos, size, size);
 
   }
 
