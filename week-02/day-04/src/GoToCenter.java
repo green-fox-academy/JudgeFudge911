@@ -12,9 +12,9 @@ public class GoToCenter {
     // Draw 3 lines with that function. Use loop for that.
 
     for (int i = 0; i < 3; i++){
-      int a = (int) (Math.random() * 100);
-      int b = (int) (Math.random() * 100);
-      linesDrawer(graphics, a, b);
+      int x = (int) (Math.random() * 100);
+      int y = (int) (Math.random() * 100);
+      linesDrawer(graphics, x, y);
     }
 
   }

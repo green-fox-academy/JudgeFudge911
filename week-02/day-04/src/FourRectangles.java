@@ -10,17 +10,21 @@ public class FourRectangles {
   public static void mainDraw(Graphics graphics){
     // draw four different size and color rectangles.
     // avoid code duplication.
-    graphics.drawRect(100,100,200,200);
 
-    graphics.setColor(Color.red);
-    graphics.fillRect(0,0,120,120);
+    int numberOfRectangles = 4;
 
-    graphics.drawRoundRect(120,120,80,80,0,0);
+    for (int i = 0; i < numberOfRectangles ; i++) {
+      int x1 = (int)(Math.random()*250);
+      int y1 = (int)(Math.random()*250);
+      int x2 = (int)(Math.random()*250);
+      int y2 = (int)(Math.random()*250);
+      int r = (int)(Math.random()*256);
+      int g = (int)(Math.random()*256);
+      int b = (int)(Math.random()*256);
 
-    int[] polyX = {10, 100, 100, 10};
-    int[] polyY = {100, 100, 10, 10};
-    graphics.setColor(Color.white);
-    graphics.drawPolygon(polyX, polyY, 4);
+      graphics.setColor(new Color(r,g,b));
+      graphics.drawRect(x1,y1,x2,y2);
+    }
   }
 
   //    Don't touch the code below
