@@ -8,11 +8,12 @@ public class MiddleLines {
   public static void mainDraw(Graphics graphics){
     // draw a red horizontal line to the canvas' middle.
     // draw a green vertical line to the canvas' middle.
-    graphics.drawLine(0,50,200,50);
-    graphics.setColor(Color.red);
 
-    graphics.drawLine(50,0,50,200);
+    graphics.setColor(Color.red);
+    graphics.drawLine(0,HEIGHT/2,WIDTH,HEIGHT/2);
+
     graphics.setColor(Color.green);
+    graphics.drawLine(WIDTH/2,0,WIDTH/2,HEIGHT);
 
 
   }
