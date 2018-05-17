@@ -1,6 +1,8 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -22,6 +24,20 @@ public class ConnectTheDots {
 
   public static void connectTheDots(Graphics graphics, int[][] dots) {
 
+    int[] x = new int[dots.length];
+    int[] y = new int[dots.length];
+
+    for (int i = 0; i < dots.length; i++) {
+      for (int j = 0; j < dots[i].length; j++) {
+       if (j % 2 == 0) {
+         x[i] = dots[i][j];
+       } else {
+         y[i] = dots[i][j];
+       }
+      }
+    }
+
+    graphics.drawPolygon(x,y,x.length);
   }
 
   // Don't touch the code below
