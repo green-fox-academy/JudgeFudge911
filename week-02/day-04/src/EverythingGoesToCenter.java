@@ -21,22 +21,22 @@ public class EverythingGoesToCenter {
     start = 0;
     end = 0;
       for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
-        drawLine(graphics, end, start);
-        start += gapBetweenRows;
+        drawLine(graphics, start, end);
+        end += gapBetweenRows;
       }
     gapBetweenRows = 20;
-    start = 0;
+    start = HEIGHT;
     end = HEIGHT;
-    for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
+    for (int j = 0; j < HEIGHT / gapBetweenRows+1; j++) {
       drawLine(graphics, start, end);
-      start += gapBetweenRows;
+      start -= gapBetweenRows;
     }
     gapBetweenRows = 20;
-    start = 0;
+    start = HEIGHT;
     end = HEIGHT;
-    for (int j = 0; j < HEIGHT / gapBetweenRows; j++) {
-      drawLine(graphics, end, start);
-      start += gapBetweenRows;
+    for (int j = 0; j < HEIGHT / gapBetweenRows+1; j++) {
+      drawLine(graphics, start, end);
+      end -= gapBetweenRows;
     }
   }
 
