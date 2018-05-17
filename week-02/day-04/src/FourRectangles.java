@@ -15,7 +15,7 @@ public class FourRectangles {
     graphics.setColor(Color.red);
     graphics.fillRect(0,0,120,120);
 
-    graphics.drawRoundRect(120,120,80,80,10,10);
+    graphics.drawRoundRect(120,120,80,80,0,0);
 
     int[] polyX = {10, 100, 100, 10};
     int[] polyY = {100, 100, 10, 10};
