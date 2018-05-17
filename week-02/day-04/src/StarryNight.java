@@ -1,7 +1,10 @@
+import com.sun.javaws.util.JfxHelper;
+
 import javax.swing.*;
 
 import java.awt.*;
 
+import static java.awt.Frame.getFrames;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class StarryNight {
@@ -12,10 +15,12 @@ public class StarryNight {
     //  - The stars should have random positions on the canvas
     //  - The stars should have random color (some shade of grey)
 
+
+
     int numberOfStars = 10;
 
     for (int i = 0; i < numberOfStars; i++) {
-      int size = (int) (Math.random() * 100);
+      int size = (int) (Math.random() * 20);
       int color = (int) (Math.random() * 256);
       drawStar(graphics, size, color);
     }
@@ -39,7 +44,7 @@ public class StarryNight {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(WIDTH, HEIGHT));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    jFrame.add(new ImagePanel());
+    jFrame.add(new ImagePanel()).setBackground(Color.black);
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
   }
