@@ -1,24 +1,28 @@
+/*
 import javax.swing.*;
 
 import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class LinePlay {
+public class LinePlayQuarters {
   public static void mainDraw(Graphics graphics){
 
     int zeroPoint = 0;
+    int numberOfSections = 4;
     int endPoint = HEIGHT;
 
-    for (int i = 0; i < endPoint ; i += 10) {
-      graphics.setColor(Color.green);
-      graphics.drawLine(zeroPoint,zeroPoint+i, zeroPoint+i, endPoint);
-      graphics.setColor(Color.red);
-      graphics.drawLine(endPoint,endPoint-i, endPoint-i, zeroPoint);
+    for (int i = 0; i < numberOfSections; i++) {
+      for (int j = 0; j < endPoint/numberOfSections ; j += 10) {
+        graphics.setColor(Color.green);
+        graphics.drawLine(zeroPoint,zeroPoint+j, zeroPoint+j, (int)(endPoint/(Math.sqrt(numberOfSections))));
+        graphics.setColor(Color.red);
+        graphics.drawLine(endPoint,endPoint-j, endPoint-j, (int)(zeroPoint*(Math.sqrt(numberOfSections))));
+      }
+      endPoint
+
     }
-
   }
-
   static int WIDTH = 400;
   static int HEIGHT = 400;
 
@@ -38,4 +42,4 @@ public class LinePlay {
       mainDraw(graphics);
     }
   }
-}
+}*/
