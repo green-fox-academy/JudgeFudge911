@@ -4,21 +4,23 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class LinePlay {
+public class LinePlayExtra {
   public static void mainDraw(Graphics graphics){
 
     int zeroPoint = HEIGHT-HEIGHT;
     int endPoint = HEIGHT;
+    int numberOfSections = 4;
 
-    for (int i = 0; i < endPoint ; i += 10) {
-      graphics.setColor(Color.green);
-      graphics.drawLine(zeroPoint,zeroPoint+i, zeroPoint+i, endPoint);
-      graphics.setColor(Color.red);
-      graphics.drawLine(endPoint,endPoint-i, endPoint-i, zeroPoint);
+    for (int i = 0; i < numberOfSections; i++) {
+      for (int j = 0; j < endPoint/numberOfSections ; j += 10) {
+        graphics.setColor(Color.green);
+        graphics.drawLine(zeroPoint,zeroPoint+j, zeroPoint+j, endPoint);
+        graphics.setColor(Color.red);
+        graphics.drawLine(endPoint,endPoint-j, endPoint-j, zeroPoint);
+      }
+
     }
-
   }
-
   static int WIDTH = 400;
   static int HEIGHT = 400;
 
