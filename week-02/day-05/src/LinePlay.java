@@ -7,8 +7,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class LinePlay {
   public static void mainDraw(Graphics graphics){
 
-    int zeroPoint = 0;
-    int endPoint = 400;
+    int zeroPoint = HEIGHT-HEIGHT;
+    int endPoint = HEIGHT;
 
     for (int i = 0; i < endPoint ; i += 10) {
       graphics.setColor(Color.green);
