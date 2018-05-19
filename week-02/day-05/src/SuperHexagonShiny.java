@@ -1,47 +1,60 @@
+import sun.font.FontRunIterator;
+
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class SuperHexagonShiny {
 
   public static final int WIDTH = 400;
-  public  static final int HEIGHT = 400;
-  
-  public static  final int NUMBEROFELEMENTS = 4;
-  public static  final int HEXAGONHEIGHT = HEIGHT/NUMBEROFELEMENTS;
-  public static  final int HEXAGONWIDTH = 0;
+  public static final int HEIGHT = 462;
+
+  public static final int NUMBEROFELEMENTSPERSIDE = 4;
+  public static final int NUMBEROFELEMENTSPERHEIGHT = 2 * NUMBEROFELEMENTSPERSIDE - 1;
+  public static final int HEXAGONHEIGHT = HEIGHT / NUMBEROFELEMENTSPERHEIGHT;
+  public static final int HEXAGONWIDTH = WIDTH / NUMBEROFELEMENTSPERSIDE;
 
   private static Graphics canvas;
 
   public static void mainDraw() {
 
 
+    ArrayList<Integer> matrix = new ArrayList<>();
 
+    for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
+      for (int j = 0; j < NUMBEROFELEMENTSPERSIDE; j++) {
 
-    int elementsPerSide = 4;
+        if (j % 2 == 0) {
+          matrix.add(j * HEXAGONWIDTH + HEXAGONWIDTH / 4);
+          matrix.add(i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2);
+        } else {
+          matrix.add(j * HEXAGONWIDTH);
+          matrix.add(i * HEXAGONHEIGHT);
+        }
+      }
+    }
 
-    int elementsPerHeight = 2 * elementsPerSide - 1;
-
-    int hexagonWidth = 0;
-
-    int hexagonHeight = 0;
-
-    drawHexagon(100,100,true);
-
+    for (int i = 0; i < matrix.size(); i += 4) {
+      canvas.setColor(Color.green);
+      drawHexagon(matrix.get(i), matrix.get(i + 1));
+      canvas.setColor(Color.red);
+      drawHexagon(matrix.get(i + 2), matrix.get(i + 3));
+    }
 
   }
 
-  public static void drawHexagon(int xZero, int yZero, boolean evenColumn) {
+  public static void drawHexagon(int xZero, int yZero) {
 
-      int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
+    int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
 
-      int[] y = {yZero, yZero - HEXAGONHEIGHT / 2, yZero - HEXAGONHEIGHT / 2, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT / 2};
+    int[] y = {yZero + HEXAGONHEIGHT / 2, yZero, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT, yZero + HEXAGONHEIGHT};
 
-      int nPoints = 6;
+    int nPoints = 6;
 
-      canvas.drawPolygon(x, y, nPoints);
+    canvas.fillPolygon(x, y, nPoints);
 
   }
 
