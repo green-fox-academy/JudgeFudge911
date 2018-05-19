@@ -25,7 +25,7 @@ public class SuperHexagonShiny {
     ArrayList<Integer> matrix = new ArrayList<>();
 
     for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
-      for (int j = 0; j < NUMBEROFELEMENTSPERSIDE; j++) {
+      for (int j = 0; j < NUMBEROFELEMENTSPERSIDE+1; j++) {
 
         if (j % 2 == 0) {
           matrix.add((int) (j * HEXAGONWIDTH * 0.75));
@@ -37,11 +37,8 @@ public class SuperHexagonShiny {
       }
     }
 
-    for (int i = 0; i < matrix.size(); i += 4) {
-      canvas.setColor(Color.green);
+    for (int i = 0; i < matrix.size(); i += 2) {
       drawHexagon(matrix.get(i), matrix.get(i + 1));
-      canvas.setColor(Color.red);
-      drawHexagon(matrix.get(i + 2), matrix.get(i + 3));
     }
 
   }
@@ -54,7 +51,7 @@ public class SuperHexagonShiny {
 
     int nPoints = 6;
 
-    canvas.fillPolygon(x, y, nPoints);
+    canvas.drawPolygon(x, y, nPoints);
 
   }
 
