@@ -8,6 +8,10 @@ public class SuperHexagonShiny {
 
   public static final int WIDTH = 400;
   public  static final int HEIGHT = 400;
+  
+  public static  final int NUMBEROFELEMENTS = 4;
+  public static  final int HEXAGONHEIGHT = HEIGHT/NUMBEROFELEMENTS;
+  public static  final int HEXAGONWIDTH = 0;
 
   private static Graphics canvas;
 
@@ -30,17 +34,11 @@ public class SuperHexagonShiny {
   }
 
   public static void drawHexagon(int xZero, int yZero, boolean evenColumn) {
-
-    int hexagonWidth = 20;
-
-    int hexagonHeight = 17;
-
-
     if (evenColumn) {
 
-      int[] x = {xZero, xZero + hexagonWidth / 4, xZero + (int) (0.75 * hexagonWidth), xZero + hexagonWidth, xZero + (int) (0.75 * hexagonWidth), xZero + hexagonWidth / 4};
+      int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
 
-      int[] y = {yZero, yZero - hexagonHeight / 2, yZero - hexagonHeight / 2, yZero, yZero + hexagonHeight / 2, yZero + hexagonHeight / 2};
+      int[] y = {yZero, yZero - HEXAGONHEIGHT / 2, yZero - HEXAGONHEIGHT / 2, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT / 2};
 
       int nPoints = 6;
 
@@ -48,9 +46,9 @@ public class SuperHexagonShiny {
 
     } else {
 
-      int[] x = {xZero, xZero + hexagonWidth / 4, xZero + (int) (0.75 * hexagonWidth), xZero + hexagonWidth, xZero + (int) (0.75 * hexagonWidth), xZero + hexagonWidth / 4};
+      int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
 
-      int[] y = {yZero, yZero - hexagonHeight / 2, yZero - hexagonHeight / 2, yZero, yZero + hexagonHeight / 2, yZero + hexagonHeight / 2};
+      int[] y = {yZero, yZero - HEXAGONHEIGHT / 2, yZero - HEXAGONHEIGHT / 2, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT / 2};
 
       int nPoints = 6;
 
