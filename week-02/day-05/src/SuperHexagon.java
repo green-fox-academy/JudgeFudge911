@@ -27,22 +27,25 @@ public class SuperHexagon {
 
     int zeroPoint = 0;
 
+    int zeroHeightPoint1 = (elemenntsPerSide - 1) * hexagonHeight / 2;
 
-    int[] xPoints = {zeroPoint, zeroPoint + hexagonWidth / 4, zeroPoint + (int) (0.75 * hexagonWidth), zeroPoint + hexagonWidth, zeroPoint + (int) (0.75 * hexagonWidth), zeroPoint + hexagonWidth / 4};
+    int zeroHeightPoint2 = HEIGHT - (elemenntsPerSide - 1) * hexagonHeight / 2;
 
-    int[] yPoints = {zeroPoint + hexagonHeight / 2, zeroPoint, zeroPoint, zeroPoint + hexagonHeight / 2, zeroPoint + hexagonHeight, zeroPoint + hexagonHeight};
+    int[] xPoints1 = {zeroPoint, zeroPoint + hexagonWidth / 4, zeroPoint + (int) (0.75 * hexagonWidth), zeroPoint + hexagonWidth, zeroPoint + (int) (0.75 * hexagonWidth), zeroPoint + hexagonWidth / 4};
 
-    for (int i = 0; i < HEIGHT / hexagonHeight; i++) {
+    int[] xPoints2 = {WIDTH, WIDTH - hexagonWidth / 4, WIDTH - (int) (0.75 * hexagonWidth), WIDTH - hexagonWidth, WIDTH - (int) (0.75 * hexagonWidth), WIDTH - hexagonWidth / 4};
+
+    int[] yPoints1 = {zeroHeightPoint1 + hexagonHeight / 2, zeroHeightPoint1, zeroHeightPoint1, zeroHeightPoint1 + hexagonHeight / 2, zeroHeightPoint1 + hexagonHeight, zeroHeightPoint1 + hexagonHeight};
+
+    int[] yPoints2 = {zeroHeightPoint2 - hexagonHeight / 2, zeroHeightPoint2, zeroHeightPoint2, zeroHeightPoint2 - hexagonHeight / 2, zeroHeightPoint2 - hexagonHeight, zeroHeightPoint2 - hexagonHeight};
+
+    for (int i = 0; i < elemenntsPerSide; i++) {
       graphics.setColor(new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)));
-      for (int j = 0; j < WIDTH / hexagonWidth; j++) {
-        graphics.fillPolygon(xPoints, yPoints, 6);
-        for (int k = 0; k < 6; k++) {
-          xPoints[k] += hexagonWidth;
-        }
-      }
+      graphics.fillPolygon(xPoints1, yPoints1, 6);
+      graphics.fillPolygon(xPoints2, yPoints2, 6);
       for (int k = 0; k < 6; k++) {
-        yPoints[k] += hexagonHeight;
-        xPoints[k] -= 6 * hexagonWidth;
+        yPoints1[k] += hexagonHeight;
+        yPoints2[k] -= hexagonHeight;
       }
     }
   }
