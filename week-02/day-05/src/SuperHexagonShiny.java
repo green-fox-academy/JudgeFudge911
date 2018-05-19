@@ -28,10 +28,10 @@ public class SuperHexagonShiny {
       for (int j = 0; j < NUMBEROFELEMENTSPERSIDE; j++) {
 
         if (j % 2 == 0) {
-          matrix.add(j * HEXAGONWIDTH + HEXAGONWIDTH / 4);
+          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
           matrix.add(i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2);
         } else {
-          matrix.add(j * HEXAGONWIDTH);
+          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
           matrix.add(i * HEXAGONHEIGHT);
         }
       }
