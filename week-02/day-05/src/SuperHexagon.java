@@ -13,24 +13,30 @@ public class SuperHexagon {
 
     int hexagonHeight = HEIGHT / elementsPerHeight;
 
-    double temp = (hexagonHeight/ Math.sqrt(3) - (int)(hexagonHeight/ Math.sqrt(3)));
+    double temp = (hexagonHeight / Math.sqrt(3) - (int) (hexagonHeight / Math.sqrt(3)));
 
     int hexagonSide = 0;
 
-    if (temp > 0.5){
-      hexagonSide = (int) (hexagonHeight/ Math.sqrt(3)) + 1;
+    if (temp > 0.5) {
+      hexagonSide = (int) (hexagonHeight / Math.sqrt(3)) + 1;
     } else {
-      hexagonSide = (int) (hexagonHeight/ Math.sqrt(3));
+      hexagonSide = (int) (hexagonHeight / Math.sqrt(3));
     }
 
     int hexagonWidth = hexagonSide * 2;
 
-    for (int i = 1; i < HEIGHT / hexagonHeight+1; i++) {
-      graphics.drawLine(WIDTH / 2 - i * hexagonSide, i * hexagonHeight / 2, WIDTH / 2 + i * hexagonSide, i * hexagonHeight / 2);
+    int zeroPoint = 100;
 
-      graphics.drawLine(WIDTH - i * 2 * hexagonSide, HEIGHT / 2, WIDTH - hexagonSide * i, HEIGHT / 2 - hexagonHeight * i);
 
-    }
+    int[] xPoints = {zeroPoint, zeroPoint + hexagonSide, zeroPoint + (int)(1.5 * hexagonSide), zeroPoint + hexagonSide, zeroPoint, zeroPoint + (-1 * hexagonSide/2)};
+
+    int[] yPoints = {zeroPoint, zeroPoint, zeroPoint+hexagonHeight / 2, zeroPoint+hexagonHeight, zeroPoint+hexagonHeight, zeroPoint+hexagonHeight / 2};
+
+    graphics.drawPolygon(xPoints, yPoints, 6);
+
+    /*    for (int i = 1; i < HEIGHT / hexagonHeight+1; i++) {
+    graphics.drawPolygon(0);
+    }*/
 
 
   }
