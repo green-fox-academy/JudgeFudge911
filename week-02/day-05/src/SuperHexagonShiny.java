@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -24,18 +25,7 @@ public class SuperHexagonShiny {
 
     ArrayList<Integer> matrix = new ArrayList<>();
 
-    for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
-      for (int j = 0; j < NUMBEROFELEMENTSPERSIDE+1; j++) {
-
-        if (j % 2 == 0) {
-          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
-          matrix.add(i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2);
-        } else {
-          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
-          matrix.add(i * HEXAGONHEIGHT);
-        }
-      }
-    }
+    initializeMatrix(matrix);
 
     for (int i = 0; i < matrix.size(); i += 2) {
       drawHexagon(matrix.get(i), matrix.get(i + 1));
@@ -55,6 +45,22 @@ public class SuperHexagonShiny {
 
   }
 
+  public static void initializeMatrix (List matrix){
+
+    for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
+      for (int j = 0; j < NUMBEROFELEMENTSPERSIDE+1; j++) {
+
+        if (j % 2 == 0) {
+          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
+          matrix.add(i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2);
+        } else {
+          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
+          matrix.add(i * HEXAGONHEIGHT);
+        }
+      }
+    }
+
+  }
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(WIDTH, HEIGHT + 23));
