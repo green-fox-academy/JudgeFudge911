@@ -7,6 +7,20 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
   public static void mainDraw(Graphics graphics) {
 
+    int elemenntsPerSide = 4;
+
+    int elementsPerHeight = 2*elemenntsPerSide -1;
+
+    int hexagonHeight = HEIGHT/elementsPerHeight;
+
+    int hexagonSide = (int)(hexagonHeight/Math.sqrt(3));
+
+    int hexagonWidth = hexagonSide * 2;
+
+    for (int i = 1; i < HEIGHT/hexagonHeight; i++) {
+      graphics.drawLine(WIDTH/2-i*hexagonSide, i*hexagonHeight/2, WIDTH/2+ i * hexagonSide, i*hexagonHeight/2);
+    }
+
 
   }
 
