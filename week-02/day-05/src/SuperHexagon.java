@@ -25,20 +25,26 @@ public class SuperHexagon {
 
     int hexagonWidth = hexagonSide * 2;
 
-    int zeroPoint = 100;
+    int zeroPoint = 0;
 
 
-    int[] xPoints = {zeroPoint, zeroPoint + hexagonSide, zeroPoint + (int)(1.5 * hexagonSide), zeroPoint + hexagonSide, zeroPoint, zeroPoint + (-1 * hexagonSide/2)};
+    int[] xPoints = {zeroPoint, zeroPoint + hexagonWidth / 4, zeroPoint + (int) (0.75 * hexagonWidth), zeroPoint + hexagonWidth, zeroPoint + (int) (0.75 * hexagonWidth), zeroPoint + hexagonWidth / 4};
 
-    int[] yPoints = {zeroPoint, zeroPoint, zeroPoint+hexagonHeight / 2, zeroPoint+hexagonHeight, zeroPoint+hexagonHeight, zeroPoint+hexagonHeight / 2};
+    int[] yPoints = {zeroPoint + hexagonHeight / 2, zeroPoint, zeroPoint, zeroPoint + hexagonHeight / 2, zeroPoint + hexagonHeight, zeroPoint + hexagonHeight};
 
-    graphics.drawPolygon(xPoints, yPoints, 6);
-
-    /*    for (int i = 1; i < HEIGHT / hexagonHeight+1; i++) {
-    graphics.drawPolygon(0);
-    }*/
-
-
+    for (int i = 0; i < HEIGHT / hexagonHeight; i++) {
+      graphics.setColor(new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)));
+      for (int j = 0; j < WIDTH / hexagonWidth; j++) {
+        graphics.fillPolygon(xPoints, yPoints, 6);
+        for (int k = 0; k < 6; k++) {
+          xPoints[k] += hexagonWidth;
+        }
+      }
+      for (int k = 0; k < 6; k++) {
+        yPoints[k] += hexagonHeight;
+        xPoints[k] -= 6 * hexagonWidth;
+      }
+    }
   }
 
   static int WIDTH = 400;
