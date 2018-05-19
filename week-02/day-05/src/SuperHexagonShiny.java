@@ -34,7 +34,6 @@ public class SuperHexagonShiny {
   }
 
   public static void drawHexagon(int xZero, int yZero, boolean evenColumn) {
-    if (evenColumn) {
 
       int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
 
@@ -43,18 +42,6 @@ public class SuperHexagonShiny {
       int nPoints = 6;
 
       canvas.drawPolygon(x, y, nPoints);
-
-    } else {
-
-      int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
-
-      int[] y = {yZero, yZero - HEXAGONHEIGHT / 2, yZero - HEXAGONHEIGHT / 2, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT / 2};
-
-      int nPoints = 6;
-
-      canvas.drawPolygon(x, y, nPoints);
-
-    }
 
   }
 
