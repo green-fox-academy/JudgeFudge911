@@ -7,7 +7,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
   public static void mainDraw(Graphics graphics) {
 
-    int elemenntsPerSide = 4;
+    int elemenntsPerSide = 3;
 
     int elementsPerHeight = 2 * elemenntsPerSide - 1;
 
@@ -39,19 +39,33 @@ public class SuperHexagon {
 
     int[] yPoints2 = {zeroHeightPoint2 - hexagonHeight / 2, zeroHeightPoint2, zeroHeightPoint2, zeroHeightPoint2 - hexagonHeight / 2, zeroHeightPoint2 - hexagonHeight, zeroHeightPoint2 - hexagonHeight};
 
-    for (int i = 0; i < elemenntsPerSide; i++) {
-      graphics.setColor(new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)));
-      graphics.fillPolygon(xPoints1, yPoints1, 6);
-      graphics.fillPolygon(xPoints2, yPoints2, 6);
-      for (int k = 0; k < 6; k++) {
-        yPoints1[k] += hexagonHeight;
-        yPoints2[k] -= hexagonHeight;
+
+    for (int i = 2; i < 4; i++) {
+      for (int j = 0; j < elemenntsPerSide; j++) {
+        graphics.setColor(new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)));
+        graphics.fillPolygon(xPoints1, yPoints1, 6);
+        /*graphics.fillPolygon(xPoints2, yPoints2, 6)*/;
+        for (int k = 0; k < 6; k++) {
+          yPoints1[k] += hexagonHeight;
+          yPoints2[k] -= hexagonHeight;
+        }
       }
+      for (int k = 0; k < 6; k++) {
+        yPoints1[k] -= (elemenntsPerSide+1)*hexagonHeight;
+        yPoints2[k] += (elemenntsPerSide+1)*hexagonHeight;
+      }
+      for (int k = 0; k < 6; k++) {
+        xPoints1[k] += hexagonWidth*2;
+        xPoints2[k] -= hexagonWidth*2;
+      }
+      elemenntsPerSide += 2;
+
     }
   }
 
-  static int WIDTH = 400;
+
   static int HEIGHT = 400;
+  static int WIDTH = (int)(HEIGHT*1.15);
 
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
