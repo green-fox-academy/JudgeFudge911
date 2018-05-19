@@ -49,36 +49,50 @@ public class SuperHexagon {
 
     for (int i = 0; i < 2; i++) {
       for (int j = 0; j < elemenntsPerSide; j++) {
-        graphics.setColor(new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)));
-        graphics.fillPolygon(xPoints1, yPoints1, 6);
 
-        graphics.fillPolygon(xPoints2, yPoints2, 6);
+        graphics.drawPolygon(xPoints1, yPoints1, 6);
 
-        graphics.fillPolygon(xPoints3, yPoints3, 6);
-
-        graphics.fillPolygon(xPoints4, yPoints4, 6);
+        graphics.drawPolygon(xPoints2, yPoints2, 6);
 
         for (int k = 0; k < 6; k++) {
           yPoints1[k] += hexagonHeight;
           yPoints2[k] -= hexagonHeight;
-          yPoints3[k] += hexagonHeight;
-          yPoints4[k] -= hexagonHeight;
         }
       }
       for (int k = 0; k < 6; k++) {
         yPoints1[k] -= (elemenntsPerSide+1)*hexagonHeight;
         yPoints2[k] += (elemenntsPerSide+1)*hexagonHeight;
-        yPoints3[k] -= (elemenntsPerSide+1)*hexagonHeight;
-        yPoints4[k] += (elemenntsPerSide+1)*hexagonHeight;
       }
       for (int k = 0; k < 6; k++) {
         xPoints1[k] += hexagonWidth*2;
         xPoints2[k] -= hexagonWidth*2;
-        xPoints3[k] += hexagonWidth*2;
-        xPoints4[k] -= hexagonWidth*2;
       }
       elemenntsPerSide += 2;
 
+    }
+
+    int elementsperside2 = 5;
+    for (int i = 0; i < 2; i++) {
+      for (int j = 0; j < elementsperside2; j++) {
+        graphics.drawPolygon(xPoints4, yPoints4, 6);
+        if (i==0) {
+          graphics.drawPolygon(xPoints3, yPoints3, 6);
+
+        }
+        for (int k = 0; k < 6; k++) {
+          yPoints3[k] += hexagonHeight;
+          yPoints4[k] -= hexagonHeight;
+        }
+      }
+      for (int k = 0; k < 6; k++) {
+        yPoints3[k] -= 6*hexagonHeight;
+        yPoints4[k] += 6*hexagonHeight;
+      }
+      for (int k = 0; k < 6; k++) {
+        xPoints3[k] += hexagonWidth*2;
+        xPoints4[k] -= hexagonWidth*2;
+      }
+      elementsperside2 += 2;
     }
   }
 
