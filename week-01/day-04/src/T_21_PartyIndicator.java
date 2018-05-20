@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-public class PartyIndicator {
+public class T_21_PartyIndicator {
   public static void main(String[] args) {
     // Write a program that asks for two numbers
-    // Thw first number represents the number of girls that comes to a party, the
+    // The first number represents the number of girls that comes to a party, the
     // second the boys
-    // It should print: The party is exellent!
+    // It should print: The party is excellent!
     // If the the number of girls and boys are equal and there are more people coming than 20
     //
     // It should print: Quite cool party!
@@ -18,21 +18,19 @@ public class PartyIndicator {
     // If no girls are coming, regardless the count of the people
     Scanner scanner = new Scanner(System.in);
 
-    System.out.println("How many girls are comming?");
-
+    System.out.println("How many girls are coming?");
     int numberOfGirls = scanner.nextInt();
 
-    System.out.println("How many boys are comming?");
-
+    System.out.println("How many boys are coming?");
     int numberOfBoys = scanner.nextInt();
 
     int partyGoers = numberOfBoys + numberOfGirls;
 
     if (numberOfGirls == 0) {
       System.out.println("Sausage party");
-    } else if (numberOfBoys == numberOfGirls) {
+    } else if (numberOfBoys == numberOfGirls && partyGoers > 20) {
       System.out.println("The party is excellent!");
-    } else if (partyGoers >= 20) {
+    } else if (partyGoers > 20) {
       System.out.println("Quite cool party!");
     } else {
       System.out.println("Average party...");

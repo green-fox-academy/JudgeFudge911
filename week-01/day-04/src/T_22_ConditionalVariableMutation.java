@@ -1,4 +1,4 @@
-public class ConditionalVariableMutation {
+public class T_22_ConditionalVariableMutation {
   public static void main(String[] args) {
     double a = 24;
     int out = 0;
@@ -19,7 +19,7 @@ public class ConditionalVariableMutation {
       out2 = "Sweet!";
     } else if (b < 10) {
       out2 = "Less!";
-    } else {
+    } else if (b > 20){
       out2 = "More!";
     }
 
@@ -34,9 +34,7 @@ public class ConditionalVariableMutation {
     // if credits are smaller than 50,
     // and isBonus is false decrement c by 1
     // if isBonus is true c should remain the same
-    if (isBonus == true) {
-
-    } else if (credits >= 50 && isBonus == false) {
+    if (credits >= 50 && isBonus == false) {
       c -= 2;
     } else if (credits < 50 && isBonus == false) {
       c -= 1;
@@ -55,7 +53,7 @@ public class ConditionalVariableMutation {
     // set out3 to "Time out"
     // otherwise set out3 to "Run Forest Run!"
     if (d % 4 == 0 && time <= 200) {
-      out3 = "Check";
+      out3 = "check";
     } else if (time > 200) {
       out3 = "Time out";
     } else {
