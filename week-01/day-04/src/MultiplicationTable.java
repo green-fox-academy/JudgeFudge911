@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class MultiplicationTable {
-    public static void main(String[] args) {
+  public static void main(String[] args) {
     // Create a program that asks for a number and prints the multiplication table with that number
     //
     // Example:
@@ -17,19 +17,19 @@ public class MultiplicationTable {
     // 8 * 15 = 120
     // 9 * 15 = 135
     // 10 * 15 = 150
-        Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter a number.");
-        int number = scanner.nextInt();
+    System.out.println("Enter a number.");
+    int number = scanner.nextInt();
 
-        int firstIncrement = 1;
-        int lastIncrement = 10;
+    int firstIncrement = 1;
+    int lastIncrement = 10;
 
-        while (firstIncrement < lastIncrement + 1 ) {
-            if (firstIncrement < lastIncrement + 1 ) {
-                System.out.println(firstIncrement + " * " + number + " = " + number * firstIncrement);
-                firstIncrement++;
-            }
-        }
+    while (firstIncrement < lastIncrement + 1) {
+      if (firstIncrement < lastIncrement + 1) {
+        System.out.println(firstIncrement + " * " + number + " = " + number * firstIncrement);
+        firstIncrement++;
+      }
     }
+  }
 }
