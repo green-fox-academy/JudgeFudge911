@@ -11,10 +11,10 @@ public class SuperHexagonShiny {
   private static final int WIDTH = 400;
   private static final int HEIGHT = 462;
 
-  private static final int NUMBEROFELEMENTSPERSIDE = 4;
-  private static final int NUMBEROFELEMENTSPERHEIGHT = 2 * NUMBEROFELEMENTSPERSIDE - 1;
-  private static final int HEXAGONHEIGHT = HEIGHT / NUMBEROFELEMENTSPERHEIGHT;
-  private static final int HEXAGONWIDTH = WIDTH / NUMBEROFELEMENTSPERSIDE;
+  private static final int NUMBER_OF_ELEMENTS_PER_SIDE = 6;
+  private static final int NUMBER_OF_ELEMENTS_PER_HEIGHT = 2 * NUMBER_OF_ELEMENTS_PER_SIDE - 1;
+  private static final int HEXAGON_HEIGHT = HEIGHT / NUMBER_OF_ELEMENTS_PER_HEIGHT;
+  private static final int HEXAGON_WIDTH = WIDTH / NUMBER_OF_ELEMENTS_PER_SIDE;
 
   private static Graphics canvas;
 
@@ -37,9 +37,9 @@ public class SuperHexagonShiny {
       return;
     } else {
 
-      int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
+      int[] x = {xZero, xZero + HEXAGON_WIDTH / 4, xZero + (int) Math.round(0.75 * HEXAGON_WIDTH), xZero + HEXAGON_WIDTH, xZero + (int) Math.round(0.75 * HEXAGON_WIDTH), xZero + HEXAGON_WIDTH / 4};
 
-      int[] y = {yZero + HEXAGONHEIGHT / 2, yZero, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT, yZero + HEXAGONHEIGHT};
+      int[] y = {yZero + HEXAGON_HEIGHT / 2, yZero, yZero, yZero + HEXAGON_HEIGHT / 2, yZero + HEXAGON_HEIGHT, yZero + HEXAGON_HEIGHT};
 
       int nPoints = 6;
 
@@ -49,24 +49,33 @@ public class SuperHexagonShiny {
 
   public static void initialize(List matrix) {
 
-    for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
-      for (int j = 0; j < NUMBEROFELEMENTSPERHEIGHT; j++) {
-        if ((i == 0 && j < 3) || (i == 0 && j > 3)) {
-          int[] empty = {-1, -1};
+    int counter1 = NUMBER_OF_ELEMENTS_PER_HEIGHT / 2;
+    int counter2 = NUMBER_OF_ELEMENTS_PER_HEIGHT / 2;
+    int[] empty = {-1, -1};
+
+    for (int i = 0; i < NUMBER_OF_ELEMENTS_PER_HEIGHT; i++) {
+      for (int j = 0; j < NUMBER_OF_ELEMENTS_PER_HEIGHT; j++) {
+        if (counter1 > j || counter2 < j) {
           matrix.add(empty);
-        } else if ((i == 1 && j < 1) || (i == 1 && j > 5)) {
-          int[] empty = {-1, -1};
-          matrix.add(empty);
-        } else if ((i == 6 && j < 2) || (i == 6 && j > 4)) {
-          int[] empty = {-1, -1};
-          matrix.add(empty);
-        } else if (j % 2 == 0) {
-          int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT};
-          matrix.add(xYPoints);
         } else {
-          int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2};
-          matrix.add(xYPoints);
+          if (j % 2 == 0) {
+            int[] xYPoints = {(int) Math.round(j * HEXAGON_WIDTH * 0.75), i * HEXAGON_HEIGHT};
+            matrix.add(xYPoints);
+          } else {
+            int[] xYPoints = {(int) Math.round(j * HEXAGON_WIDTH * 0.75), i * HEXAGON_HEIGHT + HEXAGON_HEIGHT / 2};
+            matrix.add(xYPoints);
+          }
         }
+      }
+      if (i < NUMBER_OF_ELEMENTS_PER_HEIGHT / 2) {
+        counter1 -= 2;
+        counter2 += 2;
+      } else if (i == NUMBER_OF_ELEMENTS_PER_HEIGHT/2) {
+        counter1 += 1;
+        counter2 -=1;
+      } else {
+        counter1 += 2;
+        counter2 -= 2;
       }
     }
   }
@@ -81,12 +90,12 @@ public class SuperHexagonShiny {
     jFrame.setVisible(true);
   }
 
-  static class ImagePanel extends JPanel {
-    @Override
-    protected void paintComponent(Graphics graphics) {
-      super.paintComponent(graphics);
-      canvas = graphics;
-      mainDraw();
-    }
+static class ImagePanel extends JPanel {
+  @Override
+  protected void paintComponent(Graphics graphics) {
+    super.paintComponent(graphics);
+    canvas = graphics;
+    mainDraw();
   }
+}
 }
