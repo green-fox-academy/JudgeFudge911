@@ -48,14 +48,14 @@ public class SuperHexagonShiny {
   public static void initializeMatrix (List matrix){
 
     for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
-      for (int j = 0; j < NUMBEROFELEMENTSPERSIDE+1; j++) {
+      for (int j = 0; j < NUMBEROFELEMENTSPERHEIGHT; j++) {
 
         if (j % 2 == 0) {
           matrix.add((int) (j * HEXAGONWIDTH * 0.75));
-          matrix.add(i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2);
+          matrix.add(i * HEXAGONHEIGHT);
         } else {
           matrix.add((int) (j * HEXAGONWIDTH * 0.75));
-          matrix.add(i * HEXAGONHEIGHT);
+          matrix.add(i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2);
         }
       }
     }
