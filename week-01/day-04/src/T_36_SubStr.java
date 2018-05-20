@@ -1,4 +1,4 @@
-public class T_37_SubStr {
+public class T_36_SubStr {
   public static void main(String[] args) {
     //  Create a function that takes two strings as a parameter
     //  Returns the starting index where the second one is starting in the first one
