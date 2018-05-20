@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class DrawTriangle {
+public class T_28_DrawTriangle {
   public static void main(String[] args) {
     // Write a program that reads a number from the standard input, then draws a
     // triangle like this:

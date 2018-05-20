@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MultiplicationTable {
+public class T_25_MultiplicationTable {
   public static void main(String[] args) {
     // Create a program that asks for a number and prints the multiplication table with that number
     //
@@ -22,14 +22,8 @@ public class MultiplicationTable {
     System.out.println("Enter a number.");
     int number = scanner.nextInt();
 
-    int firstIncrement = 1;
-    int lastIncrement = 10;
-
-    while (firstIncrement < lastIncrement + 1) {
-      if (firstIncrement < lastIncrement + 1) {
-        System.out.println(firstIncrement + " * " + number + " = " + number * firstIncrement);
-        firstIncrement++;
-      }
+    for (int i = 1; i < 11; i++) {
+      System.out.println(i + "*" + number + " = " + (number * i));
     }
   }
 }

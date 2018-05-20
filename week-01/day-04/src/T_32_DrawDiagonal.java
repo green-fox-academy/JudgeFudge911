@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class DrawDiagonal {
+public class T_32_DrawDiagonal {
   public static void main(String[] args) {
     // Write a program that reads a number from the standard input, then draws a
     // square like this:
@@ -18,7 +18,7 @@ public class DrawDiagonal {
     int numberOfLines = scanner.nextInt();
 
     for (int i = 0; i < numberOfLines; i++) {
-      System.out.println("");
+      System.out.println();
       for (int j = 0; j < numberOfLines; j++) {
         if (i == 0 || i == numberOfLines - 1 || j == 0 || j == numberOfLines - 1) {
           System.out.print("% ");

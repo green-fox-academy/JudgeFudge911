@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-public class GuessTheNumber {
+public class T_33_GuessTheNumber {
   public static void main(String[] args) {
     // Write a program that stores a number, and the user has to figure it out.
     // The user can input guesses, after each guess the program would tell one
     // of the following:
     //
     // The stored number is higher
-    // The stried number is lower
+    // The stored number is lower
     // You found the number: 8
     Scanner scanner = new Scanner(System.in);
 
@@ -17,7 +17,7 @@ public class GuessTheNumber {
     int guess = scanner.nextInt();
     boolean found = false;
 
-    while (found != true) {
+    while (!found) {
       if (storedNumber > guess) {
         System.out.println("The stored number is higher, try again!");
         guess = scanner.nextInt();

@@ -1,4 +1,4 @@
-public class DrawChessTable {
+public class T_35_DrawChessTable {
   public static void main(String[] args) {
     // Crate a program that draws a chess table like this
     //
@@ -11,7 +11,7 @@ public class DrawChessTable {
     // % % % %
     //  % % % %
     for (int i = 0; i < 8; i++) {
-      System.out.println("");
+      System.out.println();
       for (int j = 0; j < 8; j++) {
         if (i % 2 == 0 && j % 2 != 0) {
           System.out.print(" ");

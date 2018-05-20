@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ParametricAverage {
+public class T_34_ParametricAverage {
   public static void main(String[] args) {
     // Write a program that asks for a number.
     // It would ask this many times to enter an integer,
@@ -15,19 +15,11 @@ public class ParametricAverage {
     int average = 0;
 
     for (int i = 0; i < thisMany; i++) {
-      if (i != 0) {
-        System.out.println("Enter another number.");
-        int number = scanner.nextInt();
-        sum += number;
-        average++;
-      } else {
         System.out.println("Enter a number.");
         int number = scanner.nextInt();
         sum += number;
         average++;
-      }
     }
-
     System.out.println("Sum: " + sum + ", Average: " + sum / average);
   }
 }

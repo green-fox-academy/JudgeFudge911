@@ -1,4 +1,4 @@
-public class FizzBuzz {
+public class T_27_FizzBuzz {
   public static void main(String[] args) {
     // Write a program that prints the numbers from 1 to 100.
     // But for multiples of three print “Fizz” instead of the number
@@ -8,7 +8,9 @@ public class FizzBuzz {
     int endNumber = 100;
 
     while (startNumber < endNumber + 1) {
-      if (startNumber % 3 == 0) {
+      if (startNumber % 3 == 0 && startNumber % 5 == 0) {
+        System.out.println("FizzBuzz");
+      } else if (startNumber % 3 == 0) {
         System.out.println("Fizz");
       } else if (startNumber % 5 == 0) {
         System.out.println("Buzz");
