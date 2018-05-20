@@ -21,12 +21,12 @@ public class SuperHexagonShiny {
   private static void mainDraw() {
 
 
-    ArrayList<Integer> matrix = new ArrayList<>();
+    ArrayList<int[]> matrix = new ArrayList<>();
 
     initializeMatrix(matrix);
 
-    for (int i = 0; i < matrix.size(); i += 2) {
-      drawHexagon(matrix.get(i), matrix.get(i + 1));
+    for (int i = 0; i < matrix.size(); i += 1) {
+      drawHexagon(matrix.get(i)[0], matrix.get(i)[1]);
     }
 
   }
@@ -49,11 +49,11 @@ public class SuperHexagonShiny {
       for (int j = 0; j < NUMBEROFELEMENTSPERHEIGHT; j++) {
 
         if (j % 2 == 0) {
-          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
-          matrix.add(i * HEXAGONHEIGHT);
+          int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i*HEXAGONHEIGHT};
+          matrix.add(xYPoints);
         } else {
-          matrix.add((int) (j * HEXAGONWIDTH * 0.75));
-          matrix.add(i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2);
+          int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2};
+          matrix.add(xYPoints);
         }
       }
     }
