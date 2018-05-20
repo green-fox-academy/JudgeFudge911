@@ -23,7 +23,7 @@ public class SuperHexagonShiny {
 
     ArrayList<int[]> matrix = new ArrayList<>();
 
-    initializeMatrix(matrix);
+    initialize(matrix);
 
     for (int i = 0; i < matrix.size(); i += 1) {
       drawHexagon(matrix.get(i)[0], matrix.get(i)[1]);
@@ -33,24 +33,32 @@ public class SuperHexagonShiny {
 
   public static void drawHexagon(int xZero, int yZero) {
 
-    int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
+    if (xZero == -1 || yZero == -1) {
+      return;
+    } else {
 
-    int[] y = {yZero + HEXAGONHEIGHT / 2, yZero, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT, yZero + HEXAGONHEIGHT};
+      int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
 
-    int nPoints = 6;
+      int[] y = {yZero + HEXAGONHEIGHT / 2, yZero, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT, yZero + HEXAGONHEIGHT};
 
-    canvas.drawPolygon(x, y, nPoints);
+      int nPoints = 6;
 
+      canvas.drawPolygon(x, y, nPoints);
+    }
   }
 
-  public static void initializeMatrix (List matrix){
+  public static void initialize(List matrix) {
 
     for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
       for (int j = 0; j < NUMBEROFELEMENTSPERHEIGHT; j++) {
-
         if (j % 2 == 0) {
-          int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i*HEXAGONHEIGHT};
-          matrix.add(xYPoints);
+          if (j == NUMBEROFELEMENTSPERHEIGHT / 2) {
+            int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT};
+            matrix.add(xYPoints);
+          } else {
+            int[] empty = {-1, -1};
+            matrix.add(empty);
+          }
         } else {
           int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2};
           matrix.add(xYPoints);
@@ -59,6 +67,7 @@ public class SuperHexagonShiny {
     }
 
   }
+
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(WIDTH, HEIGHT + 23));
