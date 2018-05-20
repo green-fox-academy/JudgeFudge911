@@ -1,5 +1,3 @@
-import sun.font.FontRunIterator;
-
 import javax.swing.*;
 
 import java.awt.*;
