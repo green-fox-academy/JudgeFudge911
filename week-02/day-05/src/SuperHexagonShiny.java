@@ -8,17 +8,17 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class SuperHexagonShiny {
 
-  public static final int WIDTH = 400;
-  public static final int HEIGHT = 462;
+  private static final int WIDTH = 400;
+  private static final int HEIGHT = 462;
 
-  public static final int NUMBEROFELEMENTSPERSIDE = 4;
-  public static final int NUMBEROFELEMENTSPERHEIGHT = 2 * NUMBEROFELEMENTSPERSIDE - 1;
-  public static final int HEXAGONHEIGHT = HEIGHT / NUMBEROFELEMENTSPERHEIGHT;
-  public static final int HEXAGONWIDTH = WIDTH / NUMBEROFELEMENTSPERSIDE;
+  private static final int NUMBEROFELEMENTSPERSIDE = 4;
+  private static final int NUMBEROFELEMENTSPERHEIGHT = 2 * NUMBEROFELEMENTSPERSIDE - 1;
+  private static final int HEXAGONHEIGHT = HEIGHT / NUMBEROFELEMENTSPERHEIGHT;
+  private static final int HEXAGONWIDTH = WIDTH / NUMBEROFELEMENTSPERSIDE;
 
   private static Graphics canvas;
 
-  public static void mainDraw() {
+  private static void mainDraw() {
 
 
     ArrayList<Integer> matrix = new ArrayList<>();
@@ -33,7 +33,7 @@ public class SuperHexagonShiny {
 
   public static void drawHexagon(int xZero, int yZero) {
 
-    int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) (0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
+    int[] x = {xZero, xZero + HEXAGONWIDTH / 4, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH, xZero + (int) Math.round(0.75 * HEXAGONWIDTH), xZero + HEXAGONWIDTH / 4};
 
     int[] y = {yZero + HEXAGONHEIGHT / 2, yZero, yZero, yZero + HEXAGONHEIGHT / 2, yZero + HEXAGONHEIGHT, yZero + HEXAGONHEIGHT};
 
