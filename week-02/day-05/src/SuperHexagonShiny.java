@@ -11,7 +11,7 @@ public class SuperHexagonShiny {
   private static final int WIDTH = 400;
   private static final int HEIGHT = 462;
 
-  private static final int NUMBER_OF_ELEMENTS_PER_SIDE = 6;
+  private static final int NUMBER_OF_ELEMENTS_PER_SIDE = 4;
   private static final int NUMBER_OF_ELEMENTS_PER_HEIGHT = 2 * NUMBER_OF_ELEMENTS_PER_SIDE - 1;
   private static final int HEXAGON_HEIGHT = HEIGHT / NUMBER_OF_ELEMENTS_PER_HEIGHT;
   private static final int HEXAGON_WIDTH = WIDTH / NUMBER_OF_ELEMENTS_PER_SIDE;
@@ -49,13 +49,12 @@ public class SuperHexagonShiny {
 
   public static void initialize(List matrix) {
 
-    int counter1 = NUMBER_OF_ELEMENTS_PER_HEIGHT / 2;
-    int counter2 = NUMBER_OF_ELEMENTS_PER_HEIGHT / 2;
+    int counter = NUMBER_OF_ELEMENTS_PER_HEIGHT / 2;
     int[] empty = {-1, -1};
 
     for (int i = 0; i < NUMBER_OF_ELEMENTS_PER_HEIGHT; i++) {
       for (int j = 0; j < NUMBER_OF_ELEMENTS_PER_HEIGHT; j++) {
-        if (counter1 > j || counter2 < j) {
+        if (counter > j || NUMBER_OF_ELEMENTS_PER_HEIGHT-1-counter < j) {
           matrix.add(empty);
         } else {
           if (j % 2 == 0) {
@@ -68,14 +67,11 @@ public class SuperHexagonShiny {
         }
       }
       if (i < NUMBER_OF_ELEMENTS_PER_HEIGHT / 2) {
-        counter1 -= 2;
-        counter2 += 2;
+        counter -= 2;
       } else if (i == NUMBER_OF_ELEMENTS_PER_HEIGHT/2) {
-        counter1 += 1;
-        counter2 -=1;
+        counter += 1;
       } else {
-        counter1 += 2;
-        counter2 -= 2;
+        counter += 2;
       }
     }
   }
