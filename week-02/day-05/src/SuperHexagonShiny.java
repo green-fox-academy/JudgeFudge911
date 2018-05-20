@@ -51,22 +51,26 @@ public class SuperHexagonShiny {
 
     for (int i = 0; i < NUMBEROFELEMENTSPERHEIGHT; i++) {
       for (int j = 0; j < NUMBEROFELEMENTSPERHEIGHT; j++) {
-        if (j % 2 == 0) {
-          if (j == NUMBEROFELEMENTSPERHEIGHT / 2) {
-            int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT};
-            matrix.add(xYPoints);
-          } else {
-            int[] empty = {-1, -1};
-            matrix.add(empty);
-          }
+        if ((i == 0 && j < 3) || (i == 0 && j > 3)) {
+          int[] empty = {-1, -1};
+          matrix.add(empty);
+        } else if ((i == 1 && j < 1) || (i == 1 && j > 5)) {
+          int[] empty = {-1, -1};
+          matrix.add(empty);
+        } else if ((i == 6 && j < 2) || (i == 6 && j > 4)) {
+          int[] empty = {-1, -1};
+          matrix.add(empty);
+        } else if (j % 2 == 0) {
+          int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT};
+          matrix.add(xYPoints);
         } else {
           int[] xYPoints = {(int) Math.round(j * HEXAGONWIDTH * 0.75), i * HEXAGONHEIGHT + HEXAGONHEIGHT / 2};
           matrix.add(xYPoints);
         }
       }
     }
-
   }
+
 
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
