@@ -11,7 +11,7 @@ public class SuperHexagonShiny {
   private static final int WIDTH = 400;
   private static final int HEIGHT = 462;
 
-  private static final int NUMBER_OF_ELEMENTS_PER_SIDE = 5;
+  private static final int NUMBER_OF_ELEMENTS_PER_SIDE = 4;
   private static final int NUMBER_OF_ELEMENTS_PER_HEIGHT = 2 * NUMBER_OF_ELEMENTS_PER_SIDE - 1;
   private static final int HEXAGON_HEIGHT = HEIGHT / NUMBER_OF_ELEMENTS_PER_HEIGHT;
   private static final int HEXAGON_WIDTH = WIDTH / NUMBER_OF_ELEMENTS_PER_SIDE;
@@ -50,20 +50,18 @@ public class SuperHexagonShiny {
   public static void initialize(List matrix) {
 
     int emptyPerRow = 0;
-    int temp = 0;
-    if (NUMBER_OF_ELEMENTS_PER_SIDE % 2 == 0){
+
+    if (NUMBER_OF_ELEMENTS_PER_SIDE % 2 == 0) {
       emptyPerRow = NUMBER_OF_ELEMENTS_PER_HEIGHT / 2;
-      temp = 1;
     } else {
-      emptyPerRow = NUMBER_OF_ELEMENTS_PER_HEIGHT/2 -1;
-      temp = 3;
+      emptyPerRow = NUMBER_OF_ELEMENTS_PER_HEIGHT / 2 - 1;
     }
 
     int[] empty = {-1, -1};
 
     for (int i = 0; i < NUMBER_OF_ELEMENTS_PER_HEIGHT; i++) {
       for (int j = 0; j < NUMBER_OF_ELEMENTS_PER_HEIGHT; j++) {
-        if (emptyPerRow > j || NUMBER_OF_ELEMENTS_PER_HEIGHT-1-emptyPerRow < j) {
+        if (emptyPerRow > j || NUMBER_OF_ELEMENTS_PER_HEIGHT - 1 - emptyPerRow < j) {
           matrix.add(empty);
         } else {
           if (j % 2 == 0) {
@@ -77,8 +75,12 @@ public class SuperHexagonShiny {
       }
       if (i < NUMBER_OF_ELEMENTS_PER_HEIGHT / 2) {
         emptyPerRow -= 2;
-      } else if (i == NUMBER_OF_ELEMENTS_PER_HEIGHT/2) {
-          emptyPerRow += temp;
+      } else if (i == NUMBER_OF_ELEMENTS_PER_HEIGHT / 2) {
+        if (NUMBER_OF_ELEMENTS_PER_SIDE % 2 == 0) {
+          emptyPerRow += 1;
+        } else {
+          emptyPerRow += 3;
+        }
       } else {
         emptyPerRow += 2;
       }
@@ -94,12 +96,12 @@ public class SuperHexagonShiny {
     jFrame.setVisible(true);
   }
 
-static class ImagePanel extends JPanel {
-  @Override
-  protected void paintComponent(Graphics graphics) {
-    super.paintComponent(graphics);
-    canvas = graphics;
-    mainDraw();
+  static class ImagePanel extends JPanel {
+    @Override
+    protected void paintComponent(Graphics graphics) {
+      super.paintComponent(graphics);
+      canvas = graphics;
+      mainDraw();
+    }
   }
-}
 }
