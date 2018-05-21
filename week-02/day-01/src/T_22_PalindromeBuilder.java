@@ -1,7 +1,7 @@
 public class T_22_PalindromeBuilder {
   public static void main(String[] args) {
 
-    String word = "racecar";
+    String word = "123";
 
     System.out.println(createPalindrome(word));
 

@@ -1,3 +1,5 @@
+import jdk.management.resource.internal.inst.FileOutputStreamRMHooks;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -11,8 +13,16 @@ public class T_04_ToTheCenter {
     // and draws a line from that point to the center of the canvas.
     // Draw 3 lines with that function. Use loop for that.
 
+    int numberOfLines = 3;
 
+    for (int i = 0; i < numberOfLines; i++) {
+      drawLineToCenter(graphics,(int)(Math.random()*200),(int)(Math.random()*200));
+    }
 
+  }
+
+  private static void drawLineToCenter (Graphics graphics,int x, int y){
+    graphics.drawLine(x,y,WIDTH/2,HEIGHT/2);
   }
 
   // Don't touch the code below
