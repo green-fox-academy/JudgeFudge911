@@ -1,4 +1,4 @@
-public class TodoPrint {
+public class T_04_TodoPrint {
   public static void main(String[] args) {
     String todoText = " - Buy milk\n";
 

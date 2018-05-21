@@ -7,7 +7,8 @@ public class QuoteSwap {
 
     System.out.println(quoteSwap(list));
   }
-  public static String quoteSwap(ArrayList quote){
+
+  public static String quoteSwap(ArrayList quote) {
 
     Object swap1 = "do";
     Object swap2 = "cannot";

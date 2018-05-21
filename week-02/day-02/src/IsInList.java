@@ -10,7 +10,7 @@ public class IsInList {
   public static boolean checkNums(ArrayList list) {
     Integer[] numberList = {4, 8, 12, 16};
 
-    if (list.containsAll(Arrays.asList(numberList))==true) {
+    if (list.containsAll(Arrays.asList(numberList)) == true) {
       return true;
     } else {
       return false;

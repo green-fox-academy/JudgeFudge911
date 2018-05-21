@@ -24,7 +24,7 @@ public class GuessNumber {
     int guess = scanner.nextInt();
 
     while (guess != randomNumber) {
-      if (guess < randomNumber){
+      if (guess < randomNumber) {
         System.out.println("Too low. Guess again!");
       } else {
         System.out.println("Too high. Guess again!");

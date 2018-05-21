@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class CandyShop {
+public class T_09_CandyShop {
   public static void main(String[] args) {
     ArrayList<Object> arrayList = new ArrayList<Object>();
     arrayList.add("Cupcake");
@@ -10,9 +10,10 @@ public class CandyShop {
 
     System.out.println(sweets(arrayList));
   }
-  public static ArrayList sweets(ArrayList list){
-    list.set(list.indexOf(2),"Croissant");
-    list.set(list.indexOf(false),"Ice cream");
+
+  public static ArrayList sweets(ArrayList list) {
+    list.set(list.indexOf(2), "Croissant");
+    list.set(list.indexOf(false), "Ice cream");
     return list;
   }
 }

@@ -8,19 +8,20 @@ public class SubStrList {
     //  Returns `-1` if the string is not part any of the strings in the list
 
     //  Example
-    String[] searchArr = new String[] {"this", "is", "what", "I'm", "searching", "ching"};
+    String[] searchArr = new String[]{"this", "is", "what", "I'm", "searching", "ching"};
     System.out.println(subStrList("ching", searchArr));
     //  should print: `4`
     System.out.println(subStrList("not", searchArr));
     //  should print: `-1`
 
   }
-  public static int subStrList(String word, String[] list){
+
+  public static int subStrList(String word, String[] list) {
 
     int print = -1;
 
     for (int i = 0; i < list.length; i++) {
-      if(list[i].contains(word)){
+      if (list[i].contains(word)) {
         print = i;
         break;
       }

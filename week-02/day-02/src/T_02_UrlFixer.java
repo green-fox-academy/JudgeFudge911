@@ -1,4 +1,4 @@
-public class UrlFixer {
+public class T_02_UrlFixer {
   public static void main(String[] args) {
     String url = "https//www.reddit.com/r/nevertellmethebots";
     url = url.replaceFirst("/", ":/");

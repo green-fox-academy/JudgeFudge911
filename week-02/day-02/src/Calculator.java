@@ -11,7 +11,8 @@ public class Calculator {
     calculate(expression);
 
   }
-  public static void getUserInput(ArrayList expression){
+
+  public static void getUserInput(ArrayList expression) {
 
     Scanner scanner = new Scanner(System.in);
 
@@ -29,17 +30,17 @@ public class Calculator {
     System.out.println(expression);
 
 
-    }
+  }
 
   public static void calculate(ArrayList<String> expression) {
 
-    if (expression.get(0).equals("+")){
+    if (expression.get(0).equals("+")) {
       System.out.println(Integer.parseInt(expression.get(1)) + Integer.parseInt(expression.get(2)));
     } else if (expression.get(0).equals("-")) {
       System.out.println(Integer.parseInt(expression.get(1)) - Integer.parseInt(expression.get(2)));
     } else if (expression.get(0).equals("%")) {
       System.out.println(Integer.parseInt(expression.get(1)) % Integer.parseInt(expression.get(2)));
-    } else if (expression.get(0).equals("/")){
+    } else if (expression.get(0).equals("/")) {
       System.out.println(Integer.parseInt(expression.get(1)) / Integer.parseInt(expression.get(2)));
     } else {
       System.out.println(Integer.parseInt(expression.get(1)) * Integer.parseInt(expression.get(2)));
@@ -47,4 +48,4 @@ public class Calculator {
 
   }
 
-  }
+}
