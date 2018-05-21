@@ -4,18 +4,21 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class MiddleLines {
-  public static void mainDraw(Graphics graphics){
-    // draw a red horizontal line to the canvas' middle.
-    // draw a green vertical line to the canvas' middle.
+public class T_02_ColoredBox {
+  public static void mainDraw(Graphics graphics) {
+    // Draw a box that has different colored lines on each edge.
+
+    graphics.setColor(Color.black);
+    graphics.drawLine(100, 100, 200, 100);
+
+    graphics.setColor(Color.blue);
+    graphics.drawLine(100, 200, 200, 200);
 
     graphics.setColor(Color.red);
-    graphics.drawLine(0,HEIGHT/2,WIDTH,HEIGHT/2);
+    graphics.drawLine(100, 100, 100, 200);
 
     graphics.setColor(Color.green);
-    graphics.drawLine(WIDTH/2,0,WIDTH/2,HEIGHT);
-
-
+    graphics.drawLine(200, 100, 200, 200);
   }
 
   // Don't touch the code below
@@ -39,3 +42,4 @@ public class MiddleLines {
     }
   }
 }
+
