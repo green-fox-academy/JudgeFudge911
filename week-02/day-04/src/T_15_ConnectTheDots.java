@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class ConnectTheDots {
+public class T_15_ConnectTheDots {
   public static void mainDraw(Graphics graphics) {
     // Create a function that takes 1 parameter:
     // An array of {x, y} points

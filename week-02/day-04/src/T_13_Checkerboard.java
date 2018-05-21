@@ -4,14 +4,14 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class Checkboard {
+public class T_13_Checkerboard {
   public static void mainDraw(Graphics graphics) {
     // Fill the canvas with a checkerboard pattern.
     int checkboardRows = 8;
     int topLeftCorner = 0;
     int xStart = topLeftCorner;
     int yStart = 0;
-    int sizeOfSquare = 64;
+    int sizeOfSquare = WIDTH/checkboardRows;
 
     for (int i = 0; i < checkboardRows; i++) {
       for (int j = 0; j < checkboardRows; j++) {

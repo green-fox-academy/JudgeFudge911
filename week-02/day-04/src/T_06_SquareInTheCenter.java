@@ -4,15 +4,18 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class Diagonals {
+public class T_06_SquareInTheCenter {
+
   public static void mainDraw(Graphics graphics) {
-    // Draw the canvas' diagonals.
-    // If it starts from the upper-left corner it should be green, otherwise it should be red.
-    graphics.setColor(Color.red);
-    graphics.drawLine(0, HEIGHT, WIDTH, 0);
+    // Draw a green 10x10 square to the canvas' center.
+
+    int squareWidth = 200;
+
+    int xPos = WIDTH / 2 - squareWidth / 2;
+    int yPos = HEIGHT / 2 - squareWidth / 2;
 
     graphics.setColor(Color.green);
-    graphics.drawLine(0, 0, WIDTH, HEIGHT);
+    graphics.drawRect(xPos, yPos, squareWidth, squareWidth);
 
 
   }
@@ -35,6 +38,7 @@ public class Diagonals {
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
       mainDraw(graphics);
+
     }
   }
 }

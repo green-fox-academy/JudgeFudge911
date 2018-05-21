@@ -4,7 +4,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class RainbowBoxFunction {
+public class T_10_RainbowBoxes {
   public static void mainDraw(Graphics graphics) {
     // Create a square drawing function that takes 2 parameters:
     // The square size, and the fill color,
@@ -13,7 +13,7 @@ public class RainbowBoxFunction {
     int numberOfSquares = 3;
 
     for (int i = 0; i < numberOfSquares; i++) {
-      int size = (int) (Math.random() * 100);
+      int size = (int) (Math.random() * 300);
       int[] color = {(int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)};
       drawSquare(graphics, size, color);
     }
@@ -22,8 +22,8 @@ public class RainbowBoxFunction {
 
   public static void drawSquare(Graphics graphics, int size, int[] color) {
 
-    int xPos = (int) (Math.random() * 100);
-    int yPos = (int) (Math.random() * 100);
+    int xPos = WIDTH/2-size/2;
+    int yPos = HEIGHT/2 - size/2;
     graphics.setColor(new Color(color[0], color[1], color[2]));
     graphics.drawRect(xPos, yPos, size, size);
 

@@ -7,7 +7,7 @@ import java.awt.*;
 import static java.awt.Frame.getFrames;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class StarryNight {
+public class T_16_StarryNight {
   public static void mainDraw(Graphics graphics) {
     // Draw the night sky:
     //  - The background should be black

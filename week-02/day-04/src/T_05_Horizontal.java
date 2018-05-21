@@ -4,19 +4,23 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class CenteredSquare {
-
+public class T_05_Horizontal {
   public static void mainDraw(Graphics graphics) {
-    // Draw a green 10x10 square to the canvas' center.
+    // Create a line drawing function that takes 2 parameters:
+    // The x and y coordinates of the line's starting point
+    // and draws a 50 long horizontal line from that point.
+    // Draw 3 lines with that function. Use loop for that.
 
-    int squareWidth = 10;
+    for (int i = 0; i < 3; i++){
+      int x = (int) (Math.random() * 100);
+      int y = (int) (Math.random() * 100);
+      horizontalLinesDrawer(graphics, x, y);
+    }
 
-    int xpos = WIDTH / 2 - squareWidth / 2;
-    int ypos = HEIGHT / 2 - squareWidth / 2;
+  }
 
-    graphics.setColor(Color.green);
-    graphics.drawRect(xpos, ypos, squareWidth, squareWidth);
-
+  public static void horizontalLinesDrawer(Graphics graphics, int x, int y) {
+    graphics.drawLine(x, y, x+50, y);
 
   }
 
@@ -38,7 +42,6 @@ public class CenteredSquare {
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
       mainDraw(graphics);
-
     }
   }
 }

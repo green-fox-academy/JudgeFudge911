@@ -4,28 +4,16 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class PurpleSteps3d {
+public class T_03_Diagonals {
   public static void mainDraw(Graphics graphics) {
-    // Reproduce this:
-    // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/purple-steps/r3.png]
+    // Draw the canvas' diagonals.
+    // If it starts from the upper-left corner it should be green, otherwise it should be red.
+    graphics.setColor(Color.red);
+    graphics.drawLine(0, HEIGHT, WIDTH, 0);
 
-    int numberOfSquares = 10;
-    int x = 10;
-    int y = 10;
-    int size = 10;
-    graphics.setColor(Color.pink);
-    for (int i = 0; i < numberOfSquares; i++) {
-      drawPurpleRect(graphics, size, x, y);
-      x += size;
-      y += size;
-      size *= 1.25;
-    }
+    graphics.setColor(Color.green);
+    graphics.drawLine(0, 0, WIDTH, HEIGHT);
 
-  }
-
-  public static void drawPurpleRect(Graphics graphics, int size, int x, int y) {
-
-    graphics.fillRect(x,y,size,size);
 
   }
 

@@ -4,23 +4,14 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class Horizontal {
+public class T_04_ToTheCenter {
   public static void mainDraw(Graphics graphics) {
     // Create a line drawing function that takes 2 parameters:
     // The x and y coordinates of the line's starting point
-    // and draws a 50 long horizontal line from that point.
+    // and draws a line from that point to the center of the canvas.
     // Draw 3 lines with that function. Use loop for that.
 
-    for (int i = 0; i < 3; i++){
-      int x = (int) (Math.random() * 100);
-      int y = (int) (Math.random() * 100);
-      horizontalLinesDrawer(graphics, x, y);
-    }
 
-  }
-
-  public static void horizontalLinesDrawer(Graphics graphics, int x, int y) {
-    graphics.drawLine(x, y, x+50, y);
 
   }
 

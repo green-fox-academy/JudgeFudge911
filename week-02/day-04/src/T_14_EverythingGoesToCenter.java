@@ -1,10 +1,9 @@
 import javax.swing.*;
-
 import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class EverythingGoesToCenter {
+public class T_14_EverythingGoesToCenter {
   public static void mainDraw(Graphics graphics) {
     // Create a line drawing function that takes 2 parameters:
     // The x and y coordinates of the line's starting point

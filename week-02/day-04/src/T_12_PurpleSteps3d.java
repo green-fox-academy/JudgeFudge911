@@ -4,12 +4,12 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class PurpleSteps {
+public class T_12_PurpleSteps3d {
   public static void mainDraw(Graphics graphics) {
     // Reproduce this:
     // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/purple-steps/r3.png]
 
-    int numberOfSquares = 20;
+    int numberOfSquares = 10;
     int x = 10;
     int y = 10;
     int size = 10;
@@ -18,6 +18,7 @@ public class PurpleSteps {
       drawPurpleRect(graphics, size, x, y);
       x += size;
       y += size;
+      size *= 1.25;
     }
 
   }
