@@ -1,4 +1,4 @@
-public class AppendAFunction {
+public class T_16_AppendA {
 
 //  Create the usual class wrapper
 //  and main method on your own.
@@ -14,7 +14,7 @@ public class AppendAFunction {
     System.out.println(appendA(am));
   }
 
-  public  static String appendA(String text){
+  public static String appendA(String text) {
     text += "a";
     return text;
   }

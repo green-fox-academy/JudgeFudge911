@@ -1,4 +1,4 @@
-public class Doubling {
+public class T_01_Doubling {
   public static void main(String[] args) {
 // - Create an integer variable named `baseNum` and assign the value `123` to it
 // - Create a function called `doubling` that doubles it's input parameter and returns with an integer
@@ -7,8 +7,9 @@ public class Doubling {
 
     System.out.println(doubling(baseNum));
   }
-  public static int doubling(int number){
-    number += number;
+
+  public static int doubling(int number) {
+    number *= 2;
     return number;
   }
 }

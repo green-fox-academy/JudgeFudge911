@@ -1,4 +1,4 @@
-public class Third {
+public class T_07_Third {
 
   public static void main(String[] args) {
     int[] q = {4, 5, 6, 7};

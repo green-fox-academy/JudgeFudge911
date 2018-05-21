@@ -1,4 +1,4 @@
-public class Sum {
+public class T_04_Summing {
 
 //  Create the usual class wrapper
 //  and main method on your own.
@@ -7,13 +7,14 @@ public class Sum {
 //   until the given parameter and returns with an integer
 
   public static void main(String[] args) {
-    System.out.println(sum(3));
+    int givenNumber = 3;
+    System.out.println(sum(givenNumber));
   }
 
-  public static int sum(int number){
+  public static int sum(int number) {
     int sum = 0;
 
-    for (int i = 1; i < number+1; i++) {
+    for (int i = 1; i < number + 1; i++) {
       sum += i;
     }
     return sum;

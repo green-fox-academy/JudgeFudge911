@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class SwapElements {
+public class T_17_SwapElements {
   public static void main(String[] args) {
     String[] abc = {"first", "second", "third"};
 

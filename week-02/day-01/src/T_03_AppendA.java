@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class AppendA {
+public class T_03_AppendA {
   public static void main(String[] args) {
     String[] animals = {"kuty", "macsk", "cic"};
 

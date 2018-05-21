@@ -1,4 +1,4 @@
-public class SumAll {
+public class T_18_SumAllElements {
   public static void main(String[] args) {
     int[] ai = {3, 4, 5, 6, 7};
 
