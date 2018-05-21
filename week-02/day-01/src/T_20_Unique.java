@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class T_20_Unique {
   public static void main(String[] args) {
     //  Create a function that takes a list of numbers as a parameter
@@ -8,7 +12,17 @@ public class T_20_Unique {
     //  should print: `[1, 11, 34, 52, 61]`
   }
 
-  public static int[] unique(int[] listOfNumbers){
+  public static List<Integer> unique(int[] listOfNumbers){
+    Arrays.sort(listOfNumbers);
 
+    List<Integer> listOfUniqueNumbers = new ArrayList<>();
+
+    for (int i = 0; i < listOfNumbers.length; i++) {
+      if (i < listOfNumbers.length-1 && listOfNumbers[i] == listOfNumbers[i+1]){
+      } else {
+        listOfUniqueNumbers.add((listOfNumbers[i]));
+      }
+    }
+    return listOfUniqueNumbers;
   }
 }
