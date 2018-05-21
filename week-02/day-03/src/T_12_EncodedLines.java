@@ -23,9 +23,9 @@ public class T_12_EncodedLines {
   public static String decrypt(List<String> encrypted) {
     String text = stringArrayToString(encrypted);
 
-    char[] decryptiedChars = asciiTransformer(stringOrCharTransformer(text));
+    char[] decryptedChars = asciiTransformer(stringOrCharTransformer(text));
 
-    return charArrayToString(decryptiedChars);
+    return charArrayToString(decryptedChars);
   }
 
   public static String stringArrayToString(List<String> list) {
@@ -33,7 +33,7 @@ public class T_12_EncodedLines {
 
     for (String element :
             list) {
-      text += element;
+      text += element + "\n";
     }
     return text;
   }
@@ -61,7 +61,7 @@ public class T_12_EncodedLines {
 
   public static char[] asciiTransformer(char[] letters) {
     for (int i = 0; i < letters.length; i++) {
-      if (letters[i] != ' ') {
+      if (letters[i] != ' ' && letters[i] != '\n') {
         letters[i] = (char) (((int) letters[i]) - 1);
       }
     }
