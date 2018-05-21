@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Calculator {
+public class T_13_Calculator {
   public static void main(String[] args) {
 
     ArrayList<String> expression = new ArrayList<>();

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SubInt {
+public class T_16_FindPartOfAnInteger {
   public static void main(String[] args) {
     //  Create a function that takes a number and a list of numbers as a parameter
     //  Returns the indexes of the numbers in the list where the first number is part of

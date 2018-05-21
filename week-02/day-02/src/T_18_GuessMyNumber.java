@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class GuessNumberLives {
+public class T_18_GuessMyNumber {
   public static void main(String[] args) {
     guessNumberLife();
   }

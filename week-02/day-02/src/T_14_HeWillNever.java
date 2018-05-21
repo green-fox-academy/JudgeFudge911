@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class HeWillNever {
+public class T_14_HeWillNever {
   public static void main(String[] args) {
     String out = "";
     int[] notSoCrypticMessage = {1, 12, 1, 2, 11, 1, 7, 11, 1, 49, 1, 3, 11, 1, 50, 11};

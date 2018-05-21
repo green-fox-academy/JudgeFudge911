@@ -4,7 +4,7 @@ import java.util.Map;
 
 import static oracle.jrockit.jfr.events.Bits.doubleValue;
 
-public class StudentCounter {
+public class T_15_StudentCounter {
   public static void main(String[] args) {
     ArrayList<Map<String, Object>> map = new ArrayList<>();
 
