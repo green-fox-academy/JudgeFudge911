@@ -4,7 +4,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class Triangles {
+public class T_04_Triangles {
   public static void mainDraw(Graphics graphics) {
 
     int numberOfRows = 40;

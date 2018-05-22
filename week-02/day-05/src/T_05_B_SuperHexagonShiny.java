@@ -6,7 +6,7 @@ import java.util.List;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class SuperHexagonShiny {
+public class T_05_B_SuperHexagonShiny {
 
   private static final int WIDTH = 400;
   private static final int HEIGHT = 462;

@@ -4,7 +4,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class SuperHexagon {
+public class T_05_A_SuperHexagon {
   public static void mainDraw(Graphics graphics) {
 
     int elemenntsPerSide = 4;

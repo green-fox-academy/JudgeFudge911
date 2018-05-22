@@ -4,7 +4,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class EnvelopeStar {
+public class T_03_EnvelopeStar {
   public static void mainDraw(Graphics graphics) {
 
     int zero = 0;
@@ -12,10 +12,10 @@ public class EnvelopeStar {
 
     for (int i = 0; i < WIDTH/2; i += 10) {
 
-        graphics.drawLine(zero + i, middle, middle, middle - i);
-        graphics.drawLine(WIDTH - i, middle, middle, middle - i);
-        graphics.drawLine(zero + i, middle, middle, middle + i);
-        graphics.drawLine(WIDTH - i, middle, middle, middle + i);
+      graphics.drawLine(zero + i, middle, middle, middle - i);
+      graphics.drawLine(WIDTH - i, middle, middle, middle - i);
+      graphics.drawLine(zero + i, middle, middle, middle + i);
+      graphics.drawLine(WIDTH - i, middle, middle, middle + i);
 
 
     }
