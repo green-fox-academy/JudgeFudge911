@@ -35,11 +35,8 @@ public class DiceSet {
 
   public boolean isSameRolled(DiceSet rolled) {
     for (int i = 0; i < 6; i++) {
-      for (int j = 0; j < 6; j++) {
-        int current = rolled.getCurrent(i);
-        if (current != rolled.getCurrent(j)) {
-          return false;
-        }
+      if (rolled.getCurrent()[i] != 6) {
+        return false;
       }
     }
     return true;
@@ -51,15 +48,22 @@ public class DiceSet {
 
     diceSet.reroll();
 
-    while (diceSet.isSameRolled(diceSet) != true ) {
+    int rerollCounter = 0;
 
-      diceSet.reroll();
+    while (diceSet.isSameRolled(diceSet) != true) {
 
+      for (int i = 0; i < 6; i++) {
+        while (diceSet.getCurrent()[i] != 6) {
+          diceSet.reroll(i);
+          rerollCounter++;
+        }
+      }
     }
 
     for (int i = 0; i < 6; i++) {
       System.out.println(diceSet.getCurrent()[i]);
     }
+    System.out.println(rerollCounter);
   }
 
 }
