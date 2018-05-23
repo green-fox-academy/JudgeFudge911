@@ -9,7 +9,7 @@ public class Ship {
   public void fillShip() {
     captain = new Pirates();
     crew = new ArrayList<>();
-    for (int i = 0; i < (int) (Math.random() * 10); i++) {
+    for (int i = 0; i < (int) ((Math.random()+1) * 10); i++) {
       crew.add(new Pirates());
     }
   }

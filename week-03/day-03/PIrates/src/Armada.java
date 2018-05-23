@@ -8,7 +8,7 @@ public class Armada {
   public void fillArmada(){
 
     ships = new ArrayList<>();
-    for (int i = 0; i < (int) (Math.random() * 10); i++) {
+    for (int i = 0; i < (int) ((Math.random()+1) * 10); i++) {
       ships.add(new Ship());
     }
 
@@ -30,8 +30,10 @@ public class Armada {
     }
 
     if (ships.size() == shipCounter) {
+      System.out.println("This lost. Ships lost: " + shipCounter + " Other lost ships: " + otherShipCounter);
       return false;
     } else {
+      System.out.println("This won. Ships lost: " + shipCounter + " Other lost ships: " + otherShipCounter);
       return true;
     }
 

@@ -16,7 +16,12 @@ public class WarApp {
       ship.fillShip();
     }
 
+    System.out.println("This number of ships " + armada1.ships.size());
+    System.out.println("Other number of ships " + armada2.ships.size());
+
     armada1.war(armada2);
+
+
 
   }
 }
