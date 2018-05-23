@@ -1,19 +1,22 @@
+import java.util.ArrayList;
 import java.util.List;
+
 public class Ship {
 
   List<Pirates> crew;
   Pirates captain;
 
-  public void fillShip(){
+  public void fillShip() {
     captain = new Pirates();
+    crew = new ArrayList<>();
     for (int i = 0; i < (int) (Math.random() * 10); i++) {
       crew.add(new Pirates());
     }
   }
 
-  public boolean battle(Ship otherShip){
+  public boolean battle(Ship otherShip) {
 
-    if(this.calculateScore() > otherShip.calculateScore()){
+    if (this.calculateScore() > otherShip.calculateScore()) {
       otherShip.lose();
       this.win();
     } else {
@@ -22,13 +25,11 @@ public class Ship {
     }
     return this.calculateScore() > otherShip.calculateScore();
 
-
-
   }
 
-  public void win(){
+  public void win() {
 
-    int numberOfDrinks = (int) (Math.random()*4);
+    int numberOfDrinks = (int) (Math.random() * 4);
 
     for (int i = 0; i < this.crew.size(); i++) {
       crew.get(i).intoxicated += numberOfDrinks;
@@ -38,10 +39,10 @@ public class Ship {
 
   }
 
-  public void lose(){
-    int KillCount = (int)(Math.random()*crew.size());
+  public void lose() {
+    int KillCount = (int) (Math.random() * crew.size());
     for (int i = 0; i < KillCount; i++) {
-      if(crew.get(i).dead){
+      if (crew.get(i).dead) {
         KillCount++;
       } else {
         crew.get(i).dead = true;
@@ -49,7 +50,7 @@ public class Ship {
     }
   }
 
-  public int alivePirates(){
+  public int alivePirates() {
     int alivePirates = 0;
     for (Pirates pirate :
             crew) {
@@ -60,19 +61,20 @@ public class Ship {
     return alivePirates;
   }
 
-  public int calculateScore(){
+  public int calculateScore() {
     int score = alivePirates() - captain.intoxicated;
 
     return score;
   }
 
-  public String toString(Ship ship) {
+  @Override
+  public String toString() {
     String result = "";
 
-    if (ship.captain.dead){
+    if (captain.dead) {
       result += "The captain's dead. ";
     } else {
-      if(ship.captain.passedOut){
+      if (captain.passedOut) {
         result += "The captain's passed out. ";
       } else {
         result += "The captain's ready. ";
@@ -80,7 +82,7 @@ public class Ship {
     }
 
 
-    result += "There is " + ship.alivePirates() + " pirates alive in the crew";
+    result += "There is " + alivePirates() + " pirates alive in the crew";
 
     return result;
   }
