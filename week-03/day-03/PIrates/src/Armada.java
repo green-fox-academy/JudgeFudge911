@@ -1,8 +1,18 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Armada {
 
   List<Ship> ships;
+
+  public void fillArmada(){
+
+    ships = new ArrayList<>();
+    for (int i = 0; i < (int) (Math.random() * 10); i++) {
+      ships.add(new Ship());
+    }
+
+  }
 
 
   public boolean war(Armada otherArmada) {
