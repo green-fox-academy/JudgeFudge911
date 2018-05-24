@@ -11,7 +11,7 @@ public class T_09_StringsAgainAndAgain {
    if(text.length() == 1){
      return text;
    } else {
-     String call = text.substring(1, text.length());
+     String call = text.substring(1);
      return text.substring(0,1) + "*" + separate(call);
    }
 
