@@ -37,25 +37,24 @@ public class T_13_Lottery {
 
       }
 
-      Map.Entry<Integer, Integer> maxEntry = null;
-
       int[] mostCommonNumbers = new int[5];
 
       for (int i = 0; i < 5; i++) {
+        Map.Entry<Integer, Integer> maxEntry = null;
         for (Map.Entry<Integer, Integer> entry : lotteryNumbers.entrySet()) {
           if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
             maxEntry = entry;
           }
         }
         mostCommonNumbers[i] = maxEntry.getKey();
-        System.out.println(lotteryNumbers.get(maxEntry.getKey()));
 
-
-        lotteryNumbers.remove(maxEntry.getKey());
+        lotteryNumbers.remove(maxEntry.getKey(), maxEntry.getValue());
 
       }
 
-      System.out.println(mostCommonNumbers[3]);
+      for (int number: mostCommonNumbers) {
+        System.out.print(number + ", ");
+      }
 
 
     } catch (
