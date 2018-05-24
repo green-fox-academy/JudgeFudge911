@@ -2,7 +2,7 @@ public class T_08_StringsAgain {
   public static void main(String[] args) {
     // Given a string, compute recursively a new string where all the 'x' chars have been removed.
 
-
+    System.out.println(removeX("xxasdasxx"));
 
   }
 
@@ -11,7 +11,7 @@ public class T_08_StringsAgain {
     if (!text.contains("x")){
       return text;
     } else {
-      return removeX(text.replace("x","y"));
+      return removeX(text.replace("x",""));
     }
 
   }
