@@ -50,7 +50,7 @@ public class DiceSet {
 
     int rerollCounter = 0;
 
-    while (diceSet.isSameRolled(diceSet) != true) {
+    while (!diceSet.isSameRolled(diceSet)) {
 
       for (int i = 0; i < 6; i++) {
         while (diceSet.getCurrent()[i] != 6) {
