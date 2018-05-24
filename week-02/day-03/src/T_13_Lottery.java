@@ -8,7 +8,11 @@ public class T_13_Lottery {
   public static void main(String[] args) {
     // Create a method that find the 5 most common lottery numbers in lottery.csv
 
-    printOutMostCommon(findMostCommon(readNumbers("lottery.txt")));
+    printOutMostCommon();
+
+    //OR
+
+    /* printOutMostCommon(findMostCommon(readNumbers("lottery.txt")));*/
 
     //OR
 
@@ -62,13 +66,15 @@ public class T_13_Lottery {
     return mostCommonNumbers;
   }
 
-  public static void printOutMostCommon(int[] array) {
+  public static void printOutMostCommon() {
+    int[] mostCommonNumbers = findMostCommon(readNumbers("lottery.txt"));
+
     System.out.print("These are the 5 most common lottery numbers: ");
-    for (int i = 0; i < array.length; i++) {
-      if (i == array.length - 1) {
-        System.out.print(array[i] + ".");
+    for (int i = 0; i < mostCommonNumbers.length; i++) {
+      if (i == mostCommonNumbers.length - 1) {
+        System.out.print(mostCommonNumbers[i] + ".");
       } else {
-        System.out.print(array[i] + ", ");
+        System.out.print(mostCommonNumbers[i] + ", ");
       }
     }
   }
