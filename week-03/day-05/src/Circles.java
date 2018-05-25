@@ -29,7 +29,7 @@ public class Circles {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(WIDTH, HEIGHT + 23));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    jFrame.add(new Circles.ImagePanel());
+    jFrame.add(new Hexagon.ImagePanel());
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
   }
