@@ -18,41 +18,45 @@ public class KochLine {
     canvas.drawLine(start[0], start[1], end[0], end[1]);
   }
 
-  public int[] kochA(){
+  public int[] kochA() {
     return start;
   }
-  public int[] kochB(){
+
+  public int[] kochB() {
     int[] lineEnd = new int[2];
 
-    lineEnd[0] = end[0]/3;
+    lineEnd[0] = end[0] / 3;
 
     lineEnd[1] = end[1];
 
     return lineEnd;
   }
-  public int[] kochC(){
+
+  public int[] kochC() {
     int[] lineMiddle = new int[2];
 
-    lineMiddle[0] = (int)Math.round(end[0]/3 * Math.sin(60) + end[0]/3);
+    lineMiddle[0] = end[0]/ 2;
 
-    lineMiddle[1] = end[1];
+    lineMiddle[1] = end[0] / 2;
 
     return lineMiddle;
   }
-  public int[] kochD(){
+
+  public int[] kochD() {
     int[] lineStart = new int[2];
 
-    lineStart[0] =end[0]*2/3;
+    lineStart[0] = (end[0] / 3) * 2;
 
     lineStart[1] = end[1];
 
     return lineStart;
   }
-  public int[] kochE(){
+
+  public int[] kochE() {
     return end;
   }
 
-  public ArrayList<KochLine> generate(ArrayList<KochLine> lines) {
+  public static ArrayList<KochLine> generate(ArrayList<KochLine> lines) {
 
     ArrayList<KochLine> next = new ArrayList<>();
 
@@ -72,21 +76,17 @@ public class KochLine {
     ArrayList<KochLine> lines = new ArrayList<>();
 
     int[] start = {50, 200};
-    int[] end = {350, 200};
-    int repetition = 5;
+    int[] end = {100, 200};
+    int repetition = 2;
 
     lines.add(new KochLine(start, end));
 
-    for (KochLine element : lines) {
-      element.display();
-      if(lines.size() < Math.pow(4,repetition)) {
-        System.out.println("itt jártam");
-        lines = element.generate(lines);
+    for (int i = 0; i < repetition; i++) {
+      for (KochLine element : lines) {
+        element.display();
       }
+      lines = generate(lines);
     }
-
-
-
   }
 
   public static void main(String[] args) {
