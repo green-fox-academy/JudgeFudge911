@@ -24,13 +24,9 @@ public class T_12_SquareRecursion {
 
       int ratio = recursiveSquares(n - 1);
 
-      canvas.drawRect(WIDTH/ratio, 0, WIDTH / ratio, HEIGHT / ratio);
+      int start = WIDTH/ratio;
 
-      canvas.drawRect(WIDTH/ratio, 2*HEIGHT/ratio, WIDTH / ratio, HEIGHT / ratio);
-
-      canvas.drawRect(0, HEIGHT/ratio, WIDTH / ratio, HEIGHT / ratio);
-
-      canvas.drawRect(2*WIDTH/ratio, HEIGHT/ratio, WIDTH / ratio, HEIGHT / ratio);
+      canvas.drawRect(start/ratio, 0, WIDTH / ratio, HEIGHT / ratio);
 
       return (int)(Math.pow(3,n));
     }
