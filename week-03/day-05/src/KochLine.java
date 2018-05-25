@@ -18,15 +18,31 @@ public class KochLine {
     canvas.drawLine(start[0], start[1], end[0], end[1]);
   }
 
+  public int[] kochA(){
+    return start;
+  }
+  public int[] kochB(){
+
+  }
+  public int[] kochC(){
+
+  }
+  public int[] kochD(){
+
+  }
+  public int[] kochE(){
+    return end;
+  }
+
   public void generate(ArrayList<KochLine> lines) {
 
     ArrayList<KochLine> next = new ArrayList<>();
 
     for (KochLine element : lines) {
-      next.add(new KochLine(element.kochA, element.kochB));
-      next.add(new KochLine(element.kochB, element.kochC));
-      next.add(new KochLine(element.kochC, element.kochD));
-      next.add(new KochLine(element.kochD, element.kochE));
+      next.add(new KochLine(element.kochA(), element.kochB()));
+      next.add(new KochLine(element.kochB(), element.kochC()));
+      next.add(new KochLine(element.kochC(), element.kochD()));
+      next.add(new KochLine(element.kochD(), element.kochE()));
     }
 
     lines = next;
