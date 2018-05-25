@@ -31,7 +31,13 @@ public class KochLine {
     return lineEnd;
   }
   public int[] kochC(){
+    int[] lineMiddle = new int[2];
 
+    lineMiddle[0] = (int)Math.round(end[0]/3 * Math.sin(60) + end[0]/3);
+
+    lineMiddle[1] = end[1];
+
+    return lineMiddle;
   }
   public int[] kochD(){
     int[] lineStart = new int[2];
@@ -46,7 +52,7 @@ public class KochLine {
     return end;
   }
 
-  public void generate(ArrayList<KochLine> lines) {
+  public ArrayList<KochLine> generate(ArrayList<KochLine> lines) {
 
     ArrayList<KochLine> next = new ArrayList<>();
 
@@ -57,7 +63,7 @@ public class KochLine {
       next.add(new KochLine(element.kochD(), element.kochE()));
     }
 
-    lines = next;
+    return next;
 
   }
 
@@ -67,12 +73,19 @@ public class KochLine {
 
     int[] start = {50, 200};
     int[] end = {350, 200};
+    int repetition = 5;
 
     lines.add(new KochLine(start, end));
 
     for (KochLine element : lines) {
       element.display();
+      if(lines.size() < Math.pow(4,repetition)) {
+        System.out.println("itt jártam");
+        lines = element.generate(lines);
+      }
     }
+
+
 
   }
 
