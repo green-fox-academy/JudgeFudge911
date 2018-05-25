@@ -22,13 +22,25 @@ public class KochLine {
     return start;
   }
   public int[] kochB(){
+    int[] lineEnd = new int[2];
 
+    lineEnd[0] = end[0]/3;
+
+    lineEnd[1] = end[1];
+
+    return lineEnd;
   }
   public int[] kochC(){
 
   }
   public int[] kochD(){
+    int[] lineStart = new int[2];
 
+    lineStart[0] =end[0]*2/3;
+
+    lineStart[1] = end[1];
+
+    return lineStart;
   }
   public int[] kochE(){
     return end;
