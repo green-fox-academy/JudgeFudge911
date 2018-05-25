@@ -3,26 +3,12 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class Triangles {
+public class Circles {
 
   private static Graphics canvas;
 
   private static void mainDraw() {
 
-    drawTriangle(0,0,400);
-
-  }
-
-  public static void drawTriangle(int x, int y, int size){
-    int[] xPoints = {x,x+size,x+size/2};
-    int[] yPoints = {y,y,y+size};
-
-    canvas.drawPolygon(xPoints,yPoints,3);
-    if(size>10){
-      drawTriangle(x,y,size/2);
-      drawTriangle(x+size/2,y,size/2);
-      drawTriangle(x+size/4,y+size/2,size/2);
-    }
   }
 
   public static void main(String[] args) {
