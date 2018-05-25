@@ -1,5 +1,3 @@
-import sun.nio.cs.KOI8_R;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,12 +18,27 @@ public class KochLine {
     canvas.drawLine(start[0], start[1], end[0], end[1]);
   }
 
+  public void generate(ArrayList<KochLine> lines) {
+
+    ArrayList<KochLine> next = new ArrayList<>();
+
+    for (KochLine element : lines) {
+      next.add(new KochLine(element.kochA, element.kochB));
+      next.add(new KochLine(element.kochB, element.kochC));
+      next.add(new KochLine(element.kochC, element.kochD));
+      next.add(new KochLine(element.kochD, element.kochE));
+    }
+
+    lines = next;
+
+  }
+
   private static void mainDraw() {
 
     ArrayList<KochLine> lines = new ArrayList<>();
 
-    int[] start = {0, 200};
-    int[] end = {200, 200};
+    int[] start = {50, 200};
+    int[] end = {350, 200};
 
     lines.add(new KochLine(start, end));
 
