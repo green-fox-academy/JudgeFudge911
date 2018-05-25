@@ -9,18 +9,20 @@ public class Triangles {
 
   private static void mainDraw() {
 
-
-    drawTriangle(100,100,100);
+    drawTriangle(10,10,400);
 
   }
 
   public static void drawTriangle(int x, int y, int size){
-
     int[] xPoints = {x,x+size,x+size/2};
     int[] yPoints = {y,y,y+size};
 
     canvas.drawPolygon(xPoints,yPoints,3);
-
+    if(size>10){
+      drawTriangle(x,y,size/2);
+      drawTriangle(x+size/2,y,size/2);
+      drawTriangle(x+size/4,y+size/2,size/2);
+    }
   }
 
   public static void main(String[] args) {
