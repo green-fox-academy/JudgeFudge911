@@ -18,21 +18,34 @@ public class Carrier {
   }
 
   public void fill() {
-    for (Aircraft aircraft :
-            aircrafts) {
-      try {
-        aircraft.refill(storeOfAmmo);
-      } catch (Exception e) {
-        System.out.println("Not enough ammo!");
+    if (checkAmmoStorage()) {
+      for (Aircraft aircraft :
+              aircrafts) {
+        try {
+          aircraft.refill(storeOfAmmo);
+        } catch (Exception e) {
+          System.out.println("Not enough ammo!");
+        }
+      }
+    } else {
+      for (Aircraft aircraft :
+              aircrafts) {
+        if (aircraft.isPriority()) {
+          try {
+            aircraft.refill(storeOfAmmo);
+          } catch (Exception e) {
+            System.out.println("Not enough ammo!");
+          }
+        }
       }
     }
   }
 
-  public boolean checkAmmoStorage(){
+  public boolean checkAmmoStorage() {
     int ammoNeeded = 0;
     for (Aircraft aircraft :
             aircrafts) {
-      ammoNeeded += aircraft.maxAmmo-aircraft.ammoStore
+      ammoNeeded += aircraft.maxAmmo - aircraft.ammoStore
     }
     return ammoNeeded < storeOfAmmo;
   }
