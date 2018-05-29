@@ -1,6 +1,6 @@
 public class App {
   public static void main(String[] args) {
-    Carrier carrier0 = new Carrier(0, 100);
+    Carrier carrier0 = new Carrier(30, 100);
     Carrier carrier1 = new Carrier(30, 100);
 
     F16 f16 = new F16();

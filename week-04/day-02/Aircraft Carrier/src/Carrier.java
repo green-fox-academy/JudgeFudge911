@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +26,28 @@ public class Carrier {
         aircraft.refill(storeOfAmmo);
       }
     } else {
-      for (Aircraft aircraft :
-              aircrafts) {
-        if (aircraft.isPriority()) {
+      for (int i = 0; i < countPriorityAircafts(); i++) {
+        aircrafts.get(i).refill(storeOfAmmo);
+      }
+      if (storeOfAmmo != 0){
+        for (Aircraft aircraft :
+                aircrafts) {
           aircraft.refill(storeOfAmmo);
         }
       }
     }
+  }
+
+
+  public int countPriorityAircafts() {
+    int numberOfPriorityAircrafts = 0;
+    for (Aircraft aircraft :
+            aircrafts) {
+      if (aircraft.isPriority()) {
+        numberOfPriorityAircrafts++;
+      }
+    }
+    return numberOfPriorityAircrafts;
   }
 
   public boolean checkAmmoStorage() {
