@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,24 +19,18 @@ public class Carrier {
   }
 
   public void fill() {
-    if (checkAmmoStorage()) {
+    if (storeOfAmmo == 0) {
+      throw new ArithmeticException("Ammo Storage is out of ammo!");
+    } else if (checkAmmoStorage()) {
       for (Aircraft aircraft :
               aircrafts) {
-        try {
-          aircraft.refill(storeOfAmmo);
-        } catch (Exception e) {
-          System.out.println("Not enough ammo!");
-        }
+        aircraft.refill(storeOfAmmo);
       }
     } else {
       for (Aircraft aircraft :
               aircrafts) {
         if (aircraft.isPriority()) {
-          try {
-            aircraft.refill(storeOfAmmo);
-          } catch (Exception e) {
-            System.out.println("Not enough ammo!");
-          }
+          aircraft.refill(storeOfAmmo);
         }
       }
     }
@@ -45,7 +40,7 @@ public class Carrier {
     int ammoNeeded = 0;
     for (Aircraft aircraft :
             aircrafts) {
-      ammoNeeded += aircraft.maxAmmo - aircraft.ammoStore
+      ammoNeeded += aircraft.maxAmmo - aircraft.ammoStore;
     }
     return ammoNeeded < storeOfAmmo;
   }
