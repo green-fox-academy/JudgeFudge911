@@ -28,22 +28,16 @@ public class Garden {
   public void checkStatus(){
 
     List<Plants> plants = listPlants();
-    String type = "";
-    String watering = "";
+    String watering;
 
     for (Plants plant :
             plants) {
-      if (plant instanceof Flower){
-        type = "Flower";
-      } else {
-        type = "Tree";
-      }
       if(plant.needWater()){
         watering = " needs water";
       } else {
         watering = " doesn't need water";
       }
-      System.out.println("The " + plant.color + " " + type + watering );
+      System.out.println("The " + plant.color + " " + plant.getClass() + watering );
     }
 
   }
