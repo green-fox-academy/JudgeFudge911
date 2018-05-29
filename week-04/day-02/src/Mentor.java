@@ -17,8 +17,7 @@ public class Mentor extends Person {
   }
 
   public void introduce(){
-    super.introduce();
-    System.out.print(" " + level + " mentor.");
+    System.out.println("Hi, I'm " + name + ",a " + age + " year old " + gender + " " + level + " mentor.");
   }
 
 }
