@@ -1,5 +1,9 @@
 public class Flower extends Plants {
 
+  public Flower(String color){
+    this.color = color;
+  }
+
   @Override
   boolean needWater() {
     return (water < 5);
