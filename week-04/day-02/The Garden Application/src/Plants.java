@@ -1,12 +1,8 @@
 abstract public class Plants {
 
-  private int water;
+  int water;
 
   abstract boolean needWater();
 
-  abstract boolean checkWater();
-
-  abstract void setWater();
-
-  abstract int getWater();
+  abstract void getWatered(int amountOfWater);
 }
