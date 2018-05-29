@@ -21,9 +21,9 @@ public class Aircraft {
       ammoStore += ammo;
       return 0;
     } else {
-      int remainingAmmo = ammo - (maxAmmo - ammoStore);
+      ammo -= (maxAmmo - ammoStore);
       ammoStore = maxAmmo;
-      return remainingAmmo;
+      return ammo;
     }
   }
 

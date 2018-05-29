@@ -1,24 +1,26 @@
 public class App {
   public static void main(String[] args) {
-    Carrier carrier0 = new Carrier(30, 100);
-    Carrier carrier1 = new Carrier(30, 100);
+    Carrier carrier0 = new Carrier(2300, 1000);
+    Carrier carrier1 = new Carrier(2300, 1000);
 
-    F16 f16 = new F16();
+    int numberOfAircrafts = 4;
 
-    F35 f35 = new F35();
-
-    carrier0.add(f16);
-    carrier1.add(f35);
+    for (int i = 0; i < numberOfAircrafts; i++) {
+      carrier0.add(new F16());
+      carrier1.add(new F35());
+    }
 
     carrier0.fill();
     carrier1.fill();
 
-    System.out.println(carrier0.getStatus());
-    System.out.println(carrier1.getStatus());
+    while (carrier0.healthPoints > 0 || carrier1.healthPoints > 0 ){
 
-    carrier0.fight(carrier1);
+      System.out.println(carrier0.getStatus());
+      System.out.println(carrier1.getStatus());
 
-    System.out.println(carrier0.getStatus());
-    System.out.println(carrier1.getStatus());
+      carrier0.fight(carrier1);
+      carrier1.fight(carrier0);
+
+    }
   }
 }

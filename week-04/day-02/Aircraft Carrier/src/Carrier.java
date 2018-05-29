@@ -23,16 +23,16 @@ public class Carrier {
     } else if (checkAmmoStorage()) {
       for (Aircraft aircraft :
               aircrafts) {
-        aircraft.refill(storeOfAmmo);
+        storeOfAmmo = aircraft.refill(storeOfAmmo);
       }
     } else {
       for (int i = 0; i < countPriorityAircafts(); i++) {
-        aircrafts.get(i).refill(storeOfAmmo);
+        storeOfAmmo = aircrafts.get(i).refill(storeOfAmmo);
       }
       if (storeOfAmmo != 0){
         for (Aircraft aircraft :
                 aircrafts) {
-          aircraft.refill(storeOfAmmo);
+          storeOfAmmo = aircraft.refill(storeOfAmmo);
         }
       }
     }
