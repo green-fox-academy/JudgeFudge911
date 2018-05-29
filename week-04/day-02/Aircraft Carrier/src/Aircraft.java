@@ -25,6 +25,22 @@ public class Aircraft {
       ammoStore = maxAmmo;
       return remainingAmmo;
     }
+  }
+
+  public String getType(){
+    if(this instanceof F16){
+      return "F16";
+    } else {
+      return "F35";
+    }
+  }
+
+  public String getStatus(){
+    String status = "Type " + getType() + ", Ammo: " + ammoStore + ", Base Damage: " + baseDamage + ", All Damage: " + allDamage();
+  }
+
+  private int allDamage() {
+
 
   }
 
