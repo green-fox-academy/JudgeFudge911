@@ -27,4 +27,13 @@ public class Carrier {
       }
     }
   }
+
+  public boolean checkAmmoStorage(){
+    int ammoNeeded = 0;
+    for (Aircraft aircraft :
+            aircrafts) {
+      ammoNeeded += aircraft.maxAmmo-aircraft.ammoStore
+    }
+    return ammoNeeded < storeOfAmmo;
+  }
 }
