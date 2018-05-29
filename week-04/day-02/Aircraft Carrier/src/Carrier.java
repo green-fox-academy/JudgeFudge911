@@ -59,7 +59,7 @@ public class Carrier {
     otherCarrier.healthPoints -= totalDamage;
   }
 
-  public int totalDamage(){
+  public int totalDamage() {
     int totalDamage = 0;
     for (Aircraft aircraft :
             aircrafts) {
@@ -68,12 +68,20 @@ public class Carrier {
     return totalDamage;
   }
 
-  public String getStatus(){
-    String status = "HP: " + healthPoints +", Aircraft count: " + aircrafts.size() + ", Ammo Storage: " + storeOfAmmo + ", Total damage: " + totalDamage();
+  public String getStatus() {
+    if (healthPoints <= 0) {
+      return "It's dead jim :(";
+    } else {
+
+      String status = "HP: " + healthPoints + ", Aircraft count: " + aircrafts.size() + ", Ammo Storage: " + storeOfAmmo + ", Total damage: " + totalDamage();
+      status += "\nAircrafts:\n";
+      for (Aircraft aircraft :
+              aircrafts) {
+        status += aircraft.getStatus() + "\n";
+      }
 
 
-
-    return status;
+      return status;
+    }
   }
-
 }
