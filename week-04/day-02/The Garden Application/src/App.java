@@ -10,6 +10,7 @@ public class App {
     Tree orange = new Tree("orange");
 
     garden.addFlower(yellow, blue);
+    garden.addTree(purple,orange);
 
     garden.checkStatus();
 

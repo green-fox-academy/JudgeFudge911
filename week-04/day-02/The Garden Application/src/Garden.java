@@ -6,6 +6,11 @@ public class Garden {
   List<Flower> flowers;
   List<Tree> trees;
 
+  public Garden(){
+    flowers = new ArrayList<>();
+    trees = new ArrayList<>();
+  }
+
   public void addFlower(Flower... flower){
     for (Flower element :
             flower) {
