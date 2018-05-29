@@ -9,6 +9,8 @@ public class App {
     Tree purple = new Tree("purple");
     Tree orange = new Tree("orange");
 
+    garden.addFlower(yellow, blue);
+
     garden.checkStatus();
 
     garden.watering(40);

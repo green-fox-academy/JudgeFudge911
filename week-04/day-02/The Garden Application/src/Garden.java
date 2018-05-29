@@ -6,12 +6,18 @@ public class Garden {
   List<Flower> flowers;
   List<Tree> trees;
 
-  public void addFlower(Flower flower){
-    flowers.add(flower);
+  public void addFlower(Flower... flower){
+    for (Flower element :
+            flower) {
+      flowers.add(element);
+    }
   }
 
-  public void addTree(Tree tree){
-    trees.add(tree);
+  public void addTree(Tree... tree){
+    for (Tree element :
+            tree) {
+      trees.add(element);
+    }
   }
 
   public void checkStatus(){
