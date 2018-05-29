@@ -49,4 +49,14 @@ public class Carrier {
     }
     return ammoNeeded < storeOfAmmo;
   }
+
+  public void fight(Carrier otherCarrier) {
+    int totalDamage = 0;
+    for (Aircraft aircraft :
+            aircrafts) {
+      totalDamage += aircraft.fight();
+    }
+    otherCarrier.healthPoints -= totalDamage;
+  }
+
 }
