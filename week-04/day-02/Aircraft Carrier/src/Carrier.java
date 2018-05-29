@@ -29,7 +29,7 @@ public class Carrier {
       for (int i = 0; i < countPriorityAircafts(); i++) {
         storeOfAmmo = aircrafts.get(i).refill(storeOfAmmo);
       }
-      if (storeOfAmmo != 0){
+      if (storeOfAmmo != 0) {
         for (Aircraft aircraft :
                 aircrafts) {
           storeOfAmmo = aircraft.refill(storeOfAmmo);
@@ -60,12 +60,17 @@ public class Carrier {
   }
 
   public void fight(Carrier otherCarrier) {
-    int totalDamage = 0;
-    for (Aircraft aircraft :
-            aircrafts) {
-      totalDamage += aircraft.fight();
+    if (healthPoints > 0) {
+
+      int totalDamage = 0;
+      for (Aircraft aircraft :
+              aircrafts) {
+        totalDamage += aircraft.fight();
+      }
+      otherCarrier.healthPoints -= totalDamage;
+    } else {
+      System.out.println("It can'fight while its dead");
     }
-    otherCarrier.healthPoints -= totalDamage;
   }
 
   public int totalDamage() {
