@@ -13,7 +13,18 @@ public class Carrier {
     this.healthPoints = healthPoints;
   }
 
-  public void add(Aircraft aircraft){
+  public void add(Aircraft aircraft) {
     aircrafts.add(aircraft);
+  }
+
+  public void fill() {
+    for (Aircraft aircraft :
+            aircrafts) {
+      try {
+        aircraft.refill(storeOfAmmo);
+      } catch (Exception e) {
+        System.out.println("Not enough ammo!");
+      }
+    }
   }
 }
