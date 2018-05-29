@@ -9,7 +9,7 @@ public class Aircraft {
   }
 
   public int fight() {
-    int damage = ammoStore * baseDamage;
+    int damage = allDamage();
 
     ammoStore = 0;
 
@@ -21,27 +21,35 @@ public class Aircraft {
       ammoStore += ammo;
       return 0;
     } else {
-      int remainingAmmo = ammo-(maxAmmo-ammoStore);
+      int remainingAmmo = ammo - (maxAmmo - ammoStore);
       ammoStore = maxAmmo;
       return remainingAmmo;
     }
   }
 
-  public String getType(){
-    if(this instanceof F16){
+  public String getType() {
+    if (this instanceof F16) {
       return "F16";
     } else {
       return "F35";
     }
   }
 
-  public String getStatus(){
+  public String getStatus() {
     String status = "Type " + getType() + ", Ammo: " + ammoStore + ", Base Damage: " + baseDamage + ", All Damage: " + allDamage();
+    return status;
   }
 
-  private int allDamage() {
+  public int allDamage() {
+    return ammoStore * baseDamage;
+  }
 
-
+  public boolean isPriority(){
+    if (getType().equals("F35")){
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
