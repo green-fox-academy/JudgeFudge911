@@ -16,9 +16,7 @@ public class Garden {
 
   public void checkStatus(){
 
-    List<Plants> plants = new ArrayList<>();
-    plants.addAll(flowers);
-    plants.addAll(trees);
+    List<Plants> plants = listPlants();
     String type = "";
     String watering = "";
 
@@ -48,9 +46,9 @@ public class Garden {
 
   public void watering(int amountOfWatering) {
 
-    List<Plants> plants = new ArrayList<>();
-    plants.addAll(flowers);
-    plants.addAll(trees);
+    System.out.println("Watering with " + amountOfWatering);
+
+    List<Plants> plants = listPlants();
     int counter = 0;
     for (Plants plant :
             plants) {

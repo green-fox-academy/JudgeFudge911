@@ -9,7 +9,15 @@ public class App {
     Tree purple = new Tree("purple");
     Tree orange = new Tree("orange");
 
+    garden.checkStatus();
 
+    garden.watering(40);
+
+    garden.checkStatus();
+
+    garden.watering(70);
+
+    garden.checkStatus();
 
   }
 }
