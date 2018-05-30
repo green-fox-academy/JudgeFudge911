@@ -1,20 +1,20 @@
 public class Gnirts implements CharSequence {
 
-  private String dunnoYet;
+  private String text;
 
-  public Gnirts(String dunnoYet){
-    this.dunnoYet = dunnoYet;
+  public Gnirts(String text){
+    this.text = text;
   }
 
 
   @Override
   public int length() {
-    return 0;
+    return getText().length();
   }
 
   @Override
   public char charAt(int index) {
-    return 0;
+    return getText().charAt(length()-index-1);
   }
 
   @Override
@@ -23,15 +23,12 @@ public class Gnirts implements CharSequence {
 
   }
 
-  public String getDunnoYet() {
-    return dunnoYet;
+  public String getText() {
+    return text;
   }
 
-  public void setDunnoYet(String dunnoYet) {
-    this.dunnoYet = dunnoYet;
+  public void setText(String text) {
+    this.text = text;
   }
 
-  public static void main(String[] args) {
-
-  }
 }

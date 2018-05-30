@@ -1,5 +1,12 @@
 public class Shifter implements CharSequence {
 
+  private String text;
+  private int shift;
+
+  public Shifter(String text, int shift) {
+    this.text = text;
+    this.shift = shift;
+  }
 
   @Override
   public int length() {
@@ -16,4 +23,19 @@ public class Shifter implements CharSequence {
     return null;
   }
 
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public int getShift() {
+    return shift;
+  }
+
+  public void setShift(int shift) {
+    this.shift = shift;
+  }
 }
