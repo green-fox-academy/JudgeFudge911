@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class App {
   public static void main(String[] args) {
-    ArrayList<Person> people = new ArrayList<>();
+    /*ArrayList<Person> people = new ArrayList<>();
 
     Person mark = new Person("Mark", 46, "male");
     people.add(mark);
@@ -41,6 +41,6 @@ public class App {
     awesome.addStudent(john);
     awesome.addMentor(mentor);
     awesome.addMentor(gandhi);
-    awesome.info();
+    awesome.info();*/
   }
 }
