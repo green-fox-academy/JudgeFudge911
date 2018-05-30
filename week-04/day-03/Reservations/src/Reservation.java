@@ -1,10 +1,14 @@
-import javax.jws.soap.SOAPBinding;
 import java.util.Random;
 
 public class Reservation implements Reservationy {
 
   private String code;
   private String dow;
+
+  public Reservation() {
+    this.code = getCodeBooking();
+    this.dow = getDowBooking();
+  }
 
   @Override
   public String getDowBooking() {
