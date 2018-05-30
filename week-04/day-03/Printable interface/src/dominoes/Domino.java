@@ -14,7 +14,6 @@ public class Domino implements Printable {
   }
 
 
-
   @Override
   public String toString() {
     return "[" + values[0] + ", " + values[1] + "]";
@@ -22,6 +21,6 @@ public class Domino implements Printable {
 
   @Override
   public void printAllFields() {
-
+    System.out.println(values[0] + " " + values[1]);
   }
 }
