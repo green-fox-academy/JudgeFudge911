@@ -42,5 +42,10 @@ public class App {
     awesome.addMentor(mentor);
     awesome.addMentor(gandhi);
     awesome.info();*/
+
+    Student john = new Student("John", 20, "male", "BME");
+
+    john.clone().introduce();
+
   }
 }
