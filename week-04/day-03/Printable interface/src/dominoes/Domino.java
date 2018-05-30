@@ -21,6 +21,6 @@ public class Domino implements Printable {
 
   @Override
   public void printAllFields() {
-    System.out.println(values[0] + " " + values[1]);
+    System.out.print(values[0] + " " + values[1] + " ");
   }
 }
