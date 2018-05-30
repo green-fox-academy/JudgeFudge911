@@ -7,17 +7,21 @@ public abstract class Animal {
   String gender;
   int legs;
 
+  public Animal(String name) {
+    this.name = name;
+  }
 
   public String getName() {
     return name;
   }
 
-  public void breed(){
-
-  }
+  abstract public String breed();
 
   public void eat(){
 
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
 }
