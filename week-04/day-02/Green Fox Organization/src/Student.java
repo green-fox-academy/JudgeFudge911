@@ -31,9 +31,9 @@ public class Student extends Person implements Cloneable {
 
   public Student clone(){
 
-    Student newStudent = this;
+    Student cloneOfStudent = this;
 
-    return newStudent;
+    return cloneOfStudent;
   }
 
 }
