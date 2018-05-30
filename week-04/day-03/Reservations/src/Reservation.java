@@ -1,12 +1,15 @@
+import javax.jws.soap.SOAPBinding;
 import java.util.Random;
 
 public class Reservation implements Reservationy {
+
+  private String code;
+  private String dow;
+
   @Override
   public String getDowBooking() {
     String[] dows = new String[] {"MON","TUE", "WEN", "THU", "FRI", "SAT", "SUN"};
-
     Random r = new Random();
-
     return dows[r.nextInt(7)];
   }
 
@@ -19,5 +22,9 @@ public class Reservation implements Reservationy {
       code += c;
     }
     return code;
+  }
+
+  public void printReservation(){
+    System.out.println("Booking# " + getCodeBooking() + " for " + getDowBooking());
   }
 }
