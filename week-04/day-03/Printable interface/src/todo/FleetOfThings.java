@@ -1,4 +1,5 @@
 package todo;
+
 public class FleetOfThings {
 
   public static void main(String[] args) {
@@ -9,7 +10,9 @@ public class FleetOfThings {
     Thing stand = new Thing("Stand up");
     Thing eat = new Thing("Eat lunch");
 
-    for (Thing t: fleet.getThings()){
+    fleet.add(milk, obstacles, stand, eat);
+
+    for (Thing t : fleet.getThings()) {
       t.printAllFields();
     }
   }

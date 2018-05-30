@@ -21,6 +21,6 @@ public class Thing implements Printable {
 
   @Override
   public void printAllFields() {
-    System.out.println("I have to do " + name + " " + " and it is completed " + completed);
+    System.out.println("I have to " + name + " and it is completed: " + completed);
   }
 }

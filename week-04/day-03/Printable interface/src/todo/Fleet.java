@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Fleet {
   private ArrayList<Thing> things;
 
-  public ArrayList<Thing> getThings(){
+  public ArrayList<Thing> getThings() {
     return things;
   }
 
@@ -13,8 +13,11 @@ public class Fleet {
     things = new ArrayList<>();
   }
 
-  public void add(Thing thing) {
-    things.add(thing);
+  public void add(Thing... lotOfThings) {
+    for (Thing thing :
+            lotOfThings) {
+      things.add(thing);
+    }
   }
 
   @Override
