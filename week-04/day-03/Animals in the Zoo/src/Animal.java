@@ -10,6 +10,10 @@ public abstract class Animal {
     return name;
   }
 
+  public void breed(){
+
+  }
+
   public void eat(){
 
   }
