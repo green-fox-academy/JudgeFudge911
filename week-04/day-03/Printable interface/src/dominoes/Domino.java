@@ -1,4 +1,6 @@
-public class Domino implements Comparable<Domino> {
+package dominoes;
+
+public class Domino {
   private final int[] values;
 
   public Domino(int valueA, int valueB) {
@@ -16,11 +18,4 @@ public class Domino implements Comparable<Domino> {
     return "[" + values[0] + ", " + values[1] + "]";
   }
 
-  @Override
-  public int compareTo(Domino compareDomino) {
-
-    int compareValue = compareDomino.getValues()[0];
-
-    return this.getValues()[0] - compareValue;
-  }
 }
