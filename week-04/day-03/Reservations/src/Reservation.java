@@ -3,7 +3,11 @@ import java.util.Random;
 public class Reservation implements Reservationy {
   @Override
   public String getDowBooking() {
-    return null;
+    String[] dows = new String[] {"MON","TUE", "WEN", "THU", "FRI", "SAT", "SUN"};
+
+    Random r = new Random();
+
+    return dows[r.nextInt(7)];
   }
 
   @Override
