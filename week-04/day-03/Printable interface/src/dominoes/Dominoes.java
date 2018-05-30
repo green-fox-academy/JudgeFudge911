@@ -1,12 +1,15 @@
 package dominoes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Dominoes {
   public static void main(String[] args) {
     List<Domino> dominoes = initializeDominoes();
+
+    for (Domino d: dominoes){
+      d.printAllFields();
+    }
 
   }
 
