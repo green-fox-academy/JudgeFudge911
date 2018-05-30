@@ -1,11 +1,13 @@
 package todo;
+
 import java.util.ArrayList;
 
-/**
- * Created by aze on 2017.03.29..
- */
 public class Fleet {
   private ArrayList<Thing> things;
+
+  public ArrayList<Thing> getThings(){
+    return things;
+  }
 
   public Fleet() {
     things = new ArrayList<>();
@@ -18,8 +20,8 @@ public class Fleet {
   @Override
   public String toString() {
     String result = "";
-    for(int i = 0; i < things.size(); i++) {
-      result += (i+1) + ". " + things.get(i) + "\n";
+    for (int i = 0; i < things.size(); i++) {
+      result += (i + 1) + ". " + things.get(i) + "\n";
     }
     return result;
   }

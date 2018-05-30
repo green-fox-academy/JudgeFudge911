@@ -1,6 +1,8 @@
 package dominoes;
 
-public class Domino {
+import printable.Printable;
+
+public class Domino implements Printable {
   private final int[] values;
 
   public Domino(int valueA, int valueB) {
@@ -18,4 +20,8 @@ public class Domino {
     return "[" + values[0] + ", " + values[1] + "]";
   }
 
+  @Override
+  public void printAllFields() {
+
+  }
 }

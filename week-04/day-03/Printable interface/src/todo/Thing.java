@@ -1,6 +1,8 @@
 package todo;
 
-public class Thing {
+import printable.Printable;
+
+public class Thing implements Printable {
   private String name;
   private boolean completed;
 
@@ -15,5 +17,10 @@ public class Thing {
   @Override
   public String toString() {
     return (completed ? "[x] " : "[ ] ") + name;
+  }
+
+  @Override
+  public void printAllFields() {
+
   }
 }
