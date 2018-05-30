@@ -4,9 +4,7 @@ public abstract class StringedInstrument extends Instrument {
 
   int numberOfStrings;
 
-  public void sound(){
-
-  }
+  abstract  public String sound();
 
 
 }
