@@ -29,6 +29,18 @@ public class Reservation implements Reservationy {
   }
 
   public void printReservation(){
-    System.out.println("Booking# " + getCodeBooking() + " for " + getDowBooking());
+    System.out.println("Booking# " + getCode() + " for " + getDow());
+  }
+
+  public String getDow() {
+    return dow;
+  }
+
+  public void setDow(String dow) {
+    this.dow = dow;
+  }
+
+  public String getCode() {
+    return code;
   }
 }
