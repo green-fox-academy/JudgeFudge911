@@ -9,7 +9,7 @@ public class AppleTest {
 
     Apple apple = new Apple();
 
-    String message = "apple";
+    String message = "appsle";
 
     assertEquals(message, apple.getApple());
 
