@@ -16,6 +16,13 @@ public class CAB {
       } else if (Arrays.asList(number).contains(toString().charAt(i))) {
         status += "Bull";
       }
+      if (i != 4) {
+        status += ", ";
+      }
+    }
+
+    if (status.equals("Cow, Cow, Cow, Cow")) {
+      gameOver = true;
     }
     return status;
   }
