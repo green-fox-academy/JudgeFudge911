@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Extension {
@@ -17,6 +18,7 @@ public class Extension {
 
   int median(List<Integer> pool) {
     if (pool.size() > 0) {
+      Collections.sort(pool);
       return pool.get((pool.size() - 1) / 2);
     } else {
       return -1;
