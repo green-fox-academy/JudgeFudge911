@@ -1,10 +1,23 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class CAB {
 
   Integer[] number;
   boolean gameOver;
   int guessCounter;
+
+  public CAB() {
+    Random r = new Random();
+    number = new Integer[4];
+
+    for (int i = 0; i < 4; i++) {
+      number[i] = r.nextInt();
+    }
+    gameOver = false;
+    guessCounter = 0;
+  }
 
 
   public String guess(Integer numbers) {
@@ -26,5 +39,7 @@ public class CAB {
     }
     return status;
   }
+
+
 }
 
