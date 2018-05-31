@@ -45,4 +45,21 @@ public class SumTest {
     assertEquals(result, sum.sumOfElements(numbers));
 
   }
+
+  @Test
+  public void should_returnSumOfElements_when_oneElementIsNullInput() {
+    ArrayList<Integer> numbers = new ArrayList<>();
+
+    for (int i = 0; i < 3; i++) {
+      numbers.add(i);
+    }
+
+    numbers.add(null);
+
+    int result = 3;
+
+    assertEquals(result, sum.sumOfElements(numbers));
+
+  }
+
 }

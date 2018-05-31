@@ -8,7 +8,9 @@ public class Sum {
     }
     int sum = 0;
     for (Integer number : numbers) {
-      sum += number;
+      if (number != null) {
+        sum += number;
+      }
     }
     return sum;
   }
