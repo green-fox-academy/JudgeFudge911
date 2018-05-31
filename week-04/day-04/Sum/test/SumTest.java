@@ -33,4 +33,16 @@ public class SumTest {
     assertEquals(result, sum.sumOfElements(numbers));
 
   }
+
+  @Test
+  public void should_returnElement_when_oneElementInput() {
+    ArrayList<Integer> numbers = new ArrayList<>();
+
+    int result = 7;
+
+    numbers.add(result);
+
+    assertEquals(result, sum.sumOfElements(numbers));
+
+  }
 }
