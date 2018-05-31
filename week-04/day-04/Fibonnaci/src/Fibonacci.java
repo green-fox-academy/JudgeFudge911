@@ -1,6 +1,5 @@
 public class Fibonacci {
 
-
   public static int fibonacciNumber(int n) {
     if (n <= 1) {
       return 0;
