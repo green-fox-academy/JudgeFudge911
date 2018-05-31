@@ -12,7 +12,7 @@ public class Reservation implements Reservationy {
 
   @Override
   public String getDowBooking() {
-    String[] dows = new String[] {"MON","TUE", "WEN", "THU", "FRI", "SAT", "SUN"};
+    String[] dows = new String[]{"MON", "TUE", "WEN", "THU", "FRI", "SAT", "SUN"};
     Random r = new Random();
     return dows[r.nextInt(7)];
   }
@@ -28,7 +28,7 @@ public class Reservation implements Reservationy {
     return code;
   }
 
-  public void printReservation(){
+  public void printReservation() {
     System.out.println("Booking# " + getCode() + " for " + getDow());
   }
 

@@ -1,3 +1,5 @@
+package flyable;
+
 public abstract class Vehicle {
 
   int horsePower;

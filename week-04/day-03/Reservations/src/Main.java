@@ -12,7 +12,5 @@ public class Main {
     for (Reservation reservation : reservations) {
       reservation.printReservation();
     }
-
-
   }
 }
