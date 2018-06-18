@@ -1,0 +1,35 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: purple;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link-container{
+    list-style: none;
+    display: flex;
+    margin-left: 45px;
+}
+
+li{
+    background-color: aqua;
+    height: 30px;
+    width: 50px;
+    margin-right: 12px;
+}
