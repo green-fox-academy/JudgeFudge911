@@ -1,0 +1,22 @@
+.header{
+    position: fixed;
+    top: 0;
+    left:0;
+    right: 0;
+    height: 76px;
+    background-color: purple;
+    display: flex
+}
+
+.nav-links{
+    display: flex;
+    list-style: none;
+    width: 100%;
+}
+
+.nav-links li{
+    background-color: cyan;
+    flex-basis: 50px;
+    height: 30px;
+    margin-right: 12px;
+}
