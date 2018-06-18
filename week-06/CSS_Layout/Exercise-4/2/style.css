@@ -1,3 +1,10 @@
+.layout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
 .header{
     position: fixed;
     top: 0;
@@ -20,3 +27,30 @@
     height: 30px;
     margin-right: 12px;
 }
+.content{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 84px;
+    margin-bottom: 8px;
+    height: 430px;
+    width: 670px;
+}
+
+.sidebar{
+    background-color: green;
+    width: 218px;
+}
+
+.main{
+    background-color: yellow;
+    width: 454px;
+    order: 1;
+}
+
+footer{
+    display: block;
+    background-color: grey;
+    height: 56px;
+    width: 672px;
+}
+
