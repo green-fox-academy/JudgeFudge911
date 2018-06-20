@@ -1,0 +1,12 @@
+.red {
+    color: red;
+}
+.balloon {
+    background-color: lime;
+    border-radius: 100%;
+}
+.pear {
+    background: lime;
+    padding: 2rem;
+    text-transform: uppercase;
+}
