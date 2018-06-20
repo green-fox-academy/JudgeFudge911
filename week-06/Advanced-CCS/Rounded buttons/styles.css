@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    background-color: #3A2362;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+button{
+    margin-right: 20px;
+}
