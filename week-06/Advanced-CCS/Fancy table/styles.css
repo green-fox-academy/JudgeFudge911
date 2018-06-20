@@ -3,10 +3,6 @@
     padding: 0;
 }
 
-:root {
-    --border-radius: 10px;
-}
-
 .layout {
     display: flex;
     justify-content: center;
@@ -20,26 +16,11 @@ body {
 table {
     border-collapse: collapse;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 thead {
     border-bottom: solid 4px grey;
-}
-
-thead :first-child {
-    -webkit-border-top-left-radius: var(--border-radius);
-}
-
-thead :last-child {
-    -webkit-border-top-right-radius: var(--border-radius);
-}
-
-tfoot :first-child {
-    -webkit-border-bottom-left-radius: var(--border-radius);
-}
-
-tfoot :last-child {
-    -webkit-border-bottom-right-radius: var(--border-radius);
 }
 
 th {
@@ -69,7 +50,7 @@ tr:nth-child(odd) {
     background-color: #EAEAEA;
 }
 
-td:before{
+td:before {
     content: attr(data-currency);
 }
 
