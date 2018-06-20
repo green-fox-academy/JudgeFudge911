@@ -6,3 +6,33 @@
 body{
     background-color: #487EF0;
 }
+
+.layout{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th{
+    background-color: #212229;
+    color: #B3B8C3;
+    width: 364px;
+}
+
+td{
+    background-color: white;
+    color: grey;
+    height: 80px;
+}
+
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+
+}
+
+
