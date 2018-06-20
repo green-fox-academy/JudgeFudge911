@@ -3,7 +3,44 @@
     padding: 0;
 }
 
-.container{
+body{
     background-color: #343944;
-    height: 500px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 40px;
 }
+
+button{
+    border: none;
+    background-color: rgba(0,0,0,0);
+}
+
+.fa-trash-alt{
+    color: #f2f4f7;
+    background-color: #333333;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.speech-bubble {
+    position: relative;
+    background: #333333;
+    border-radius: .4em;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #00aabb;
+    border-bottom: 20px;
+    margin-left: -10px;
+    margin-bottom: -20px;
+}
+
