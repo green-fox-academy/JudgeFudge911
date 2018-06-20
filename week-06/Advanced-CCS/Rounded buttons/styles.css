@@ -12,5 +12,24 @@ div{
 }
 
 button{
+    display: block;
     margin-right: 20px;
+    color: white;
+    height: 48px;
+    line-height: 48px;
+    width: 144px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}
+
+.red{
+    background-color: red;
 }
