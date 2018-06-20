@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-div{
+.container {
     background-color: #3A2362;
     display: flex;
     justify-content: center;
@@ -11,52 +11,62 @@ div{
     height: 500px;
 }
 
-button{
-    display: block;
+.button {
+    display: inline-block;
+    box-sizing: border-box;
     margin-right: 20px;
     color: white;
-    height: 48px;
-    line-height: 48px;
-    width: 144px;
+    height: 52px;
+    line-height: 52px;
+    width: 138px;
     font-size: 18px;
     text-align: center;
+    border-radius: 2px;
+    border-top: solid 2px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
 }
 
-.blue:hover{
+.blue:hover {
     background-color: #6265b7;
 }
 
-.blue:active{
+.blue:active {
     background-color: #383a7a;
 
 }
 
-.green:hover{
+.green:hover {
     background-color: #00f074;
 }
 
-.green:active{
+.green:active {
     background-color: #008a43;
 
 }
 
-.red:hover{
+.red:hover {
     background-color: #ea4346;
 }
 
-.red:active{
+.red:active {
     background-color: #b31417;
 
 }
 
-.blue{
+.blue {
     background-color: #484B9D;
+    border-top-color: #5577bf;
 }
 
-.green{
+.green {
     background-color: #00BB59;
+    border-top-color: #66cb7f;
 }
 
-.red{
+.red {
     background-color: #E2191C;
+    border-top-color: #dc6453;
 }
