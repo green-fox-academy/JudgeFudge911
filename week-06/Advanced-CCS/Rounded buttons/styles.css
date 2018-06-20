@@ -22,14 +22,41 @@ button{
     text-align: center;
 }
 
+.blue:hover{
+    background-color: #6265b7;
+}
+
+.blue:active{
+    background-color: #383a7a;
+
+}
+
+.green:hover{
+    background-color: #00f074;
+}
+
+.green:active{
+    background-color: #008a43;
+
+}
+
+.red:hover{
+    background-color: #ea4346;
+}
+
+.red:active{
+    background-color: #b31417;
+
+}
+
 .blue{
-    background-color: blue;
+    background-color: #484B9D;
 }
 
 .green{
-    background-color: green;
+    background-color: #00BB59;
 }
 
 .red{
-    background-color: red;
+    background-color: #E2191C;
 }
