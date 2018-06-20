@@ -69,5 +69,8 @@ tr:nth-child(odd) {
     background-color: #EAEAEA;
 }
 
+td:before{
+    content: attr(data-currency);
+}
 
 
