@@ -66,7 +66,11 @@ app.set('view engine', 'ejs');
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('dashboard');
+});
+
+app.get('/cities', (req, res) => {
+    res.render('detailed');
 });
 
 app.listen(PORT, () => {
