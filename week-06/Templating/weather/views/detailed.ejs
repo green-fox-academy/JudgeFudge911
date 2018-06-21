@@ -8,12 +8,15 @@
 </head>
 <body>
 <h1 class="title"><%= forecasts[cityId].city %> </h1>
-<% forecasts[cityId].weather.forEach(e => { %>
-<div class="card">
-    <img class="icon" src="/../assets/pictures/<%= e.icon %>.png">
-    <p class="temp" tempScale="°C"><%= e.temp %></p>
-    <p class="message"><%= e.message %></p>
+<div class="cardContainer">
+    <% forecasts[cityId].weather.forEach(e => { %>
+    <div class="card">
+        <img class="icon" src="/../assets/pictures/<%= e.icon %>.png">
+        <p class="temp" tempScale="°C"><%= e.temp %></p>
+        <p class="message"><%= e.message %></p>
+    </div>
+    <% }) %>
 </div>
-<% }) %>
+<a class="homePage" href="/">SHOW ALL CITIES</a>
 </body>
 </html>
