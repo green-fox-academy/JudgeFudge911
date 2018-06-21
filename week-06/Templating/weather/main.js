@@ -69,8 +69,8 @@ app.get('/', (req, res) => {
     res.render('dashboard');
 });
 
-app.get('/cities', (req, res) => {
-    res.render('detailed');
+app.get('/cities/:cityId', (req, res) => {
+    res.render('detailed', {cityId: req.params.cityId});
 });
 
 app.listen(PORT, () => {
