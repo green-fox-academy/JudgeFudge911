@@ -22,15 +22,12 @@ app.use('/assets', express.static(path.join(__dirname,'assets')));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('home', {cocktails, alcoholList});
-});
+    let alcoholType = '';
+    if (req.query.alcoholType){
+        alcoholType = req.query.alcoholType;
+    }
+    res.render('home', {cocktails, alcoholList, alcoholType});
 
-app.get('/?alcoholType', (req, res) => {
-    res.render('home', {
-        alcoholList,
-        cocktails,
-        alcocholType: req.query.alcocholType
-    });
 });
 
 app.listen(PORT, () => {

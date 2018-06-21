@@ -10,7 +10,7 @@
     <div class="container">
         <a href="/">all</a>
         <% alcoholList.forEach(e => { %>
-        <a href="/?type=<%=e%>"><%=e%></a>
+        <a href="/?alcoholType=<%=e%>"><%=e%></a>
         <% }) %>
     </div>
     <table>
@@ -21,12 +21,24 @@
             </tr>
         </thead>
         <tbody>
-             <% cocktails.forEach(e => { %>
+             <% cocktails.forEach(e => {
+                if (alcoholType == false){ %>
                 <tr>
-                    <td class="names"><%= e.name %></td>
-                    <td class="prices"><%= e.price %></td>
+                    <td class="names">
+                        <h1 class="namesh1"><%= e.name %></h1>
+                        <p class="namesp"><%= e.contains.join(" ") %></p>
+                    </td>
+                    <td class="prices"><%= e.price + " "%></td>
                 </tr>
-             <% }); %>
+                <% } else if(alcoholType && e.contains.includes(alcoholType)){ %>
+                <tr>
+                    <td class="names">
+                        <h1 class="namesh1"><%= e.name %></h1>
+                        <p class="namesp"><%= e.contains.join(" ") %></p>
+                    </td>
+                    <td class="prices"><%= e.price + " "%></td>
+                </tr>
+             <% }}); %>
         </tbody>
     </table>
 </body>

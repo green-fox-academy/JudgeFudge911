@@ -22,25 +22,44 @@ a {
 }
 
 #name {
-    width: 150px;
+    width: 300px;
 }
 
 #price {
     width: 100px;
 }
 
-tbody tr:nth-child(even){
+tbody tr:nth-child(even) {
     background-color: grey;
 }
 
-tbody tr:nth-child(odd){
+tbody tr:nth-child(odd) {
     background-color: white;
 }
 
-.names{
+.names {
     text-align: left;
 }
 
-.prices{
+.prices {
     text-align: center;
+    font-weight: bold;
+}
+
+.prices:after{
+    content: "Ft";
+}
+
+.namesh1 {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.namesp {
+    font-size: 12px;
+    text-transform: lowercase;
+}
+
+td {
+    padding: 15px;
 }
