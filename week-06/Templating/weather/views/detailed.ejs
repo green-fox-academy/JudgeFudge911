@@ -7,6 +7,13 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
 </head>
 <body>
-<h1>DETAILED: <%= cityId %> </h1>
+    <h1 class="title"><%= forecasts[cityId].city %> </h1>
+    <% forecasts[cityId].weather.forEach(e => { %>
+        <div class="card">
+            <img class="icon" src="/../assets/pictures/<%= e.icon %>.png">
+            <p class="temp" tempScale="°C"><%= e.temp %></p>
+            <p class="message" ><%= e.message %></p>
+        </div>
+    <% }) %>
 </body>
 </html>

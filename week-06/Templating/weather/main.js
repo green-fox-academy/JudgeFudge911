@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
     res.render('dashboard', {forecasts});
 });
 
-app.get('/cities/:cityId', (req, res) => {
+app.get('/cities:cityId', (req, res) => {
     res.render('detailed', {forecasts}, {cityId: req.params.cityId});
 });
 

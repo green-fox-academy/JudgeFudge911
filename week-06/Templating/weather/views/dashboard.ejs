@@ -8,7 +8,7 @@
 </head>
 <body>
     <% forecasts.forEach(e => { %>
-        <a class="link" href="/cities/<%= e.city %>">
+        <a class="link" href="/cities/<%= forecasts.indexOf(e) %>">
             <button onlick="() => {window.location.href='http://www.google.com/'}" class="card">
                 <div class="place">
                     <h1 class="city"><%= e.city %></h1>
