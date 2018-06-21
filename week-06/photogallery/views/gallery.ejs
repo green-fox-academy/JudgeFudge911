@@ -7,8 +7,7 @@
 </head>
 <body>
 <div class="mainContent">
-    <div class="pictureContainer">
-        <button class="mainButton"></button>
+    <button class="mainButton" id="leftButton"></button>
         <% photos.forEach(e => { if(e.isActive){ %>
         <img id="activePicture" src="<%= e.path %>">
         <div class="pictureDescription">
@@ -16,8 +15,7 @@
             <p id="pictureP"><%= e.description %></p>
         </div>
         <% }}) %>
-        <button class="mainButton"></button>
-    </div>
+    <button class="mainButton" id="rightButton"></button>
 </div>
 <div class="thumbnails">
     <% photos.forEach(e => { if(!e.isActive){ %>
