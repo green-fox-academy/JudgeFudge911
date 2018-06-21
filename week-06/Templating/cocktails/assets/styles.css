@@ -3,10 +3,22 @@
     padding: 0;
 }
 
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+}
+
 a {
     text-decoration: none;
     text-transform: uppercase;
     margin-right: 10px;
+}
+
+.container {
+    margin: 10px 0;
 }
 
 .theader {
@@ -22,18 +34,18 @@ a {
 }
 
 #name {
-    width: 300px;
+    width: 400px;
 }
 
 #price {
     width: 100px;
 }
 
-tbody tr:nth-child(even) {
-    background-color: grey;
+tbody tr:nth-child(odd) {
+    background-color: #f2f4f7;
 }
 
-tbody tr:nth-child(odd) {
+tbody tr:nth-child(even) {
     background-color: white;
 }
 
@@ -46,13 +58,19 @@ tbody tr:nth-child(odd) {
     font-weight: bold;
 }
 
-.prices:after{
-    content: "Ft";
+.prices:after {
+    content: attr(data-currency);;
 }
 
 .namesh1 {
     font-size: 16px;
     text-transform: uppercase;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.nonAlcholic {
+    font-size: 14px;
 }
 
 .namesp {
