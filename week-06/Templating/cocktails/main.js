@@ -25,11 +25,11 @@ app.get('/', (req, res) => {
     res.render('home', {cocktails, alcoholList});
 });
 
-app.get('/:alcoholType', (req, res) => {
+app.get('/?alcoholType', (req, res) => {
     res.render('home', {
         alcoholList,
         cocktails,
-        alcocholType: res.params.alcocholType
+        alcocholType: req.query.alcocholType
     });
 });
 

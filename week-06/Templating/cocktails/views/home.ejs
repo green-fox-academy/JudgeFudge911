@@ -8,11 +8,26 @@
 <body>
     <h1>Cocktails</h1>
     <div class="container">
-        <a href="">all</a>
+        <a href="/">all</a>
         <% alcoholList.forEach(e => { %>
         <a href="/?type=<%=e%>"><%=e%></a>
         <% }) %>
     </div>
     <table>
+        <thead>
+            <tr>
+                <th class="theader" id="name">Name</th>
+                <th class="theader" id="price">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+             <% cocktails.forEach(e => { %>
+                <tr>
+                    <td class="names"><%= e.name %></td>
+                    <td class="prices"><%= e.price %></td>
+                </tr>
+             <% }); %>
+        </tbody>
+    </table>
 </body>
 </html>
