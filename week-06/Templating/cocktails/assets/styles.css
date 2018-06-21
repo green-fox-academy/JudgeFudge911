@@ -13,6 +13,7 @@ body {
 
 table {
     max-width: 500px;
+    border-collapse: collapse;
 }
 
 a {
@@ -31,10 +32,9 @@ a {
     text-transform: uppercase;
     font-size: 20px;
     line-height: 20px;
-    border: 1px solid black;
     padding: 0.5rem;
     text-align: center;
-    border-collapse: collapse;
+    border-right: white 1px solid;
 }
 
 #name {
@@ -46,11 +46,11 @@ a {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #f2f4f7;
+    background-color: #D8E0E7;
 }
 
 tbody tr:nth-child(even) {
-    background-color: white;
+    background-color: #B6BFCC;
 }
 
 .names {
@@ -84,4 +84,5 @@ tbody tr:nth-child(even) {
 
 td {
     padding: 15px;
+    border-right: white 1px solid;
 }
