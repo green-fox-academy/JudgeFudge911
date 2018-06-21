@@ -20,8 +20,13 @@ body {
     background-color: #EBF0F1;
 }
 
+.link {
+    text-decoration: none;
+}
+
 .card {
     display: flex;
+    border: none;
     justify-content: space-between;
     align-items: center;
     width: 510px;
@@ -32,6 +37,11 @@ body {
     border-radius: 6px;
     color: #36475F;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+}
+
+.card:hover{
+    cursor: pointer;
 }
 
 .city {

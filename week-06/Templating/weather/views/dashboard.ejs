@@ -8,16 +8,18 @@
 </head>
 <body>
     <% forecasts.forEach(e => { %>
-        <div class="card">
-            <div class="place">
-                <h1 class="city"><%= e.city %></h1>
-                <p class="location"><%= e.location %></p>
-            </div>
-            <div class="tempIcon">
-                <span class="temp" tempScale="°C"><%= e.weather[0].temp %></span>
-                <img class="icon" src="/../assets/pictures/<%= e.weather[0].icon %>.png">
-            </div>
-        </div>
+        <a class="link" href="/cities/<%= e.city %>">
+            <button onlick="() => {window.location.href='http://www.google.com/'}" class="card">
+                <div class="place">
+                    <h1 class="city"><%= e.city %></h1>
+                    <p class="location"><%= e.location %></p>
+                </div>
+                <div class="tempIcon">
+                    <span class="temp" tempScale="°C"><%= e.weather[0].temp %></span>
+                    <img class="icon" src="/../assets/pictures/<%= e.weather[0].icon %>.png">
+                </div>
+            </button>
+        </a>
     <% }) %>
 </body>
 </html>
