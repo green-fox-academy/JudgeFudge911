@@ -66,11 +66,11 @@ app.set('view engine', 'ejs');
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/', (req, res) => {
-    res.render('dashboard');
+    res.render('dashboard', {forecasts});
 });
 
 app.get('/cities/:cityId', (req, res) => {
-    res.render('detailed', {cityId: req.params.cityId});
+    res.render('detailed', {forecasts}, {cityId: req.params.cityId});
 });
 
 app.listen(PORT, () => {
