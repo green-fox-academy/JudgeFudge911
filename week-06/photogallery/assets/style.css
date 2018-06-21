@@ -1,3 +1,5 @@
-h1 {
- text-transform: lowercase;
+#activePicture {
+    width: 100px;
+    height: 100px;
 }
+
