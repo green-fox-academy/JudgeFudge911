@@ -3,3 +3,12 @@
     height: 100px;
 }
 
+.thumbnailPicture {
+    width: 100px;
+    height: 100px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
