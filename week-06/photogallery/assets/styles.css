@@ -1,0 +1,67 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: inherit;
+}
+
+.mainContent {
+
+}
+
+.pictureContainer {
+
+}
+
+.mainButton {
+
+}
+
+#activePicture {
+    width: 100px;
+    height: 100px;
+}
+
+.pictureDescription {
+
+}
+
+#pictureH1 {
+
+}
+
+#pictureP {
+
+}
+
+.thumbnails {
+
+}
+
+.thumbnailButton {
+
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.thumbnailPicture {
+    width: 100px;
+    height: 100px;
+}
+
+
