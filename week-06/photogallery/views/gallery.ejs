@@ -6,24 +6,25 @@
     <link rel="stylesheet" href="/assets/styles.css"/>
 </head>
 <body>
+<h1 class="title">Photo gallery</h1>
 <div class="mainContent">
     <button class="mainButton" id="leftButton"></button>
-        <% photos.forEach(e => { if(e.isActive){ %>
-        <img id="activePicture" src="<%= e.path %>">
-        <div class="pictureDescription">
-            <h1 id="pictureH1"><%= e.header %></h1>
-            <p id="pictureP"><%= e.description %></p>
-        </div>
-        <% }}) %>
+    <% photos.forEach(e => { if(e.isActive){ %>
+    <img id="activePicture" src="<%= e.path %>">
+    <div class="pictureDescription">
+        <h1 id="pictureH1"><%= e.header %></h1>
+        <p id="pictureP"><%= e.description %></p>
+    </div>
+    <% }}) %>
     <button class="mainButton" id="rightButton"></button>
 </div>
 <div class="thumbnails">
-    <% photos.forEach(e => { if(!e.isActive){ %>
-    <button class="thumbnailButton">
+    <% photos.forEach(e => { %>
+    <button class="thumbnailButton" onclick="thumbnailClick()">
         <img class="thumbnailPicture" src="<%= e.path %>">
     </button>
-    <% }}) %>
+    <% }) %>
 </div>
-
+<script src="/assets/gallery.js"></script>
 </body>
 </html>
