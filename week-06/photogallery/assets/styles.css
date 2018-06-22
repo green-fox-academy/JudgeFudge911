@@ -19,15 +19,17 @@ body {
     flex-direction: column;
     height: inherit;
     justify-content: space-around;
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
 .mainContent {
     display: flex;
-    height: 80%;
+    border-radius: 4px;
+    height: 60%;
     justify-content: center;
+    overflow: hidden;
     position: relative;
-    width: 80%;
+    width: 60%;
 }
 
 .mainButton {
@@ -76,11 +78,22 @@ body {
 }
 
 .thumbnails {
-
+    display: flex;
+    height: 40%;
+    justify-content: center;
+    margin-top: 20px;
+    width: 80%;
 }
 
 .thumbnailButton {
-
+    --thumbnail-width: 300px;
+    height: var(--thumbnail-width);
+    width: var(--thumbnail-width);
+    margin: 0 5px;
+    padding: 20px;
+    background-color: #999999;
+    border-radius: 2px;
+    border: none;
 }
 
 button:hover {
@@ -92,8 +105,8 @@ button:focus {
 }
 
 .thumbnailPicture {
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
 }
 
 
