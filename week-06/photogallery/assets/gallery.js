@@ -8,9 +8,10 @@ thumbnails.addEventListener('click', changePicture, false);
 leftButton.addEventListener('click', rotateLeft, false);
 rightButton.addEventListener('click', rotateRight, false);
 
-function changePicture(e) {
-    if(e.classList){
+function changePicture(e, currPic) {
+    if (e.classList) {
         activePicture.src = e.firstChild.nextSibling.src;
+        currPic.classList.remove('active');
         e.classList.add('active');
         e.focus = true;
     } else {
@@ -34,7 +35,11 @@ function rotateLeft() {
             currIndex = buttons.indexOf(e);
         }
     });
-    changePicture(thumbnailButton[currIndex-1]);
+    if (currIndex - 1 < 0) {
+        changePicture(thumbnailButton[buttons.length - 1], thumbnailButton[0])
+    } else {
+        changePicture(thumbnailButton[currIndex - 1], thumbnailButton[currIndex]);
+    }
 }
 
 function rotateRight() {
@@ -45,6 +50,10 @@ function rotateRight() {
             currIndex = buttons.indexOf(e);
         }
     });
-    changePicture(thumbnailButton[currIndex-1]);
+    if (currIndex + 1 > buttons.length - 1) {
+        changePicture(thumbnailButton[0], thumbnailButton[buttons.length-1])
+    } else {
+        changePicture(thumbnailButton[currIndex + 1], thumbnailButton[currIndex]);
+    }
 }
 
