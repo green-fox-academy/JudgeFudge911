@@ -74,11 +74,11 @@ body {
     right: 0;
 }
 
-#pictureH1 {
+#activeH1 {
 
 }
 
-#pictureP {
+#activeP {
 
 }
 
@@ -107,6 +107,9 @@ button:hover {
 
 button:focus {
     outline: none;
+}
+
+.active {
     background-color: red;
 }
 

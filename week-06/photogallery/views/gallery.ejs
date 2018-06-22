@@ -9,18 +9,16 @@
 <h1 class="title">Photo gallery</h1>
 <div class="mainContent">
     <button class="mainButton" id="leftButton"></button>
-    <% photos.forEach(e => { if(e.isActive){ %>
-    <img id="activePicture" src="<%= e.path %>">
+    <img id="activePicture" src="<%= photos[0].path %>">
     <div class="pictureDescription">
-        <h1 id="pictureH1"><%= e.header %></h1>
-        <p id="pictureP"><%= e.description %></p>
+        <h1 id="activeH1"><%= photos[0].header %></h1>
+        <p id="activeP"><%= photos[0].description %></p>
     </div>
-    <% }}) %>
     <button class="mainButton" id="rightButton"></button>
 </div>
 <div class="thumbnails">
     <% photos.forEach(e => { %>
-    <button class="thumbnailButton">
+    <button class="thumbnailButton <%= e.isActive %>">
         <img class="thumbnailPicture" src="<%= e.path %>">
     </button>
     <% }) %>
