@@ -66,7 +66,6 @@ function findActiveThumbnailIndex () {
     buttons.forEach(e => {
         if (e.classList.contains('active')) {
             currIndex = buttons.indexOf(e);
-            console.log(currIndex);
         }
     });
     return currIndex;
