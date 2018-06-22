@@ -1,12 +1,14 @@
-function thumbnailClick() {
-    console.log("thumbnailclicked");
-    photos.forEach(e => {
-        if (e.indexOf(1)) {
-            console.log(`i wasn't active ${e.id}`);
-            e.isActive = true;
-        } else if (e.isActive) {
-            console.log(`i was active ${e.id}`);
-            e.isActive = false;
-        }
-    })
+const activePicture = document.querySelector('#activePicture');
+const thumbnails = document.querySelector('.thumbnails');
+
+thumbnails.addEventListener('click', changePicture, false);
+
+function changePicture(e) {
+    if (e.target.src){
+        activePicture.src = e.target.src;
+        e.target.parentNode.focus = true;
+    } else {
+        activePicture.src = e.target.firstChild.nextSibling.src;
+        e.target.focus = true;
+    }
 }
