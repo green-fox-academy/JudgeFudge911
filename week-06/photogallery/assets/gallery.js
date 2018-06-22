@@ -19,25 +19,24 @@ leftButton.addEventListener('click', rotateLeft, false);
 rightButton.addEventListener('click', rotateRight, false);
 
 function changePicture(e, currPic, direction) {
-    let currIndex = findActiveThumbnailIndex();
     if (e.classList) {
         activePicture.src = e.firstChild.nextSibling.src;
-        changePictureDescription(currIndex + direction);
+        changePictureDescription(findActiveThumbnailIndex() + direction);
         currPic.classList.remove('active');
         e.classList.add('active');
         e.focus = true;
     } else {
         if (e.target.src) {
             activePicture.src = e.target.src;
-            changePictureDescription(currIndex);
-            thumbnailButton[currIndex].classList.remove('active');
+            thumbnailButton[findActiveThumbnailIndex()].classList.remove('active');
             e.target.parentNode.classList.add('active');
+            changePictureDescription(findActiveThumbnailIndex());
             e.target.parentNode.focus = true;
         } else {
             activePicture.src = e.target.firstChild.nextSibling.src;
-            changePictureDescription(currIndex);
-            thumbnailButton[currIndex].classList.remove('active');
+            thumbnailButton[findActiveThumbnailIndex()].classList.remove('active');
             e.target.classList.add('active');
+            changePictureDescription(findActiveThumbnailIndex());
             e.target.focus = true;
         }
     }
@@ -67,6 +66,7 @@ function findActiveThumbnailIndex () {
     buttons.forEach(e => {
         if (e.classList.contains('active')) {
             currIndex = buttons.indexOf(e);
+            console.log(currIndex);
         }
     });
     return currIndex;
