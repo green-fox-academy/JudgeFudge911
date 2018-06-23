@@ -13,7 +13,7 @@ handle = function handle (id, info, where, data) {
 }
 $("#doubling").on("click", function () {
     $.get(window.baseUrl + "/doubling", {}).done(function (data) {
-        if("error" in data && data["error"] == "Please provide an input!") {
+        if("error" in data && data["error"] === "Please provide an input!") {
             handle("#doubling_response", "OK - without data");
         } else {
             handle("#doubling_response", "not ok - without data", "Doubling", data);
@@ -22,7 +22,7 @@ $("#doubling").on("click", function () {
         handle("#doubling_response", "not ok - without data", "Doubling", err);
     });
     $.get(window.baseUrl + "/doubling", {input: 5}).done(function (data) {
-        if("received" in data && "result" in data && data["received"] == 5 && data["result"] == 10) {
+        if("received" in data && "result" in data && data["received"] === 5 && data["result"] === 10) {
             handle("#doubling_response", "OK - with input=5");
         } else {
             handle("#doubling_response", "not ok - with input=5", "Doubling", data);
@@ -34,7 +34,7 @@ $("#doubling").on("click", function () {
 
 $("#greeter").on("click", function () {
     $.get(window.baseUrl + "/greeter", {}).done(function (data) {
-        if("error" in data && data["error"] == "Please provide a name!") {
+        if("error" in data && data["error"] === "Please provide a name!") {
             handle("#greeter_response", "OK - without name");
         } else {
             handle("#greeter_response", "not ok - without name", "Greeter", data);
@@ -43,7 +43,7 @@ $("#greeter").on("click", function () {
         handle("#greeter_response", "not ok - without name", "Greeter", err);
     });
     $.get(window.baseUrl + "/greeter", {name: "petike"}).done(function (data) {
-        if("error" in data && data["error"] == "Please provide a title!") {
+        if("error" in data && data["error"] === "Please provide a title!") {
             handle("#greeter_response", "OK - without title");
         } else {
             handle("#greeter_response", "not ok - without title", "Greeter", data);
@@ -52,7 +52,7 @@ $("#greeter").on("click", function () {
         handle("#greeter_response", "not ok - without title", "Greeter", err);
     });
     $.get(window.baseUrl + "/greeter", {name: "petike", title: "student"}).done(function (data) {
-        if("welcome_message" in data && data["welcome_message"] == "Oh, hi there petike, my dear student!") {
+        if("welcome_message" in data && data["welcome_message"] === "Oh, hi there petike, my dear student!") {
             handle("#greeter_response", "OK - with petike and student");
         } else {
             handle("#greeter_response", "not ok - with petike and student", "Greeter", data);
@@ -69,7 +69,7 @@ $("#appenda").on("click", function () {
         handle("#appenda_response", "OK - without appendable");
     });
     $.get(window.baseUrl + "/appenda/kuty", {}).done(function (data) {
-        if("appended" in data && data["appended"] == "kutya") {
+        if("appended" in data && data["appended"] === "kutya") {
             handle("#appenda_response", "OK - with /kuty");
         } else {
             handle("#appenda_response", "not ok - with /kuty", "Appenda", data);
@@ -81,7 +81,7 @@ $("#appenda").on("click", function () {
 
 $("#dountil").on("click", function () {
     $.post({url: window.baseUrl + "/dountil/sum", data: JSON.stringify({until: 7}), contentType: 'application/json; charset=utf-8'}).done(function (data) {
-        if("result" in data && data["result"] == 28) {
+        if("result" in data && data["result"] === 28) {
             handle("#dountil_response", "OK - with /sum until=7");
         } else {
             handle("#dountil_response", "not ok - with /sum until=7", "Dountil", data);
@@ -90,7 +90,7 @@ $("#dountil").on("click", function () {
         handle("#dountil_response", "not ok - with /sum until=7", "Dountil", err);
     });
     $.post({url: window.baseUrl + "/dountil/factor", data: JSON.stringify({until: 4}), contentType: 'application/json; charset=utf-8'}).done(function (data) {
-        if("result" in data && data["result"] == 24) {
+        if("result" in data && data["result"] === 24) {
             handle("#dountil_response", "OK - with /factor until=4");
         } else {
             handle("#dountil_response", "not ok - with /factor until=4", "Dountil", data);
