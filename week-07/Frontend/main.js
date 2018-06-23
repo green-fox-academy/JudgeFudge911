@@ -23,6 +23,10 @@ app.get('/greeter?', (req, res) => {
     }
 });
 
+app.get('/appenda/:appendable', (req, res) => {
+    res.send(JSON.stringify({appenda: req.params.appendable + "a"}))
+});
+
 app.listen(PORT, () => {
     console.log(`Server started on port: ${PORT}`);
 });
