@@ -3,8 +3,6 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 
-app.set('view engine', 'ejs');
-
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/', (req, res) => {
