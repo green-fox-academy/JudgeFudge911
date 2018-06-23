@@ -71,6 +71,7 @@ $("#appenda").on("click", function () {
         handle("#appenda_response", "OK - without appendable", err);
     });
     $.get(window.baseUrl + "/appenda/kuty", {}).done(function (data) {
+        console.log(typeof data);
         if (data.appended === "kutya") {
             handle("#appenda_response", "OK - with /kuty");
         } else {
