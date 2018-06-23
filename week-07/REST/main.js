@@ -30,7 +30,7 @@ app.get('/greeter?', (req, res) => {
 });
 
 app.get('/appenda/:appendable', (req, res) => {
-    res.send({appenda: req.params.appendable + "a"})
+    res.send({appended: req.params.appendable + "a"})
 });
 
 app.post('/dountil/:what', (req, res) => {
