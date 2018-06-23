@@ -1,9 +1,20 @@
+'use strict';
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser')
 const PORT = 8080;
 
+function isNullOrUndefined(value){
+    return value === null || value === undefined;
+}
+
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'assets/index.html'))
@@ -34,17 +45,14 @@ app.get('/appenda/:appendable', (req, res) => {
 });
 
 app.post('/dountil/:what', (req, res) => {
-    let number = req.body.until;
-    let result = 1;
-    if (number === null) {
+    if (isNullOrUndefined(req.body)) {
         res.send({error: "Please provide a number!"})
     }
-    for (let i = 1; i < number; i++) {
-        if (req.params.what === "sum") {
-            result += i;
-        } else {
-            result *= i;
-        }
+
+    let number = req.body.until;
+    let result = req.params.what === "sum" ? 0 : 1;
+    for (let i = result; i <= number; i++) {
+        req.params.what === "sum" ? result += i : result *= i;
     }
     res.send({result: result})
 });
