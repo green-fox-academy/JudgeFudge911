@@ -9,14 +9,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'assets/index.html'))
 });
 
-/*app.get('/doubling', (req, res) => {
-        res.send(JSON.stringify({error: "Please provide an input!"}));
-});*/
-
 app.get('/doubling?', (req, res) => {
     res.send(JSON.stringify((req.query.input) ?
         {recieved: Number(req.query.input), result: Number(req.query.input) * 2} :
         {error: "Please provide an input!"}))
+});
+
+app.get('/greeter?', (req, res) => {
+    if(req.query.name && req.query.title) {
+        res.send(JSON.stringify({welcome_message: `Oh, hi there ${req.query.name}, my dear ${req.query.title}!`}))
+    } else {
+        res.send(JSON.stringify({error: `Please provide a name!`}))
+    }
 });
 
 app.listen(PORT, () => {
