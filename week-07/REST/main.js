@@ -67,27 +67,61 @@ app.post('/arrays', (req, res) => {
     let what = req.body.what;
     let numbers = req.body.numbers;
     let resultSum = 0;
-    let resultMultipy = 1;
+    let resultMultiply = 1;
     let resultDoubled = [];
 
     for (let i = 0; i < numbers.length; i++) {
         if (what === "sum") {
             resultSum += numbers[i];
-            if (i === numbers.length-1) {
+            if (i === numbers.length - 1) {
                 res.send({result: resultSum})
             }
         } else if (what === "multiply") {
-            resultMultipy *= numbers[i];
-            if (i === numbers.length-1) {
-                res.send({result: resultMultipy})
+            resultMultiply *= numbers[i];
+            if (i === numbers.length - 1) {
+                res.send({result: resultMultiply})
             }
         } else {
             resultDoubled.push(numbers[i] * 2);
-            if (i === numbers.length-1) {
+            if (i === numbers.length - 1) {
                 res.send({result: resultDoubled})
             }
         }
     }
+});
+
+app.post('/sith', (req, res) => {
+    if (isNullOrUndefined(req.body)) {
+        res.send({error: "Feed me some text you have to, padawan young you are. Hmmm."});
+    }
+    let trimmedText = req.body.text.replace(". ", ".");
+    let sentences = trimmedText.split(".");
+    let yodafiedText = "";
+    let random = ["Hmmm.", "Arrgh."];
+    //Only works with . not with ? or !
+    for (let i = 0; i < sentences.length - 1; i++) {
+        let words = sentences[i].split(" ");
+        words.forEach((part, index) => {
+            words[index] = part.toLowerCase();
+        });
+        for (let j = 0; j < words.length; j += 2) {
+            if (j === 0) {
+                yodafiedText += words[j + 1].charAt(0).toUpperCase() + words[j + 1].slice(1) + " ";
+                yodafiedText += words[j] + " ";
+            } else {
+                if (words.length % 2 !== 0 && j > words.length - 2) {
+                    yodafiedText += words[j];
+                    break;
+                }
+                yodafiedText += words[j + 1] + " ";
+                yodafiedText += words[j] + " ";
+            }
+        }
+        yodafiedText += (Math.round(Math.random()) === 0) ?
+            ". " + random[Math.round(Math.random())] + " " :
+            ". " + random[Math.round(Math.random())] + " " + random[Math.round(Math.random())] + " ";
+    }
+    res.send({sith_text: yodafiedText});
 });
 
 app.listen(PORT, () => {
