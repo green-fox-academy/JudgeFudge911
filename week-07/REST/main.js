@@ -9,6 +9,10 @@ function isNullOrUndefined(value) {
     return value === null || value === undefined;
 }
 
+function isVowel(char) {
+    return ['a', 'u', 'o', 'e', 'i'].includes(char.toLowerCase());
+}
+
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -122,6 +126,22 @@ app.post('/sith', (req, res) => {
             ". " + random[Math.round(Math.random())] + " " + random[Math.round(Math.random())] + " ";
     }
     res.send({sith_text: yodafiedText});
+});
+
+app.post('/translate', (req, res) => {
+    if (isNullOrUndefined(req.body.text) && isNullOrUndefined(req.body.lang)) {
+        res.send({error: "I can't translate that!"})
+    }
+    let text = req.body.text;
+    let translatedLanguage = "teve";
+    let translatedText = "";
+    for (let char of text.split("")) {
+        translatedText = translatedText + char;
+        if (isVowel(char)) {
+            translatedText += "v" + char;
+        }
+    }
+    res.send({translated: translatedText, lang: translatedLanguage})
 });
 
 app.listen(PORT, () => {
