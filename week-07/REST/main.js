@@ -5,15 +5,15 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const PORT = 8080;
 
-function isNullOrUndefined(value){
+function isNullOrUndefined(value) {
     return value === null || value === undefined;
 }
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-})); 
+    extended: true
+}));
 
 
 app.get('/', (req, res) => {
@@ -55,6 +55,39 @@ app.post('/dountil/:what', (req, res) => {
         req.params.what === "sum" ? result += i : result *= i;
     }
     res.send({result: result})
+});
+
+app.post('/arrays', (req, res) => {
+    if (isNullOrUndefined(req.body.what)) {
+        res.send({error: "Please provide what to do with the numbers!"});
+    }
+    if (isNullOrUndefined(req.body.numbers)) {
+        res.send({error: "Please provide what to do with the numbers!"});
+    }
+    let what = req.body.what;
+    let numbers = req.body.numbers;
+    let resultSum = 0;
+    let resultMultipy = 1;
+    let resultDoubled = [];
+
+    for (let i = 0; i < numbers.length; i++) {
+        if (what === "sum") {
+            resultSum += numbers[i];
+            if (i === numbers.length-1) {
+                res.send({result: resultSum})
+            }
+        } else if (what === "multiply") {
+            resultMultipy *= numbers[i];
+            if (i === numbers.length-1) {
+                res.send({result: resultMultipy})
+            }
+        } else {
+            resultDoubled.push(numbers[i] * 2);
+            if (i === numbers.length-1) {
+                res.send({result: resultDoubled})
+            }
+        }
+    }
 });
 
 app.listen(PORT, () => {

@@ -45,6 +45,7 @@ $("#greeter").on("click", function () {
         handle("#greeter_response", "not ok - without name", "Greeter", err);
     });
     $.get(window.baseUrl + "/greeter", {name: "petike"}).done(function (data) {
+        console.log(typeof data + "greeter");
         if ("error" in data && data.error === "Please provide a title!") {
             handle("#greeter_response", "OK - without title");
         } else {
