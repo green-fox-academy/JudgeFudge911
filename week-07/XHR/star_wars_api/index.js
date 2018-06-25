@@ -4,12 +4,12 @@ const app = express();
 const path = require('path');
 const port = 3000;
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/assets', express.static('./assets'));
 
 app.get('/', (req, res) => {
-    res.sendFile('/assets.index.html')
+    res.sendFile(path.join(__dirname, '/assets/index.html'))
 });
 
 app.listen(port, () => {
-    `Server started on port ${port}`
+    console.log(`Server started on port ${port}`);
 });
