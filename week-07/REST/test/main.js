@@ -80,3 +80,93 @@ test('Appenda with valid input', (t) => {
             t.end();
         });
 });
+
+test('Dountil endpoint', (t) => {
+    request(app)
+        .post('/dountil/sum')
+        .send({until: 5})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {result: 15};
+            t.error(err);
+            t.same(res.body, expected, "Returns with sum correctly")
+        });
+    request(app)
+        .post('/dountil/multiply')
+        .send({until: 3})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {result: 6};
+            t.error(err);
+            t.same(res.body, expected, "Returns with multiply correctly")
+        });
+    request(app)
+        .post('/dountil/example')
+        .send({until: 3})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {result: 6};
+            t.error(err);
+            t.same(res.body, expected, "Returns with multiply when not a valid input");
+            t.end();
+        })
+});
+test('Arrays endpoint', (t) => {
+    request(app)
+        .post('/arrays')
+        .send({what: "example", numbers: [0, 1, 2]})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {result: [0, 2, 4]};
+            t.error(err);
+            t.same(res.body, expected, "Returns with double result when input is invalid")
+        });
+    request(app)
+        .post('/arrays')
+        .send({what: "double", numbers: [0, 1, 2]})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {result: [0, 2, 4]};
+            t.error(err);
+            t.same(res.body, expected, "Returns correctly with double input")
+        });
+    request(app)
+        .post('/arrays')
+        .send({what: "multiply", numbers: [0, 1, 2]})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {result: 0};
+            t.error(err);
+            t.same(res.body, expected, "Returns correctly with multiply input")
+        });
+    request(app)
+        .post('/arrays')
+        .send({what: "sum", numbers: [0, 1, 2]})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {result: 3};
+            t.error(err);
+            t.same(res.body, expected, "Returns correctly with sum input")
+            t.end();
+        });
+});
+
+//Can't test random generator
+/*test('Sith endpoint', (t) => {
+    request(app)
+        .post('/sith')
+        .send({text: "Example sentence. Just for fun."})
+});*/
+
+test('/translate', t => {
+    request(app)
+        .post('/translate')
+        .send({text: "Ez egy teve."})
+        .expect(200)
+        .end((err, res) => {
+            let expected = {translated: "Evez evegy teveveve.", lang: "teve"};
+            t.error(err);
+            t.same(res.body, expected, "Translation is correct");
+            t.end();
+        })
+});

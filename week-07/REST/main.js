@@ -137,7 +137,7 @@ app.post('/translate', (req, res) => {
     for (let char of text.split("")) {
         translatedText = translatedText + char;
         if (isVowel(char)) {
-            translatedText += "v" + char;
+            translatedText += "v" + char.toLowerCase();
         }
     }
     res.send({translated: translatedText, lang: translatedLanguage})
