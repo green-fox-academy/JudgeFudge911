@@ -1,21 +1,15 @@
-const GphApiClient = require('giphy-js-sdk-core');
-client = GphApiClient("Zc6j1Mm6HCTboLgfb1mFVeD7GMkYhb10");
+const ourRequest = new XMLHttpRequest();
+const container = document.querySelector('.container');
+ourRequest.open('GET', "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=Zc6j1Mm6HCTboLgfb1mFVeD7GMkYhb10&limit=16");
+ourRequest.onload = () => {
+    let ourData = JSON.parse(ourRequest.responseText);
+    console.log(ourData);
+    for (let i = 0; i < 15; i++) {
+        console.log(ourData.data[i].url);
+        let img = document.createElement('img')
+        img.src = ourData.data[i].images.original_still.url;
+        container.appendChild(img);
+    }
 
-window.onload = () => {
-
-    const http = new XMLHttpRequest();
-
-    const container = document.querySelector('.container');
-
-    http.open('GET', 'http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=Zc6j1Mm6HCTboLgfb1mFVeD7GMkYhb10&limit=16');
-
-    http.send();
-
-    console.log(http);
-
-    http.onreadystatechange = () => {
-        if (http.readyState === 4 && http.status === 200) {
-
-        }
-    };
 };
+ourRequest.send();

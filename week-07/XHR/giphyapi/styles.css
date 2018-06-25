@@ -1,5 +1,12 @@
-.container{
-    height: 300px;
+body, html, .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+img {
     width: 300px;
-    background-color: red;
+    height: 300px;
 }
