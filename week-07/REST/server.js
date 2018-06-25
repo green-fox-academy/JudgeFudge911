@@ -1,8 +1,8 @@
 'use strict';
 
-const main = require('./main');
+const app = require('./main.js');
 const port = 3000;
 
-main.listen(port, () => {
+app.listen(port, () => {
     console.log('server running on port', port);
 });
