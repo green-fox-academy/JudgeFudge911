@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const PORT = 8080;
 
 function isNullOrUndefined(value) {
@@ -143,6 +143,8 @@ app.post('/translate', (req, res) => {
     }
     res.send({translated: translatedText, lang: translatedLanguage})
 });
+
+module.exports = app;
 
 app.listen(PORT, () => {
     console.log(`Server started on port: ${PORT}`);
