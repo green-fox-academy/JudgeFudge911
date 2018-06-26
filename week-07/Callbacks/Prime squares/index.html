@@ -10,6 +10,7 @@
             box-sizing: border-box;
             font-family: arial;
         }
+
         section {
             display: grid;
             grid-auto-rows: 50px;
@@ -17,14 +18,17 @@
             width: 1000px;
             margin: 0 auto;
         }
+
         section div {
             box-shadow: 0px 0px 10px #666 inset;
             text-align: center;
             line-height: 50px;
         }
+
         .not-prime {
             background: tomato;
         }
+
         .prime {
             background: limegreen;
         }
@@ -32,7 +36,6 @@
 </head>
 <body>
 <section>
-    <div>1</div>
 </section>
 
 <script>
@@ -41,6 +44,30 @@
     // 3: Create a timer that keeps calling the prime validatior function until it reaches the end of elements
     //  - the timer should fire every 100ms
     //  - the timer should stop when there are no more elements left to be colored
+    let counter = 1;
+    const section = document.querySelector('section');
+    for (let i = 0; i < 100; i++) {
+        let div = document.createElement('div');
+        div.textContent = i + 1;
+        section.appendChild(div);
+    }
+
+    setInterval(addClass, 100);
+
+    function addClass() {
+        console.log(section.children[counter]);
+        if (counter < 101) {
+            section.children[counter].classList.add(isPrime(parseInt(section.children[counter].textContent)) ? "prime" : "not-prime");
+            counter++;
+        }
+    }
+
+    function isPrime(index) {
+        for (let i = 2; i < index; i++) {
+            if (index % i === 0) return false;
+        }
+        return true;
+    }
 </script>
 </body>
 </html>
