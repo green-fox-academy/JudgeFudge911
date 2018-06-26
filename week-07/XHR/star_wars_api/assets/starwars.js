@@ -65,6 +65,5 @@ function getMovieTitles(links) {
         };
         httpRequest.send();
     }
-    console.log(movieNames);
     createMovieList(movieNames);
 }

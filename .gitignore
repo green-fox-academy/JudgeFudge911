@@ -2,6 +2,7 @@
 out
 *.iml
 *.xml
+node_modules
 
 # if you have a mac
 .DS_Store

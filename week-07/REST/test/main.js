@@ -151,13 +151,6 @@ test('Arrays endpoint', (t) => {
         });
 });
 
-//Can't test random generator
-/*test('Sith endpoint', (t) => {
-    request(app)
-        .post('/sith')
-        .send({text: "Example sentence. Just for fun."})
-});*/
-
 test('/translate', t => {
     request(app)
         .post('/translate')
