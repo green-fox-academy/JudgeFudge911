@@ -12,6 +12,19 @@
     display: flex;
 }
 
+.listContainer{
+    display: flex;
+}
+
+.charList{
+    margin-left: 20px;
+    list-style: none;
+}
+
+.movieList{
+    list-style: none;
+}
+
 .inputLabel {
 
 }
