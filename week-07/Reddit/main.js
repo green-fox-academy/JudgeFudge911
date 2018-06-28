@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -12,15 +14,13 @@ const connection = mysql.createConnection({
     database: 'reddit',
 });
 
-
 app.get('/posts', (req, res) => {
     //Headers
     //Response
     res.status(200);
-    res.setHeader('Content-Type', 'application/json');
     let sql = 'SELECT * FROM post;';
     connection.query(sql, (err, posts) => {
-        if (err){
+        if (err) {
             console.log("Error: GET /posts");
             return;
         }
@@ -31,6 +31,27 @@ app.get('/posts', (req, res) => {
 
 });
 
+app.post('/posts', jsonParser , (req, res) => {
+    let userInput = req.body;
+    let sql = `INSERT INTO post (title, url, user_id, content) VALUES ('${userInput.title}', '${userInput.url}', (SELECT user_id FROM user WHERE user_id = 1), 'blob')`;
+    connection.query(sql, (err, post) => {
+        if (err) {
+            console.log("Error: POST /posts");
+            return;
+        }
+        let resSql = `SELECT * FROM post WHERE post_id = ${post.insertId}`;
+        connection.query(resSql, (err, addedPost) => {
+            if(err){
+                console.log('Error: POST /posts inner sql');
+            }
+            res.json({
+                addedPost
+            });
+        });
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
+
