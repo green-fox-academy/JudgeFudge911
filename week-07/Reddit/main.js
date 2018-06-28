@@ -31,7 +31,7 @@ app.get('/posts', (req, res) => {
 
 });
 
-app.post('/posts', jsonParser , (req, res) => {
+app.post('/posts', jsonParser, (req, res) => {
     let userInput = req.body;
     let sql = `INSERT INTO post (title, url, user_id, content) VALUES ('${userInput.title}', '${userInput.url}', (SELECT user_id FROM user WHERE user_id = 1), 'blob')`;
     connection.query(sql, (err, post) => {
@@ -41,7 +41,7 @@ app.post('/posts', jsonParser , (req, res) => {
         }
         let resSql = `SELECT * FROM post WHERE post_id = ${post.insertId}`;
         connection.query(resSql, (err, addedPost) => {
-            if(err){
+            if (err) {
                 console.log('Error: POST /posts inner sql');
             }
             res.json({
@@ -50,6 +50,29 @@ app.post('/posts', jsonParser , (req, res) => {
         });
     });
 });
+
+app.put('/posts/:id/upvote', jsonParser, (req, res) => {
+    let postId = req.params.id;
+    console.log(postId);
+    let sql = `UPDATE post SET score = score + 1 WHERE post_id = ${postId};`;
+    console.log(sql);
+    connection.query(sql, (err, post) => {
+        if (err) {
+            console.log('Error: PUT upvote');
+            return;
+        }
+        let resSql = `SELECT * FROM post WHERE post_id = ${postId}`;
+        connection.query(resSql, (err, upvotedPost) => {
+            if (err) {
+                console.log('Error: PUT upvote inner sql');
+            }
+            res.json({
+                upvotedPost
+            });
+        });
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
