@@ -13,8 +13,22 @@ const connection = mysql.createConnection({
 });
 
 
-app.get('/hello', (req, res) => {
-    res.send('hello');
+app.get('/posts', (req, res) => {
+    //Headers
+    //Response
+    res.status(200);
+    res.setHeader('Content-Type', 'application/json');
+    let sql = 'SELECT * FROM post;';
+    connection.query(sql, (err, posts) => {
+        if (err){
+            console.log("Error: GET /posts");
+            return;
+        }
+        res.json({
+            posts
+        })
+    });
+
 });
 
 app.listen(port, () => {
