@@ -73,6 +73,29 @@ app.put('/posts/:id/upvote', jsonParser, (req, res) => {
     });
 });
 
+app.put('/posts/:id/downvote', jsonParser, (req, res) => {
+    let postId = req.params.id;
+    console.log(postId);
+    let sql = `UPDATE post SET score = score - 1 WHERE post_id = ${postId};`;
+    console.log(sql);
+    connection.query(sql, (err, post) => {
+        if (err) {
+            console.log('Error: PUT downvote');
+            return;
+        }
+        let resSql = `SELECT * FROM post WHERE post_id = ${postId}`;
+        connection.query(resSql, (err, downvotedPost) => {
+            if (err) {
+                console.log('Error: PUT downvote inner sql');
+            }
+            res.json({
+                downvotedPost
+            });
+        });
+    });
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
