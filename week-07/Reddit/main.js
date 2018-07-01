@@ -33,20 +33,18 @@ app.get('/posts', (req, res) => {
 
 app.post('/posts', jsonParser, (req, res) => {
     let userInput = req.body;
-    let sql = `INSERT INTO post (title, url, user_id, content) VALUES ('${userInput.title}', '${userInput.url}', (SELECT user_id FROM user WHERE user_id = 1), 'blob')`;
+    let sql = `INSERT INTO post (title, url) VALUES ('${userInput.title}', '${userInput.url}')`;
     connection.query(sql, (err, post) => {
         if (err) {
             console.log("Error: POST /posts");
             return;
         }
-        let resSql = `SELECT * FROM post WHERE post_id = ${post.insertId}`;
+        let resSql = `SELECT id, title, url, UNIX_TIMESTAMP(date) AS date, score FROM post WHERE id = ${post.insertId}`;
         connection.query(resSql, (err, addedPost) => {
             if (err) {
                 console.log('Error: POST /posts inner sql');
             }
-            res.json({
-                addedPost
-            });
+            res.json(addedPost);
         });
     });
 });
