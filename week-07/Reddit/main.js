@@ -52,21 +52,18 @@ app.post('/posts', jsonParser, (req, res) => {
 app.put('/posts/:id/upvote', jsonParser, (req, res) => {
     let postId = req.params.id;
     console.log(postId);
-    let sql = `UPDATE post SET score = score + 1 WHERE post_id = ${postId};`;
-    console.log(sql);
+    let sql = `UPDATE post SET score = score + 1 WHERE id = ${postId};`;
     connection.query(sql, (err, post) => {
         if (err) {
             console.log('Error: PUT upvote');
             return;
         }
-        let resSql = `SELECT * FROM post WHERE post_id = ${postId}`;
+        let resSql = `SELECT id, title, url, UNIX_TIMESTAMP(date) AS date, score FROM post WHERE id = ${postId}`;
         connection.query(resSql, (err, upvotedPost) => {
             if (err) {
                 console.log('Error: PUT upvote inner sql');
             }
-            res.json({
-                upvotedPost
-            });
+            res.json(upvotedPost);
         });
     });
 });
@@ -92,7 +89,6 @@ app.put('/posts/:id/downvote', jsonParser, (req, res) => {
         });
     });
 });
-
 
 
 app.listen(port, () => {
