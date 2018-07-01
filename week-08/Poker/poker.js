@@ -28,17 +28,20 @@ let black = [
 ];
 
 let white = [
-  new Card("6", "c"),
-  new Card("2", "h"),
-  new Card("a", "s"),
-  new Card("9", "c"),
-  new Card("1", "h")
+  new Card("2", "c"),
+  new Card("3", "h"),
+  new Card("4", "s"),
+  new Card("8", "c"),
+  new Card("a", "h")
 ];
 
-compareHands(black, white);
+function compareHands(black, white) {}
 
-function compareHands(black, white) {
-  console.log(white.sort(compareValues));
+function findHighCard(black, white) {
+  return black.sort(compareValues)[black.length] >
+    white.sort(compareValues)[white.length]
+    ? "Black wins"
+    : "White wins";
 }
 
 function compareValues(cardOne, cardTwo) {
@@ -52,7 +55,7 @@ function compareValues(cardOne, cardTwo) {
   }
 
   if (isNumber.test(a) && isNumber.test(b)) {
-   return (a > b) ? 1 : -1;
+    return a > b ? 1 : -1;
   }
 
   if (isNumber.test(a)) {
@@ -65,8 +68,8 @@ function compareValues(cardOne, cardTwo) {
 
   let valueOrder = "tjqka";
 
- let aValue = valueOrder.indexOf(a);
- let bValue = valueOrder.indexOf(b);
+  let aValue = valueOrder.indexOf(a);
+  let bValue = valueOrder.indexOf(b);
 
   return aValue > bValue ? 1 : -1;
 }
