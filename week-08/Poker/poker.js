@@ -8,19 +8,29 @@ class Hand {
 
 class Card {
   constructor(suit, value) {
-      let validSuits = new RegExp("[cdhs]");
-          if (validSuits.test(suit.toLowerCase())) {
-      this.suit = suit;
-    }
-    let validValues = new RegExp("[0-9|tjqka]");
-    if (validValues.test(value.toLowerCase)) {
-      this.value = value;
+    if (
+      typeof suit === "string" &&
+      typeof value === "string" &&
+      value.length === 1
+    ) {
+      let validSuits = /[cdhs]/gi;
+      if (validSuits.test(suit)) {
+        this.suit = suit.toLowerCase();
+      }
+      let validValues = /[0-9tjqka]/gi;
+      if (validValues.test(value)) {
+        this.value = value.toLowerCase();
+      }
+      console.log(this);
+
+    } else {
+      console.log("Some tricky buisness");
     }
   }
 }
 
-let firstCard = new Card("C","2");
-let secondCard = new Card("x","2");
-let thirdCard = new Card("c","2");
-let fourthCard = new Card("p","2");
-let fifthCard = new Card(0,"2");
+let firstCard = new Card("c", "j");
+let secondCard = new Card("c", "2");
+let thirdCard = new Card("D", "2");
+let fourthCard = new Card("H", "2");
+let fifthCard = new Card("S", "2");
