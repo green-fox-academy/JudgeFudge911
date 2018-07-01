@@ -7,30 +7,40 @@ class Hand {
 }
 
 class Card {
-  constructor(suit, value) {
+  constructor(value, suit) {
     if (
       typeof suit === "string" &&
       typeof value === "string" &&
       value.length === 1
     ) {
-      let validSuits = /[cdhs]/gi;
-      if (validSuits.test(suit)) {
-        this.suit = suit.toLowerCase();
-      }
       let validValues = /[0-9tjqka]/gi;
       if (validValues.test(value)) {
         this.value = value.toLowerCase();
       }
-      console.log(this);
-
-    } else {
-      console.log("Some tricky buisness");
+      let validSuits = /[cdhs]/gi;
+      if (validSuits.test(suit)) {
+        this.suit = suit.toLowerCase();
+      }
     }
   }
 }
+let black = new Hand([
+  new Card("2", "H"),
+  new Card("3", "D"),
+  new Card("5", "S"),
+  new Card("9", "C"),
+  new Card("K", "D")
+]);
 
-let firstCard = new Card("c", "j");
-let secondCard = new Card("c", "2");
-let thirdCard = new Card("D", "2");
-let fourthCard = new Card("H", "2");
-let fifthCard = new Card("S", "2");
+let white = new Hand([
+  new Card("2", "c"),
+  new Card("3", "h"),
+  new Card("4", "s"),
+  new Card("8", "c"),
+  new Card("a", "h")
+]);
+
+
+function compareHands(black, white){
+
+}
