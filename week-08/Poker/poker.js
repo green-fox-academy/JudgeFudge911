@@ -1,11 +1,5 @@
 "use strict";
 
-class Hand {
-  constructor(cards) {
-    this.cards = cards;
-  }
-}
-
 class Card {
   constructor(value, suit) {
     if (
@@ -24,23 +18,59 @@ class Card {
     }
   }
 }
-let black = new Hand([
+
+let black = [
   new Card("2", "H"),
   new Card("3", "D"),
   new Card("5", "S"),
   new Card("9", "C"),
   new Card("K", "D")
-]);
+];
 
-let white = new Hand([
-  new Card("2", "c"),
-  new Card("3", "h"),
-  new Card("4", "s"),
-  new Card("8", "c"),
-  new Card("a", "h")
-]);
+let white = [
+  new Card("6", "c"),
+  new Card("2", "h"),
+  new Card("a", "s"),
+  new Card("9", "c"),
+  new Card("1", "h")
+];
 
+compareHands(black, white);
 
-function compareHands(black, white){
+function compareHands(black, white) {
+  console.log(white.sort(compareValues));
+}
 
+function compareValues(cardOne, cardTwo) {
+  //if cardOne is bigger it returns 1, if they are equal 0 else -1.
+  let a = cardOne.value;
+  let b = cardTwo.value;
+  let isNumber = /[0-9]/;
+
+  if (a === b) {
+    return 0;
+  }
+
+  if (isNumber.test(a) && isNumber.test(b)) {
+    if (a > b) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
+  if (isNumber.test(a)) {
+    return -1;
+  }
+
+  if (isNumber.test(b)) {
+    return 1;
+  }
+
+  let valueOrder = "tjqka";
+
+ let aValue = valueOrder.indexOf(a);
+ let bValue = valueOrder.indexOf(b);
+
+  return aValue > bValue ? 1 : -1;
 }
