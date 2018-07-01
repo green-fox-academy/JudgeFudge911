@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <link rel="stylesheet" href="/assets/posts.css"/>
+</head>
+<body>
+<div class="headerBox">
+    <img class="headerBackground" src="/assets/images/headerBackground.jpg" alt="Header">
+</div>
+<div class="contentBox">
+    <div class="postsContainer">
+        <% posts.forEach(e => { %>
+        <div class="post" id="<%= e.post_id %>">
+            <div class="postScore">
+                <img class="upvote" src="/assets/images/upvote.png" alt="upvote">
+                <p class="score"><%= e.score %></p>
+                <img class="downvote" src="/assets/images/downvote.png" alt="downvote">
+            </div>
+            <div class="postContent">
+                <a class="postTitle" href="<%= "localhost:3000/posts" + e.url %>"><%= e.title %></a>
+                <p class="description">Submitted <%= e.date %> seconds ago</p>
+            </div>
+            <div class="postButtons">
+                <button class="modifyButton">modify</button>
+                <button class="removeButton">remove</button>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+    <button class="addPostButton">ADD POST</button>
+</div>
+<script src="/assets/posts.js"></script>
+</body>
+</html>

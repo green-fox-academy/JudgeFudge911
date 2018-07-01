@@ -65,6 +65,8 @@ app.set('view engine', 'ejs');
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
+app.get('route', );
+
 app.get('/', (req, res) => {
     res.render('dashboard', {forecasts});
 });
@@ -77,3 +79,12 @@ app.get('/cities/:id', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Listening to port ${PORT}`);
 });
+
+
+function hello (name) {
+    return name + "hi!";
+}
+
+let hello = (name, anotherone, hasdjalskd, asdasd) => {
+    return name + "hi!";
+}

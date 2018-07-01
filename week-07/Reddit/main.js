@@ -6,8 +6,11 @@ const port = 3000;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+const path = require('path');
 
-app.use(express.static('public'));
+app.set('view engine', 'ejs');
+
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -17,20 +20,15 @@ const connection = mysql.createConnection({
 });
 
 app.get('/posts', (req, res) => {
-    //Headers
-    //Response
     res.status(200);
-    let sql = 'SELECT * FROM post;';
+    let sql = 'SELECT id, title, url, UNIX_TIMESTAMP(date) AS date, score  FROM post;';
     connection.query(sql, (err, posts) => {
         if (err) {
             console.log("Error: GET /posts");
             return;
         }
-        res.json({
-            posts
-        })
+        res.render('posts', {posts});
     });
-
 });
 
 app.post('/posts', jsonParser, (req, res) => {
