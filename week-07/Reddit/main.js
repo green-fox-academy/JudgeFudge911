@@ -21,7 +21,7 @@ const connection = mysql.createConnection({
 
 app.get('/posts', (req, res) => {
     res.status(200);
-    let sql = 'SELECT id, title, url, UNIX_TIMESTAMP(date) AS date, score  FROM post;';
+    let sql = 'SELECT id, title, url, UNIX_TIMESTAMP(timestamp) AS timestamp, score  FROM post;';
     connection.query(sql, (err, posts) => {
         if (err) {
             console.log("Error: GET /posts");
@@ -39,7 +39,7 @@ app.post('/posts', jsonParser, (req, res) => {
             console.log("Error: POST /posts");
             return;
         }
-        let resSql = `SELECT id, title, url, UNIX_TIMESTAMP(date) AS date, score FROM post WHERE id = ${post.insertId}`;
+        let resSql = `SELECT id, title, url, UNIX_TIMESTAMP(timestamp) AS timestamp, score FROM post WHERE id = ${post.insertId}`;
         connection.query(resSql, (err, addedPost) => {
             if (err) {
                 console.log('Error: POST /posts inner sql');
@@ -51,14 +51,13 @@ app.post('/posts', jsonParser, (req, res) => {
 
 app.put('/posts/:id/upvote', jsonParser, (req, res) => {
     let postId = req.params.id;
-    console.log(postId);
     let sql = `UPDATE post SET score = score + 1 WHERE id = ${postId};`;
     connection.query(sql, (err, post) => {
         if (err) {
             console.log('Error: PUT upvote');
             return;
         }
-        let resSql = `SELECT id, title, url, UNIX_TIMESTAMP(date) AS date, score FROM post WHERE id = ${postId}`;
+        let resSql = `SELECT id, title, url, UNIX_TIMESTAMP(timestamp) AS timestamp, score FROM post WHERE id = ${postId}`;
         connection.query(resSql, (err, upvotedPost) => {
             if (err) {
                 console.log('Error: PUT upvote inner sql');
@@ -70,22 +69,18 @@ app.put('/posts/:id/upvote', jsonParser, (req, res) => {
 
 app.put('/posts/:id/downvote', jsonParser, (req, res) => {
     let postId = req.params.id;
-    console.log(postId);
-    let sql = `UPDATE post SET score = score - 1 WHERE post_id = ${postId};`;
-    console.log(sql);
+    let sql = `UPDATE post SET score = score - 1 WHERE id = ${postId};`;
     connection.query(sql, (err, post) => {
         if (err) {
             console.log('Error: PUT downvote');
             return;
         }
-        let resSql = `SELECT * FROM post WHERE post_id = ${postId}`;
+        let resSql = `SELECT id, title, url, UNIX_TIMESTAMP(timestamp) AS timestamp, score FROM post WHERE id = ${postId}`;
         connection.query(resSql, (err, downvotedPost) => {
             if (err) {
                 console.log('Error: PUT downvote inner sql');
             }
-            res.json({
-                downvotedPost
-            });
+            res.json(downvotedPost);
         });
     });
 });
