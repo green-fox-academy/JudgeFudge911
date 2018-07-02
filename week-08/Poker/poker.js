@@ -1,7 +1,5 @@
-'use strict';
+"use strict";
 
-const poker = module.exports = {};
-
-exports.sumValues = () => {
-    return 0;
-}
+exports.sumValues = (handOne, handTwo) => {
+  return 0;
+};

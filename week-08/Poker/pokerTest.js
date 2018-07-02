@@ -1,10 +1,13 @@
-'use strict';
+"use strict";
 
-const poker = require('./poker.js');
+const poker = require("./poker.js");
 
-const test = require('tape');
+const test = require("tape");
 
-test('try', (t) => {
-    t.equal(poker.sumValues,0)
-    t.end();
+let blackHand = ["2H", "3D"];
+let whiteHand = ["2C", "4H"];
+
+test("Add values together", t => {
+  t.equal(poker.sumValues(blackHand, whiteHand), "White wins");
+  t.end();
 });
