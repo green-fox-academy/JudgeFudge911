@@ -4,10 +4,20 @@ const poker = require("./poker.js");
 
 const test = require("tape");
 
-let blackHand = ["2H", "3D"];
-let whiteHand = ["2C", "4H"];
+let blackHand = ["2H", "4H"];
+let whiteHand = ["2H", "AH"];
 
-test("Add values together", t => {
-  t.equal(poker.sumValues(blackHand, whiteHand), "White wins");
+test("Compare hands", t => {
+  t.equal(poker.compareValues(blackHand, whiteHand), -1);
+  t.end();
+});
+
+test("Get highest value", t => {
+  t.equal(poker.findHighest(blackHand), "4H");
+  t.end();
+});
+
+test("Check if flush", t => {
+  t.equal(poker.isFlush(blackHand), true);
   t.end();
 });
