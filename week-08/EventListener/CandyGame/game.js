@@ -16,6 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  function isWon() {
+    if (getNumberOfCandies() > 10000) {
+      consol.log("Yay you won!");
+    }
+  }
+
   function clock() {
     seconds++;
   }
@@ -39,9 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createCandy(e, quantity = 1) {
     candies.innerHTML = getNumberOfCandies() + quantity;
-    if (getNumberOfCandies() > 10000) {
-      console.log("You won!");
-    }
+    isWon();
   }
 
   function buyLollypop() {
