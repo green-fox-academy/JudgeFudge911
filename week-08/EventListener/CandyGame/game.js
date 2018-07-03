@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateProductionSpeed() {
     production.innerHTML = Math.floor(
-      (getNumberOfLollypops() / 10) * generationBonus / 100
+      ((getNumberOfLollypops() / 10) * generationBonus) / 100
     );
   }
 
@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createCandy(e, quantity = 1) {
     candies.innerHTML = getNumberOfCandies() + quantity;
+    if (getNumberOfCandies() > 10000) {
+      console.log("You won!");
+    }
   }
 
   function buyLollypop() {
