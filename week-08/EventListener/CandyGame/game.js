@@ -4,24 +4,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const rainButton = document.querySelector(".candy-machine");
   const lollypops = document.querySelector(".lollypops");
   const candies = document.querySelector(".candies");
-  let numberOfLollypops = lollypops.childElementCount;
+  let seconds = 0;
+
+  setInterval(clock, 1000);
+
+  function clock() {
+    seconds++;
+  }
 
   function getNumberOfCandies() {
-    return parseInt(candies.innerHTML)
+    return parseInt(candies.innerHTML);
+  }
+
+  function getNumberOfLollypops() {
+    return lollypops.innerHTML.length / 2;
   }
 
   createButton.addEventListener("click", createCandy);
   buyButton.addEventListener("click", buyLollypop);
   rainButton.addEventListener("click", makeItRain);
 
-  function createCandy() {
-    candies.innerHTML = getNumberOfCandies() + 1;
+  setInterval(() => {
+    createCandy(undefined, Math.floor(getNumberOfLollypops() / 10));
+  }, 1000);
+
+  function createCandy(e, quantity = 1) {
+    candies.innerHTML = getNumberOfCandies() + quantity;
   }
 
   function buyLollypop() {
     if (getNumberOfCandies() >= 10) {
       lollypops.innerHTML += "\u{1F36D}";
-      candies.innerHTML = getNumberOfCandies()-10;
+      candies.innerHTML = getNumberOfCandies() - 10;
     } else {
       console.log("Error: not enough candies to buy lolly");
     }
