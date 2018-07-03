@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function isWon() {
     if (getNumberOfCandies() > 10000) {
-      consol.log("Yay you won!");
+      console.log("Yay you won!");
     }
   }
 
