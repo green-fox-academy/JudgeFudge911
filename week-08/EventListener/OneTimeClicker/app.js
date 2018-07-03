@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   button.addEventListener("click", logTime);
 
   function logTime(e) {
+    console.log(e);
     console.log(e.timeStamp);
-    button.disabled = true;
-    button.removeEventListener("click", logTime);
+  /*   button.disabled = true;
+    button.removeEventListener("click", logTime); */
   }
 });
