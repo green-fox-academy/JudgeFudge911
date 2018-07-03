@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(clock, 1000);
 
   function updateProductionSpeed() {
-    production.innerHTML =
-      (Math.floor(getNumberOfLollypops() / 10 * generationBonus) / 100);
+    production.innerHTML = Math.floor(
+      (getNumberOfLollypops() / 10) * generationBonus / 100
+    );
   }
 
   function clock() {
