@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function isWon() {
     if (getNumberOfCandies() > 10000) {
-      console.log("Yay you won!");
+      console.log("Yay y0ou won!");
     }
   }
 
@@ -39,7 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
   rainButton.addEventListener("click", makeItRain);
 
   setInterval(() => {
-    createCandy(undefined, Math.floor(getNumberOfLollypops() / 10));
+    createCandy(
+      undefined,
+      (Math.floor(getNumberOfLollypops() / 10) * generationBonus) / 100
+    );
     updateProductionSpeed();
   }, 1000);
 
@@ -58,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function makeItRain() {
-    generationBonus += 10;
+    generationBonus *= 10;
     updateProductionSpeed;
   }
 });
