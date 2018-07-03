@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   buyButton.addEventListener("click", buyLollypop);
   rainButton.addEventListener("click", makeItRain);
 
-  function createCandy() {}
+  function createCandy() {
+    candies.innerHTML = getNumberOfCandies() + 1;
+  }
 
   function buyLollypop() {
     if (getNumberOfCandies() >= 10) {
