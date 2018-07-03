@@ -4,14 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const rainButton = document.querySelector(".candy-machine");
   const lollypops = document.querySelector(".lollypops");
   const candies = document.querySelector(".candies");
-  const production = document.querySelector('.speed');
+  const production = document.querySelector(".speed");
   let seconds = 0;
   let generationBonus = 100;
 
   setInterval(clock, 1000);
 
-  function updateProductionSpeed(){
-    production.innerHTML = Math.floor(getNumberOfLollypops() / 10) * generationBonus/100;
+  function updateProductionSpeed() {
+    production.innerHTML =
+      (Math.floor(getNumberOfLollypops() / 10 * generationBonus) / 100);
   }
 
   function clock() {
