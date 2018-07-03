@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const lollypops = document.querySelector(".lollypops");
   const candies = document.querySelector(".candies");
   let numberOfLollypops = lollypops.childElementCount;
-  let numberOfCandies = candies.innerHTML;
+
+  function getNumberOfCandies() {
+    return parseInt(candies.innerHTML)
+  }
 
   createButton.addEventListener("click", createCandy);
   buyButton.addEventListener("click", buyLollypop);
@@ -14,10 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function createCandy() {}
 
   function buyLollypop() {
-      console.log(numberOfCandies);
-
-    if (numberOfCandies >= 10) {
+    if (getNumberOfCandies() >= 10) {
       lollypops.innerHTML += "\u{1F36D}";
+      candies.innerHTML = getNumberOfCandies()-10;
     } else {
       console.log("Error: not enough candies to buy lolly");
     }
