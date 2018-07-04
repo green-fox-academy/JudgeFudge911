@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Button Disable</title>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    <form>
+        <fieldset class="favouritePetFieldset">
+            <legend>What is your favourite pet?</legend>
+            <label class="favouritePetLabel">
+                <span class="favouritePetSpan">Dog</span>
+                <input value="Dog" type="radio" name="radioButtons" id="favouritePetRadio">
+            </label>
+            <label class="favouritePetLabel">
+                <span class="favouritePetSpan">Cat</span>
+                <input value="Cat" type="radio" name="radioButtons" id="favouritePetRadio">
+            </label>
+            <label class="favouritePetLabel">
+                <span class="favouritePetSpan">Viktor the goldfish</span>
+                <input value="Viktor" type="radio" name="radioButtons" id="favouritePetRadio">
+            </label>
+        </fieldset>
+        <fieldset class="signUpCatFieldset">
+            <legend>Do you want to sign up for cat facts?</legend>
+            <label for="" class="signUpCatLabel">
+                <span class="signUpCatspan">Yes</span>
+                <input value="Yes" type="radio" name="factsRadio" class="signUpCatInput">
+            </label>
+            <label for="" class="signUpCatLabel">
+                <span class="signUpCatspan">No</span>
+                <input value="No" type="radio" name="factsRadio" class="signUpCatInput">
+            </label>
+        </fieldset>
+        <button class="loveCats" disabled>I love cats</button>
+        <button class="signUp" disabled>Sign up</button>
+    </form>
+</body>
+
+</html>
