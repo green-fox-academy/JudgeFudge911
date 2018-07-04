@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Newsletter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./server.js"></script>
+</head>
+
+<body>
+    <!-- They forced me to do it with method and action -->
+    <form method="post" action="http://localhost:3000/signup">
+        <label class="usernameLabel">
+            <span class="usernameSpan"></span>
+            <input class="usernameInput" type="text" name="username" required>
+        </label>
+        <label class="emailLabel">
+            <span class="emailSpan"></span>
+            <input class="emailInput" type="email" name="email" required>
+        </label>
+    </form>
+</body>
+
+</html>
