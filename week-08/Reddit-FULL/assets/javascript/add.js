@@ -20,6 +20,6 @@ window.onload = () => {
       }).then(res => res.json());
     };
 
-    postData('http://localhost:3000/posts', newPost);
+    postData('http://localhost:3000/posts/add', newPost);
   }
 };

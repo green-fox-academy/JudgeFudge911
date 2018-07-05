@@ -34,7 +34,18 @@ app.get('/', (req, res) => {
 app.get('/posts/add', (req, res) => {
   res.sendFile(createAbsolutePath('/views/add.html'));
 });
-app.post('/posts/add', (req, res) => {});
+app.post('/posts/add', (req, res) => {
+  let sql = `INSERT INTO posts (title, url, user_id)
+  VALUES ('${req.body.title}', '${
+    req.body.url
+  }', (SELECT user_id FROM users WHERE name='${req.headers.username}'))`;
+  conn.query(sql, (err, data) => {
+    if (err) {
+      console.log('Error: POST /posts');
+    }
+    res.json({ message: 'ok' });
+  });
+});
 
 app.get('/posts/modify', (req, res) => {
   res.sendFile(createAbsolutePath('/views/modify.html'));
@@ -50,7 +61,8 @@ app.get('/data/posts', (req, res) => {
     res.status(401).send();
     return;
   }
-  let sql = `SELECT post_id, title, url, timestamp, score, name, vote FROM posts JOIN users USING(user_id) JOIN votes USING(post_id) WHERE votes.user_id='${req.headers.username}'`;
+  // vote JOIN votes USING(post_id) WHERE votes.user_id='${req.headers.username}'
+  let sql = `SELECT post_id, title, url, timestamp, score, name FROM posts JOIN users USING(user_id)`;
   conn.query(sql, (err, posts) => {
     if (err) {
       res.json({
@@ -62,20 +74,7 @@ app.get('/data/posts', (req, res) => {
   });
 });
 
-app.post('/posts', (req, res) => {
-  let sql = `INSERT INTO posts (title, url, user_id)
-  VALUES ('${req.body.title}', '${
-    req.body.url
-  }', (SELECT user_id FROM users WHERE name='${req.headers.username}'))`;
-  conn.query(sql, (err, data) => {
-    if (err) {
-      console.log('Error: POST /posts');
-    }
-    res.json({ message: 'ok' });
-  });
-});
 app.delete('/posts', (req, res) => {});
-app.put('/posts', (req, res) => {});
 
 app.get('/signin', (req, res) => {
   res.sendFile(createAbsolutePath('/views/signIn.html'));

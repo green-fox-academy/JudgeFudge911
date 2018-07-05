@@ -34,7 +34,6 @@ window.onload = () => {
   function createPost(post) {
     let card = document.createElement('div');
     card.classList.add('card');
-    card.addEventListener('click', buttonHandler);
 
     let title = document.createElement('h1');
     title.classList.add('title');
@@ -80,11 +79,15 @@ window.onload = () => {
     if (post.name == localStorage.getItem('user')) {
       let modify = document.createElement('button');
       modify.classList.add('modify');
+      modify.setAttribute('data-post_id', post.post_id);
       modify.innerHTML = 'Modify';
+      modify.addEventListener('click', modifyPost);
 
       let remove = document.createElement('button');
       remove.classList.add('remove');
+      remove.setAttribute('data-post_id', post.post_id);
       remove.innerHTML = 'Remove';
+      remove.addEventListener('click', removePost);
 
       buttonContainer = document.createElement('div');
       buttonContainer.classList.add('buttonContainer');
@@ -102,7 +105,12 @@ window.onload = () => {
     });
   }
 
-  function buttonHandler(e) {
-    //TODO handle modify and remove
+  function modifyPost(e) {
+    localStorage.setItem('modify', `${e.target.getAttribute('data-post_id')}`);
+    window.location = 'http://localhost:3000/posts/modify';
+  }
+
+  function removePost(e){
+
   }
 };
