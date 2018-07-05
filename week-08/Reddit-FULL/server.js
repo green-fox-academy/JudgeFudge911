@@ -32,12 +32,12 @@ app.get("/posts/add", (req, res) => {
 app.post("/posts/add", (req, res) => {});
 
 app.get("/posts/modify", (req, res) => {
-  res.sendFile(createAbsolutePath("/modify.html"));
+  res.sendFile(createAbsolutePath("/views/modify.html"));
 });
 app.post("/posts/modify", (req, res) => {});
 
 app.get("/posts", (req, res) => {
-  res.sendFile(createAbsolutePath("/posts.html"));
+  res.sendFile(createAbsolutePath("/views/posts.html"));
 });
 
 app.get("/data", (req, res) => {
@@ -56,12 +56,12 @@ app.delete("/posts", (req, res) => {});
 app.put("/posts", (req, res) => {});
 
 app.get("/signin", (req, res) => {
-  res.sendFile(createAbsolutePath("/signin.html"));
+  res.sendFile(createAbsolutePath("/views/signin.html"));
 });
 app.post("/signin", (req, res) => {});
 
 app.get("/signup", (req, res) => {
-  res.sendFile(createAbsolutePath("/signup.html"));
+  res.sendFile(createAbsolutePath("/views/signup.html"));
 });
 app.post("/signup", (req, res) => {});
 
