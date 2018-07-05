@@ -23,7 +23,7 @@ window.onload = () => {
 
     let postData = (url, data) => {
       return fetch(url, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           username: localStorage.getItem('user' || ''),
           'Content-Type': 'application/json'

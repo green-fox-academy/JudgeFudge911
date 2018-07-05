@@ -40,24 +40,27 @@ window.onload = () => {
     title.innerHTML = post.title;
 
     let upvote = document.createElement('img');
-    //TODO check if he upvoted it
+    upvote.addEventListener('click', upvotePost);
     upvote.src =
       post.name == localStorage.getItem('user')
         ? '../images/upvoted.png'
         : '../images/upvote.png';
     upvote.classList.add('upvote');
+    upvote.setAttribute('data-post_id', post.post_id);
 
     let downvote = document.createElement('img');
-    //TODO check if he upvoted it
+    downvote.addEventListener('click', downvotePost);
     downvote.src =
       post.name == localStorage.getItem('user')
         ? '../images/downvoted.png'
         : '../images/downvote.png';
     downvote.classList.add('downvote');
+    downvote.setAttribute('data-post_id', post.post_id);
 
     let score = document.createElement('p');
     score.classList.add('score');
     score.innerHTML = post.score;
+    score.setAttribute('data-post_id', post.post_id);
 
     let scoreContainer = document.createElement('div');
     scoreContainer.classList.add('scoreContainer');
@@ -110,7 +113,35 @@ window.onload = () => {
     window.location = 'http://localhost:3000/posts/modify';
   }
 
-  function removePost(e){
+  function removePost(e) {}
 
+  function downvotePost(e) {
+    console.log('me vote down');
+  }
+
+  function upvotePost(e) {
+    let postData = url => {
+      return fetch(url, {
+        method: 'PUT',
+        headers: {
+          username: localStorage.getItem('user' || ''),
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          let scores = document.querySelectorAll('.score');
+          scores.forEach(e => {
+            if (e.getAttribute('data-post_id') == data[0].post_id) {
+              e.innerHTML = parseInt(e.innerHTML) + 1;
+            }
+          });
+        });
+    };
+    postData(
+      `http://localhost:3000/posts/${e.target.getAttribute(
+        'data-post_id'
+      )}/upvote`
+    );
   }
 };

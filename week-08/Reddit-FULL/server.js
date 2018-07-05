@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 app.get('/posts/add', (req, res) => {
   res.sendFile(createAbsolutePath('/views/add.html'));
 });
+
 app.post('/posts/add', (req, res) => {
   let sql = `INSERT INTO posts (title, url, user_id)
   VALUES ('${req.body.title}', '${
@@ -50,7 +51,8 @@ app.post('/posts/add', (req, res) => {
 app.get('/posts/modify', (req, res) => {
   res.sendFile(createAbsolutePath('/views/modify.html'));
 });
-app.post('/posts/modify', (req, res) => {
+
+app.put('/posts/modify', (req, res) => {
   let sql = `UPDATE posts
     SET title = '${req.body.title}',
     url = '${req.body.url}'
@@ -66,6 +68,29 @@ app.post('/posts/modify', (req, res) => {
 app.get('/posts', (req, res) => {
   res.sendFile(createAbsolutePath('/views/posts.html'));
 });
+
+app.put('/posts/:id/upvote', (req, res) => {
+  let sql = `UPDATE posts
+    SET score = score+1
+    WHERE post_id = ${req.params.id};`;
+  conn.query(sql, (err, upvoted) => {
+    if (err) {
+      console.log('Error: put /posts/:id/upvote');
+      return;
+    }
+    let resSql = `SELECT post_id, title, url, UNIX_TIMESTAMP(timestamp) AS timestamp, score FROM posts WHERE post_id = ${
+      req.params.id
+    }`;
+    conn.query(resSql, (err, upvotedPost) => {
+      if (err) {
+        console.log('Error: PUT /posts/id/upvote inner SQL');
+      }
+      res.json(upvotedPost);
+    });
+  });
+});
+
+app.put('/posts/:id/downvote', (res, req) => {});
 
 app.get('/data/posts', (req, res) => {
   if (req.headers.username === '') {
@@ -105,6 +130,7 @@ app.get('/data/users', (req, res) => {
 app.get('/signup', (req, res) => {
   res.sendFile(createAbsolutePath('/views/signup.html'));
 });
+
 app.post('/signup', (req, res) => {});
 
 app.listen(PORT, () => {
