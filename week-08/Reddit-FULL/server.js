@@ -48,8 +48,7 @@ app.get("/posts", (req, res) => {
 });
 
 app.get("/data/posts", (req, res) => {
-  console.log(req.headers.username);
-  if (req.headers.username == null || req.headers.username === '') {
+  if (req.headers.username === '') {
     res.status(401).send();
     return;
   }
