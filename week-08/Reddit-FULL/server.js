@@ -15,6 +15,8 @@ app.use(express.json());
 
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
+app.use("/images", express.static(path.join(__dirname, "assets/images")));
+
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,

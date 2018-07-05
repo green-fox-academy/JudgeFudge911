@@ -32,9 +32,22 @@ window.onload = () => {
     title.classList.add("title");
     title.innerHTML = post.title;
 
+    let upvote = document.createElement('img');
+    upvote.src = "../images/upvote.png";
+    upvote.classList.add("upvote");
+
+    let downvote = document.createElement('img');
+    downvote.src = "../images/downvote.png";
+    downvote.classList.add("downvote");
+
     let score = document.createElement("p");
     score.classList.add("score");
     score.innerHTML = post.score;
+
+    let scoreContainer = document.createElement('div');
+    scoreContainer.classList.add('scoreContainer');
+
+    appendChildren(scoreContainer, upvote, score, downvote);
 
     let description = document.createElement("p");
     description.classList.add("description");
@@ -42,13 +55,23 @@ window.onload = () => {
       post.name
     }`;
 
+    let contentContainer = document.createElement("div");
+    contentContainer.classList.add('contentContainer');
+    appendChildren(contentContainer, scoreContainer, description);
+
     let modify = document.createElement("button");
     modify.classList.add("modify");
+    modify.innerHTML = "Modify";
 
     let remove = document.createElement("button");
     remove.classList.add("remove");
+    remove.innerHTML = "Remove";
 
-    appendChildren(card, title, score, description, modify, remove);
+    let buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("buttonContainer");
+    appendChildren(buttonContainer, modify, remove);
+
+    appendChildren(card, title, contentContainer, buttonContainer);
     postsContainer.appendChild(card);
   }
 
