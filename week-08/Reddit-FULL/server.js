@@ -11,6 +11,10 @@ function createAbsolutePath(relativePath) {
   return path.join(__dirname, relativePath);
 }
 
+function authentication() {
+  return localStorage.getItem("user");
+}
+
 app.use(express.json());
 
 app.use("/assets", express.static(path.join(__dirname, "assets")));
@@ -23,6 +27,9 @@ const conn = mysql.createConnection({
 });
 
 app.get("/", (req, res) => {
+  if (authentication()) {
+    res.redirect("http://localhost:3000/posts");
+  }
   res.sendFile(createAbsolutePath("/views/home.html"));
 });
 
@@ -41,6 +48,12 @@ app.get("/posts", (req, res) => {
 });
 
 app.get("/data/posts", (req, res) => {
+  console.log(req.headers.username);
+  if (req.headers.username == null || req.headers.username === '') {
+    res.status(401).send();
+    return;
+  }
+
   let sql = `SELECT * FROM posts`;
   conn.query(sql, (err, posts) => {
     if (err) {
@@ -62,15 +75,13 @@ app.get("/signin", (req, res) => {
 app.get("/data/users", (req, res) => {
   let sql = `SELECT * FROM users`;
   conn.query(sql, (err, users) => {
-    if(err) {
+    if (err) {
       console.log("Error: /data/users");
       return;
     }
     res.json(users);
   });
 });
-
-
 
 app.get("/signup", (req, res) => {
   res.sendFile(createAbsolutePath("/views/signup.html"));

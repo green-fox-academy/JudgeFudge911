@@ -2,13 +2,21 @@ window.onload = () => {
   const postsContainer = document.querySelector(".postsContainer");
   postsContainer.innerHTML = "";
 
-  fetch("http://localhost:3000/data/posts")
+  fetch("http://localhost:3000/data/posts", {
+    headers: {
+      username: localStorage.getItem("user") || ''
+    }
+  })
     .then(res => res.json())
     .then(data => {
       console.log(data);
       data.forEach(e => {
         createPost(e);
       });
+    })
+    .catch(error => {
+      console.log(error);
+      window.location = "/signin"
     });
 
   function createPost(post) {
