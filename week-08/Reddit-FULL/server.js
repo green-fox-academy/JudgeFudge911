@@ -18,19 +18,33 @@ const conn = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
-app.get('/', (req, res) => {
-    let sql = `SELECT * FROM users`;
-    conn.query(sql, (err, users) => {
-        if(err) {
-            console.log("Error: GET /");
-            return;
-        }
-        res.json(users);
-    });
+app.get("/", (req, res) => {
+  let sql = `SELECT * FROM users`;
+  conn.query(sql, (err, users) => {
+    if (err) {
+      console.log("Error: GET /");
+      return;
+    }
+    res.json(users);
+  });
 });
 
+app.get("/posts/add", (req, res) => {});
+app.post("/posts/add", (req, res) => {});
 
+app.get("/posts/modify", (req, res) => {});
+app.post("/posts/modify", (req, res) => {});
 
-app.listen(PORT, () =>{
-    console.log(`Server is running on port: ${PORT}`);
+app.get("/posts", (req, res) => {});
+app.delete("/posts", (req, res) => {});
+app.put("/posts", (req, res) => {});
+
+app.get("/singin", (req, res) => {});
+app.post("/singin", (req, res) => {});
+
+app.get("/singup", (req, res) => {});
+app.post("/singup", (req, res) => {});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port: ${PORT}`);
 });
