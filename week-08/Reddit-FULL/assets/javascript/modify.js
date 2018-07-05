@@ -1,8 +1,9 @@
 window.onload = () => {
+  const POST_ID = localStorage.getItem('modify');
+
   fetch('http://localhost:3000/data/posts')
     .then(res => res.json())
     .then(data => {
-      const POST_ID = localStorage.getItem('modify');
       data.forEach(e => {
         if (e.post_id == POST_ID) {
           document.querySelector('.titleInput').value = e.title;

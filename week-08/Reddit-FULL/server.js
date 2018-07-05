@@ -50,7 +50,18 @@ app.post('/posts/add', (req, res) => {
 app.get('/posts/modify', (req, res) => {
   res.sendFile(createAbsolutePath('/views/modify.html'));
 });
-app.post('/posts/modify', (req, res) => {});
+app.post('/posts/modify', (req, res) => {
+  let sql = `UPDATE posts
+    SET title = '${req.body.title}',
+    url = '${req.body.url}'
+    WHERE post_id = '${req.body.post_id}'`;
+  conn.query(sql, (err, data) => {
+    if (err) {
+      console.log('Error: POST /posts');
+    }
+    res.json({ message: 'ok' });
+  });
+});
 
 app.get('/posts', (req, res) => {
   res.sendFile(createAbsolutePath('/views/posts.html'));
