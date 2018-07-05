@@ -1,17 +1,17 @@
 window.onload = () => {
-  const postsContainer = document.querySelector(".postsContainer");
+  const postsContainer = document.querySelector('.postsContainer');
   const addButton = document.querySelector('.addPost');
-  postsContainer.innerHTML = "";
+  postsContainer.innerHTML = '';
 
   addButton.addEventListener('click', redirectAddPost);
 
-  function redirectAddPost(e){
-    window.location = "http://localhost:3000/posts/add"
+  function redirectAddPost(e) {
+    window.location = 'http://localhost:3000/posts/add';
   }
 
-  fetch("http://localhost:3000/data/posts", {
+  fetch('http://localhost:3000/data/posts', {
     headers: {
-      username: localStorage.getItem("user") || ""
+      username: localStorage.getItem('user') || ''
     }
   })
     .then(res => {
@@ -27,28 +27,37 @@ window.onload = () => {
       });
     })
     .catch(err => {
-      window.location = "/signin";
+      console.log(err);
+      // window.location = '/signin';
     });
 
   function createPost(post) {
-    let card = document.createElement("div");
-    card.classList.add("card");
-    card.addEventListener("click", buttonHandler);
+    let card = document.createElement('div');
+    card.classList.add('card');
+    card.addEventListener('click', buttonHandler);
 
-    let title = document.createElement("h1");
-    title.classList.add("title");
+    let title = document.createElement('h1');
+    title.classList.add('title');
     title.innerHTML = post.title;
 
     let upvote = document.createElement('img');
-    upvote.src = "../images/upvote.png";
-    upvote.classList.add("upvote");
+    //TODO check if he upvoted it
+    upvote.src =
+      post.name == localStorage.getItem('user')
+        ? '../images/upvote.png'
+        : '../images/upvoted.png';
+    upvote.classList.add('upvote');
 
     let downvote = document.createElement('img');
-    downvote.src = "../images/downvote.png";
-    downvote.classList.add("downvote");
+    //TODO check if he upvoted it
+    downvote.src =
+      post.name == localStorage.getItem('user')
+        ? '../images/downvote.png'
+        : '../images/downvoted.png';
+    downvote.classList.add('downvote');
 
-    let score = document.createElement("p");
-    score.classList.add("score");
+    let score = document.createElement('p');
+    score.classList.add('score');
     score.innerHTML = post.score;
 
     let scoreContainer = document.createElement('div');
@@ -56,29 +65,34 @@ window.onload = () => {
 
     appendChildren(scoreContainer, upvote, score, downvote);
 
-    let description = document.createElement("p");
-    description.classList.add("description");
+    let description = document.createElement('p');
+    description.classList.add('description');
     description.innerHTML = `submitted ${post.timestamp} hours ago by ${
-      post.name
+      post.name == localStorage.getItem('user') ? 'Me' : post.name
     }`;
 
-    let contentContainer = document.createElement("div");
+    let contentContainer = document.createElement('div');
     contentContainer.classList.add('contentContainer');
     appendChildren(contentContainer, scoreContainer, description);
 
-    let modify = document.createElement("button");
-    modify.classList.add("modify");
-    modify.innerHTML = "Modify";
+    let buttonContainer = null;
 
-    let remove = document.createElement("button");
-    remove.classList.add("remove");
-    remove.innerHTML = "Remove";
+    if (post.name == localStorage.getItem('user')) {
+      let modify = document.createElement('button');
+      modify.classList.add('modify');
+      modify.innerHTML = 'Modify';
 
-    let buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("buttonContainer");
-    appendChildren(buttonContainer, modify, remove);
+      let remove = document.createElement('button');
+      remove.classList.add('remove');
+      remove.innerHTML = 'Remove';
 
-    appendChildren(card, title, contentContainer, buttonContainer);
+      buttonContainer = document.createElement('div');
+      buttonContainer.classList.add('buttonContainer');
+      appendChildren(buttonContainer, modify, remove);
+      card.appendChild(buttonContainer);
+    }
+
+    appendChildren(card, title, contentContainer);
     postsContainer.appendChild(card);
   }
 

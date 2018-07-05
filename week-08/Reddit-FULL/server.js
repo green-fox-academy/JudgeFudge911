@@ -50,19 +50,19 @@ app.get('/data/posts', (req, res) => {
     res.status(401).send();
     return;
   }
-  let sql = `SELECT * FROM posts`;
+  let sql = `SELECT post_id, title, url, timestamp, score, name FROM posts JOIN users USING(user_id)`;
   conn.query(sql, (err, posts) => {
     if (err) {
       res.json({
         posts: 'error message'
       });
     }
+    // console.log(posts);
     res.json(posts);
   });
 });
-app.post('/posts', (req, res) => {
-  console.log(req.body);
 
+app.post('/posts', (req, res) => {
   let sql = `INSERT INTO posts (title, url, user_id)
   VALUES ('${req.body.title}', '${
     req.body.url
