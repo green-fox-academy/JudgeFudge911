@@ -1,6 +1,13 @@
 window.onload = () => {
   const postsContainer = document.querySelector(".postsContainer");
+  const addButton = document.querySelector('.addPost');
   postsContainer.innerHTML = "";
+
+  addButton.addEventListener('click', redirectAddPost);
+
+  function redirectAddPost(e){
+    window.location = "http://localhost:3000/posts/add"
+  }
 
   fetch("http://localhost:3000/data/posts", {
     headers: {
