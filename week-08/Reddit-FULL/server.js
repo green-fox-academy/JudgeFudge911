@@ -1,11 +1,11 @@
-"use strict";
-require("dotenv").config();
+'use strict';
+require('dotenv').config();
 
-const express = require("express");
+const express = require('express');
 const app = express();
 const PORT = 3000;
-const mysql = require("mysql");
-const path = require("path");
+const mysql = require('mysql');
+const path = require('path');
 
 function createAbsolutePath(relativePath) {
   return path.join(__dirname, relativePath);
@@ -13,9 +13,9 @@ function createAbsolutePath(relativePath) {
 
 app.use(express.json());
 
-app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.use("/images", express.static(path.join(__dirname, "assets/images")));
+app.use('/images', express.static(path.join(__dirname, 'assets/images')));
 
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -24,29 +24,29 @@ const conn = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   if (authentication()) {
-    res.redirect("http://localhost:3000/posts");
+    res.redirect('http://localhost:3000/posts');
   }
-  res.sendFile(createAbsolutePath("/views/home.html"));
+  res.sendFile(createAbsolutePath('/views/home.html'));
 });
 
-app.get("/posts/add", (req, res) => {
-  res.sendFile(createAbsolutePath("/views/add.html"));
+app.get('/posts/add', (req, res) => {
+  res.sendFile(createAbsolutePath('/views/add.html'));
 });
-app.post("/posts/add", (req, res) => {});
+app.post('/posts/add', (req, res) => {});
 
-app.get("/posts/modify", (req, res) => {
-  res.sendFile(createAbsolutePath("/views/modify.html"));
+app.get('/posts/modify', (req, res) => {
+  res.sendFile(createAbsolutePath('/views/modify.html'));
 });
-app.post("/posts/modify", (req, res) => {});
+app.post('/posts/modify', (req, res) => {});
 
-app.get("/posts", (req, res) => {
-  res.sendFile(createAbsolutePath("/views/posts.html"));
+app.get('/posts', (req, res) => {
+  res.sendFile(createAbsolutePath('/views/posts.html'));
 });
 
-app.get("/data/posts", (req, res) => {
-  if (req.headers.username === "") {
+app.get('/data/posts', (req, res) => {
+  if (req.headers.username === '') {
     res.status(401).send();
     return;
   }
@@ -54,39 +54,48 @@ app.get("/data/posts", (req, res) => {
   conn.query(sql, (err, posts) => {
     if (err) {
       res.json({
-        posts: "error message"
+        posts: 'error message'
       });
     }
     res.json(posts);
   });
 });
-app.post("/posts", (req, res) => {
-  //TODO: add post to mysql
+app.post('/posts', (req, res) => {
   console.log(req.body);
-  res.json({ message: "ok" });
-});
-app.delete("/posts", (req, res) => {});
-app.put("/posts", (req, res) => {});
 
-app.get("/signin", (req, res) => {
-  res.sendFile(createAbsolutePath("/views/signIn.html"));
+  let sql = `INSERT INTO posts (title, url, user_id)
+  VALUES ('${req.body.title}', '${
+    req.body.url
+  }', (SELECT user_id FROM users WHERE name='${req.headers.username}'))`;
+  conn.query(sql, (err, data) => {
+    if (err) {
+      console.log('Error: POST /posts');
+    }
+    res.json({ message: 'ok' });
+  });
+});
+app.delete('/posts', (req, res) => {});
+app.put('/posts', (req, res) => {});
+
+app.get('/signin', (req, res) => {
+  res.sendFile(createAbsolutePath('/views/signIn.html'));
 });
 
-app.get("/data/users", (req, res) => {
+app.get('/data/users', (req, res) => {
   let sql = `SELECT * FROM users`;
   conn.query(sql, (err, users) => {
     if (err) {
-      console.log("Error: /data/users");
+      console.log('Error: /data/users');
       return;
     }
     res.json(users);
   });
 });
 
-app.get("/signup", (req, res) => {
-  res.sendFile(createAbsolutePath("/views/signup.html"));
+app.get('/signup', (req, res) => {
+  res.sendFile(createAbsolutePath('/views/signup.html'));
 });
-app.post("/signup", (req, res) => {});
+app.post('/signup', (req, res) => {});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
