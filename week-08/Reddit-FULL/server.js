@@ -60,7 +60,11 @@ app.get("/data/posts", (req, res) => {
     res.json(posts);
   });
 });
-
+app.post("/posts", (req, res) => {
+  //TODO: add post to mysql
+  console.log(req.body);
+  res.json({ message: "ok" });
+});
 app.delete("/posts", (req, res) => {});
 app.put("/posts", (req, res) => {});
 
