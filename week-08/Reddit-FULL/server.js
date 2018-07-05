@@ -50,7 +50,7 @@ app.get('/data/posts', (req, res) => {
     res.status(401).send();
     return;
   }
-  let sql = `SELECT post_id, title, url, timestamp, score, name FROM posts JOIN users USING(user_id)`;
+  let sql = `SELECT post_id, title, url, timestamp, score, name, vote FROM posts JOIN users USING(user_id) JOIN votes USING(post_id) WHERE votes.user_id='${req.headers.username}'`;
   conn.query(sql, (err, posts) => {
     if (err) {
       res.json({

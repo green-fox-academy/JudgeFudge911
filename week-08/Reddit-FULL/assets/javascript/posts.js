@@ -44,16 +44,16 @@ window.onload = () => {
     //TODO check if he upvoted it
     upvote.src =
       post.name == localStorage.getItem('user')
-        ? '../images/upvote.png'
-        : '../images/upvoted.png';
+        ? '../images/upvoted.png'
+        : '../images/upvote.png';
     upvote.classList.add('upvote');
 
     let downvote = document.createElement('img');
     //TODO check if he upvoted it
     downvote.src =
       post.name == localStorage.getItem('user')
-        ? '../images/downvote.png'
-        : '../images/downvoted.png';
+        ? '../images/downvoted.png'
+        : '../images/downvote.png';
     downvote.classList.add('downvote');
 
     let score = document.createElement('p');
