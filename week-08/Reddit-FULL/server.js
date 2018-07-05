@@ -11,10 +11,6 @@ function createAbsolutePath(relativePath) {
   return path.join(__dirname, relativePath);
 }
 
-function authentication() {
-  return localStorage.getItem("user");
-}
-
 app.use(express.json());
 
 app.use("/assets", express.static(path.join(__dirname, "assets")));
@@ -48,11 +44,10 @@ app.get("/posts", (req, res) => {
 });
 
 app.get("/data/posts", (req, res) => {
-  if (req.headers.username === '') {
+  if (req.headers.username === "") {
     res.status(401).send();
     return;
   }
-
   let sql = `SELECT * FROM posts`;
   conn.query(sql, (err, posts) => {
     if (err) {

@@ -13,12 +13,15 @@ window.onload = () => {
     });
 
   function submitForm(e) {
+    //TODO run on input field enter keydown event too
     e.preventDefault();
     users.forEach(element => {
       if (element.name == username.value) {
         if (element.password == password.value) {
           localStorage.setItem("user", username.value);
           window.location = "http://localhost:3000/posts";
+        } else {
+          //TODO tell user input is not valid
         }
       }
     });
