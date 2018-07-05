@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Sign in</title>
     <link rel="stylesheet" href="../assets/css/signin.css">
+    <script src="../assets/javascript/signIn.js"></script>
 </head>
 
 <body>
@@ -13,13 +14,13 @@
     <form class="loginForm">
         <label id="usernameLabel">
             <span id="usernameSpan">USERNAME</span>
-            <input id="usernameInput" type="text">
+            <input id="usernameInput" type="text" required>
         </label>
         <label id="passwordLabel">
             <span id="passwordSpan">PASSWORD</span>
-            <input id="passwordInput" type="password">
+            <input id="passwordInput" type="password" required>
         </label>
-        <input type="button" value="Login">
+        <input type="button" value="Login" id="submit">
     </form>
 
 </body>

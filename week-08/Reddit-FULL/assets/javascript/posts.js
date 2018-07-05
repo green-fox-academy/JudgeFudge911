@@ -2,7 +2,7 @@ window.onload = () => {
   const postsContainer = document.querySelector(".postsContainer");
   postsContainer.innerHTML = "";
 
-  fetch("http://localhost:3000/data")
+  fetch("http://localhost:3000/data/posts")
     .then(res => res.json())
     .then(data => {
       console.log(data);

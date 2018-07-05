@@ -40,9 +40,9 @@ app.get("/posts", (req, res) => {
   res.sendFile(createAbsolutePath("/views/posts.html"));
 });
 
-app.get("/data", (req, res) => {
-  let mysql = `SELECT * FROM posts`;
-  conn.query(mysql, (err, posts) => {
+app.get("/data/posts", (req, res) => {
+  let sql = `SELECT * FROM posts`;
+  conn.query(sql, (err, posts) => {
     if (err) {
       res.json({
         posts: "error message"
@@ -56,9 +56,21 @@ app.delete("/posts", (req, res) => {});
 app.put("/posts", (req, res) => {});
 
 app.get("/signin", (req, res) => {
-  res.sendFile(createAbsolutePath("/views/signin.html"));
+  res.sendFile(createAbsolutePath("/views/signIn.html"));
 });
-app.post("/signin", (req, res) => {});
+
+app.get("/data/users", (req, res) => {
+  let sql = `SELECT * FROM users`;
+  conn.query(sql, (err, users) => {
+    if(err) {
+      console.log("Error: /data/users");
+      return;
+    }
+    res.json(users);
+  });
+});
+
+
 
 app.get("/signup", (req, res) => {
   res.sendFile(createAbsolutePath("/views/signup.html"));
