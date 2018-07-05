@@ -40,6 +40,18 @@ app.get("/posts", (req, res) => {
   res.sendFile(createAbsolutePath("/posts.html"));
 });
 
+app.get("/data", (req, res) => {
+  let mysql = `SELECT * FROM posts`;
+  conn.query(mysql, (err, posts) => {
+    if (err) {
+      res.json({
+        posts: "error message"
+      });
+    }
+    res.json(posts);
+  });
+});
+
 app.delete("/posts", (req, res) => {});
 app.put("/posts", (req, res) => {});
 
