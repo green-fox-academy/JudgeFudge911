@@ -14,12 +14,19 @@ app.use("/assets", express.static(path.join(__dirname, "assets")));
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_DATABASE,
-  database: "reddit"
+  password: process.env.DB_PASS,
+  database: process.env.DB_DATABASE
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/assets/home.html'));
+    let sql = `SELECT * FROM users`;
+    conn.query(sql, (err, users) => {
+        if(err) {
+            console.log("Error: GET /");
+            return;
+        }
+        res.json(users);
+    });
 });
 
 app.listen(PORT, () =>{
