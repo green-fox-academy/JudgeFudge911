@@ -1,4 +1,7 @@
 window.onload = () => {
+  if(localStorage.getItem('modify') == null){
+    window.location = 'http://localhost:3000/posts';
+  }
   const POST_ID = localStorage.getItem('modify');
 
   fetch('http://localhost:3000/data/posts')
@@ -19,7 +22,7 @@ window.onload = () => {
     const title = document.querySelector('.titleInput').value;
     const url = document.querySelector('.urlInput').value;
 
-    const modifiedContent = { post_id: POST_ID , title: title, url: url };
+    const modifiedContent = { post_id: POST_ID, title: title, url: url };
 
     let postData = (url, data) => {
       return fetch(url, {
@@ -29,13 +32,14 @@ window.onload = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-      }).then(res => res.json())
-      .then(data => {
-        if(data.message == 'ok'){
-          localStorage.removeItem('modify');
-          window.location = 'http://localhost:3000/posts';
-        }
-      });
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.message == 'ok') {
+            localStorage.removeItem('modify');
+            window.location = 'http://localhost:3000/posts';
+          }
+        });
     };
 
     postData('http://localhost:3000/posts/modify', modifiedContent);
