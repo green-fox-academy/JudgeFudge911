@@ -1,5 +1,5 @@
 window.onload = () => {
-  if(localStorage.getItem('modify') == null){
+  if (localStorage.getItem('modify') == null) {
     window.location = 'http://localhost:3000/posts';
   }
   const POST_ID = localStorage.getItem('modify');
