@@ -29,7 +29,13 @@ window.onload = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-      }).then(res => res.json());
+      }).then(res => res.json())
+      .then(data => {
+        if(data.message == 'ok'){
+          localStorage.removeItem('modify');
+          window.location = 'http://localhost:3000/posts';
+        }
+      });
     };
 
     postData('http://localhost:3000/posts/modify', modifiedContent);

@@ -1,9 +1,12 @@
 window.onload = () => {
   const postsContainer = document.querySelector('.postsContainer');
   const addButton = document.querySelector('.addPost');
+  const logout = document.querySelector('.logout');
   postsContainer.innerHTML = '';
 
   addButton.addEventListener('click', redirectAddPost);
+
+  logout.addEventListener('click', loggingOut);
 
   function redirectAddPost(e) {
     window.location = 'http://localhost:3000/posts/add';
@@ -166,5 +169,9 @@ window.onload = () => {
         'data-post_id'
       )}/upvote`
     );
+  }
+  function loggingOut(e){
+    localStorage.removeItem('user');
+    window.location = 'http://localhost:3000/signin';
   }
 };
