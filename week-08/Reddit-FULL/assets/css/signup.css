@@ -1,0 +1,23 @@
+body {
+    padding: 0;
+    margin: 0 auto;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .signUpForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  span {
+      display: block;
+      margin-bottom: 6px;
+  }
+
+  #passwordLabel {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }

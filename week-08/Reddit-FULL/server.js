@@ -25,7 +25,7 @@ const conn = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-//  (req.headers.username === '' || req.headers.username === undefined) ? res.redirect('http://localhost:3000/signin') : res.redirect('http://localhost:3000/posts');
+  //  (req.headers.username === '' || req.headers.username === undefined) ? res.redirect('http://localhost:3000/signin') : res.redirect('http://localhost:3000/posts');
 });
 
 app.get('/posts/add', (req, res) => {
@@ -169,7 +169,18 @@ app.get('/signup', (req, res) => {
   res.sendFile(createAbsolutePath('/views/signUp.html'));
 });
 
-app.post('/signup', (req, res) => {});
+app.post('/signup', (req, res) => {
+  let sql = `INSERT INTO users (name, password)
+    VALUES ('${req.headers.username}','${req.body.password}')`;
+    console.log(sql);
+    conn.query(sql, (err, data) => {
+      if(err){
+        console.log('Error: POST /signup');
+        return;
+      }
+      res.json({message: 'ok'});
+    });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
