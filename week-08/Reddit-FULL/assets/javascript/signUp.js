@@ -40,6 +40,7 @@ window.onload = () => {
         })
           .then(res => res.json())
           .then(data => {
+            console.log(data);
             if (data.message == 'ok') {
               localStorage.setItem('user', username.value);
               window.location = 'http://localhost:3000/posts';
