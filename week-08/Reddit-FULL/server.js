@@ -122,7 +122,7 @@ app.get('/data/posts', (req, res) => {
     return;
   }
   // vote JOIN votes USING(post_id) WHERE votes.user_id='${req.headers.username}'
-  let sql = `SELECT posts.post_id, title, url, timestamp, score, name, vote FROM posts JOIN users USING(user_id) JOIN votes ON votes.user_id=users.user_id AND votes.post_id=posts.post_id`;
+  let sql = `SELECT posts.post_id, title, url, timestamp, score, name, vote FROM posts LEFT JOIN users USING(user_id) LEFT JOIN votes ON votes.user_id=users.user_id AND votes.post_id=posts.post_id`;
   conn.query(sql, (err, posts) => {
     if (err) {
       res.json({
