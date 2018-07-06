@@ -3,6 +3,7 @@ out
 *.iml
 *.xml
 node_modules
+.env
 
 # if you have a mac
 .DS_Store

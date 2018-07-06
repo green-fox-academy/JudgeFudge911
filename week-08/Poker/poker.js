@@ -1,6 +1,6 @@
 "use strict";
 
-exports.compareValues = (handOne, handTwo) => {
+exports.compareHands = (handOne, handTwo) => {
   let scoreOne = exports.findHighest(handOne);
   let scoreTwo = exports.findHighest(handTwo);
   if (scoreOne === scoreTwo) {

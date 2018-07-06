@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Newsletter</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="./signup.js"></script>
+    <link rel="stylesheet" href="/assets/style.css">
+    <script src=""></script>
 </head>
 
 <body>
     <!-- They forced me to do it with method and action -->
     <form method="post" action="http://localhost:3000/signup">
         <label class="usernameLabel">
-            <span class="usernameSpan"></span>
-            <input class="usernameInput" type="text" name="username" required>
+            <span class="usernameSpan">Username</span>
+            <input class="usernameInput" type="text" name="username" value="" required>
         </label>
         <label class="emailLabel">
-            <span class="emailSpan"></span>
-            <input class="emailInput" type="email" name="email" required>
+            <span class="emailSpan">E-mail</span>
+            <input class="emailInput" type="text" name="email[email]" value="" required>
         </label>
+        <input type="submit" value="Submit">
     </form>
 </body>
 

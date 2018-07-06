@@ -23,7 +23,7 @@ function createMovieList(titles) {
 function getCharactersByName(input) {
     httpRequest.open('GET', `https://swapi.co/api/people/?search=${input}`, true);
     httpRequest.onload = () => {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+        if (httpRequest.status === 200) {
             createCharList(JSON.parse(httpRequest.responseText));
         }
     };
@@ -45,7 +45,7 @@ function createCharList(data) {
 function getMovieLinks(tag) {
     httpRequest.open('GET', `https://swapi.co/api/people/?search=${tag.replace(' ', '%20')}`, false);
     httpRequest.onload = () => {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+        if (httpRequest.status === 200) {
             let data = JSON.parse(httpRequest.responseText);
             return getMovieTitles(data.results[0].films);
         }
@@ -58,7 +58,7 @@ function getMovieTitles(links) {
     for (let link of links) {
         httpRequest.open('GET', `${link}`, false);
         httpRequest.onload = () => {
-            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            if (httpRequest.status === 200) {
                 let data = JSON.parse(httpRequest.responseText);
                 movieNames.push(data.title)
             }

@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return lollypops.innerHTML.length / 2;
   }
 
-  createButton.addEventListener("click", createCandy);
+  createButton.addEve3ntListener("click", createCandy);
   buyButton.addEventListener("click", buyLollypop);
   rainButton.addEventListener("click", makeItRain);
 

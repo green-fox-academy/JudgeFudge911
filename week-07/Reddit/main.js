@@ -4,11 +4,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const mysql = require('mysql');
-const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
 const path = require('path');
 
 app.set('view engine', 'ejs');
+
+app.use(express.json());
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
@@ -20,7 +20,6 @@ const connection = mysql.createConnection({
 });
 
 app.get('/posts', (req, res) => {
-    res.status(200);
     let sql = 'SELECT id, title, url, UNIX_TIMESTAMP(timestamp) AS timestamp, score  FROM post;';
     connection.query(sql, (err, posts) => {
         if (err) {
@@ -31,7 +30,7 @@ app.get('/posts', (req, res) => {
     });
 });
 
-app.post('/posts', jsonParser, (req, res) => {
+app.post('/posts', (req, res) => {
     let userInput = req.body;
     let sql = `INSERT INTO post (title, url) VALUES ('${userInput.title}', '${userInput.url}')`;
     connection.query(sql, (err, post) => {
@@ -49,7 +48,7 @@ app.post('/posts', jsonParser, (req, res) => {
     });
 });
 
-app.put('/posts/:id/upvote', jsonParser, (req, res) => {
+app.put('/posts/:id/upvote', (req, res) => {
     let postId = req.params.id;
     let sql = `UPDATE post SET score = score + 1 WHERE id = ${postId};`;
     connection.query(sql, (err, post) => {
@@ -67,7 +66,7 @@ app.put('/posts/:id/upvote', jsonParser, (req, res) => {
     });
 });
 
-app.put('/posts/:id/downvote', jsonParser, (req, res) => {
+app.put('/posts/:id/downvote', (req, res) => {
     let postId = req.params.id;
     let sql = `UPDATE post SET score = score - 1 WHERE id = ${postId};`;
     connection.query(sql, (err, post) => {

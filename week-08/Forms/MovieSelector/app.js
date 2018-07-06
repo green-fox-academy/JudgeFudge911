@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const movies = document.querySelector("#movies");
   const result = document.querySelector(".result");
   genre.addEventListener("change", filterOptions);
-//   movies.addEventListener("change", renderMovieTitle);
+  movies.addEventListener("change", renderMovieTitle);
 
   function filterOptions(e, genre) {
     let value = genre || e.target.value;
@@ -16,19 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-//   function renderMovieTitle(e) {
-//     let value = e.target.value;
-//     let currentGenre = e.target[e.target.selectedIndex].className;
-
-//     if (genre.value === "0") {
-//       Array.from(genre).forEach(e => {
-//         if (e.className === currentGenre) {
-//           e.selected = true;
-//         } else {
-//             e.selected = false;
-//         }
-//       });
-//     }
-//     result.innerHTML = `The selected movie is: ${value}`;
-//   }
+  function renderMovieTitle(e) {
+    let value = e.target.value;
+    result.innerHTML = `The selected movie is: ${value}`;
+  }
 });

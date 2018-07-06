@@ -5,28 +5,29 @@
     <meta charset="UTF-8">
     <title>Sign up form</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./main.js"></script>
 </head>
 
 <body>
     <h1>Sign up</h1>
-    <form action="">
+    <form method="post" action="https://newsletter-ws.herokuapp.com/register">
         <label>
             <span>Username</span>
-            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Username" name="name" value="">
         </label>
         <label>
             <span>E-mail</span>
-            <input type="text" placeholder="E-mail">
+            <input type="text" placeholder="E-mail" name="email" value="">
         </label>
         <label>
             <span>Password</span>
-            <input type="text" placeholder="Password">
+            <input class="pass" type="text" placeholder="Password" name="password" value="">
         </label>
         <label>
             <span>Retype password</span>
-            <input type="text" placeholder="Retype password">
+            <input class="retype" type="text" placeholder="Retype password" name="passwordConfirmation" value="">
         </label>
-        <button type="submit">Sign up</button>
+        <button type="button">Sign up</button>
     </form>
 </body>
 
