@@ -118,31 +118,60 @@ window.onload = () => {
   }
 
   function removePost(e) {
-    let postData = (url) => {
+    let postData = url => {
       return fetch(url, {
         method: 'DELETE',
         headers: {
           username: localStorage.getItem('user' || ''),
           'Content-Type': 'application/json',
-          delete_id:  e.target.getAttribute('data-post_id')
-        },
-      }).then(res => res.json())
-      .then(data => {
-        if(data.message == 'ok'){
-          let cards = document.querySelectorAll('.card');
-          cards.forEach(card => {
-            if (card.getAttribute('data-post_id') == e.target.getAttribute('data-post_id')){
-              postsContainer.removeChild(card);
-            }
-          });
+          delete_id: e.target.getAttribute('data-post_id')
         }
       })
-    }
+        .then(res => res.json())
+        .then(data => {
+          if (data.message == 'ok') {
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+              if (
+                card.getAttribute('data-post_id') ==
+                e.target.getAttribute('data-post_id')
+              ) {
+                postsContainer.removeChild(card);
+              }
+            });
+          }
+        });
+    };
     postData('http://localhost:3000/posts');
   }
 
   function downvotePost(e) {
-    console.log('me vote down');
+    let postData = url => {
+      return fetch(url, {
+        method: 'PUT',
+        headers: {
+          username: localStorage.getItem('user' || ''),
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          let scores = document.querySelectorAll('.score');
+          scores.forEach(element => {
+            if (
+              element.getAttribute('data-post_id') ==
+              e.target.getAttribute('data-post_id')
+            ) {
+              element.innerHTML = parseInt(element.innerHTML) - 1;
+            }
+          });
+        });
+    };
+    postData(
+      `http://localhost:3000/posts/${e.target.getAttribute(
+        'data-post_id'
+      )}/downvote`
+    );
   }
 
   function upvotePost(e) {
@@ -157,9 +186,12 @@ window.onload = () => {
         .then(res => res.json())
         .then(data => {
           let scores = document.querySelectorAll('.score');
-          scores.forEach(e => {
-            if (e.getAttribute('data-post_id') == data[0].post_id) {
-              e.innerHTML = parseInt(e.innerHTML) + 1;
+          scores.forEach(element => {
+            if (
+              element.getAttribute('data-post_id') ==
+              e.target.getAttribute('data-post_id')
+            ) {
+              element.innerHTML = parseInt(element.innerHTML) + 1;
             }
           });
         });
@@ -170,7 +202,7 @@ window.onload = () => {
       )}/upvote`
     );
   }
-  function loggingOut(e){
+  function loggingOut(e) {
     localStorage.removeItem('user');
     window.location = 'http://localhost:3000/signin';
   }

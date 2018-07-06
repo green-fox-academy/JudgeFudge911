@@ -94,7 +94,30 @@ app.put('/posts/:id/upvote', (req, res) => {
   });
 });
 
-app.put('/posts/:id/downvote', (res, req) => {});
+app.put('/posts/:id/downvote', (req, res) => {
+  let sql = `UPDATE posts
+SET score = score-1
+WHERE post_id = ${req.params.id};`;
+  conn.query(sql, (err, upvoted) => {
+    if (err) {
+      console.log('Error: put /posts/:id/downvote');
+      return;
+    }
+    let resSql = `INSERT INTO votes (post_id, user_id, vote)
+  VALUES(${req.params.id}, (SELECT user_id FROM users WHERE name='${
+      req.headers.username
+    }'), 'dislike')
+  ON DUPLICATE KEY UPDATE vote='dislike';`;
+    conn.query(resSql, (err, downvotedPost) => {
+      if (err) {
+        console.log('Error: PUT /posts/id/upvote inner SQL');
+      }
+      res.json({
+        message: 'ok'
+      });
+    });
+  });
+});
 
 app.get('/data/posts', (req, res) => {
   if (req.headers.username === '') {
