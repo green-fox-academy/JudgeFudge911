@@ -113,7 +113,19 @@ window.onload = () => {
     window.location = 'http://localhost:3000/posts/modify';
   }
 
-  function removePost(e) {}
+  function removePost(e) {
+    let postData = (url) => {
+      return fetch(url, {
+        method: 'DELETE',
+        headers: {
+          username: localStorage.getItem('user' || ''),
+          'Content-Type': 'application/json',
+          delete_id:  e.target.getAttribute('data-post_id')
+        },
+      })
+    }
+    postData('http://localhost:3000/posts');
+  }
 
   function downvotePost(e) {
     console.log('me vote down');

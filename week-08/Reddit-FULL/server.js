@@ -110,7 +110,21 @@ app.get('/data/posts', (req, res) => {
   });
 });
 
-app.delete('/posts', (req, res) => {});
+app.delete('/posts', (req, res) => {
+  console.log(req.headers.delete_id);
+
+  let sql = `DELETE posts, votes FROM posts JOIN votes USING(post_id) WHERE post_id=${
+    req.headers.delete_id
+  }`;
+  conn.query(sql, (err, data) => {
+    if (err) {
+      console.log('Error: DELETE /posts');
+    }
+    res.json({
+      message: 'ok'
+    });
+  });
+});
 
 app.get('/signin', (req, res) => {
   res.sendFile(createAbsolutePath('/views/signIn.html'));
