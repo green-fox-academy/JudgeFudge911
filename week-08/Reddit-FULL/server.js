@@ -25,10 +25,7 @@ const conn = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-  if (authentication()) {
-    res.redirect('http://localhost:3000/posts');
-  }
-  res.sendFile(createAbsolutePath('/views/home.html'));
+//  (req.headers.username === '' || req.headers.username === undefined) ? res.redirect('http://localhost:3000/signin') : res.redirect('http://localhost:3000/posts');
 });
 
 app.get('/posts/add', (req, res) => {
@@ -169,7 +166,7 @@ app.get('/data/users', (req, res) => {
 });
 
 app.get('/signup', (req, res) => {
-  res.sendFile(createAbsolutePath('/views/signup.html'));
+  res.sendFile(createAbsolutePath('/views/signUp.html'));
 });
 
 app.post('/signup', (req, res) => {});
