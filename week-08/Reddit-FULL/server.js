@@ -78,14 +78,18 @@ app.put('/posts/:id/upvote', (req, res) => {
       console.log('Error: put /posts/:id/upvote');
       return;
     }
-    let resSql = `SELECT post_id, title, url, UNIX_TIMESTAMP(timestamp) AS timestamp, score FROM posts WHERE post_id = ${
-      req.params.id
-    }`;
+    let resSql = `INSERT INTO votes (post_id, user_id, vote)
+      VALUES(${req.params.id}, (SELECT user_id FROM users WHERE name='${
+      req.headers.username
+    }'), 'like')
+      ON DUPLICATE KEY UPDATE vote='like';`;
     conn.query(resSql, (err, upvotedPost) => {
       if (err) {
         console.log('Error: PUT /posts/id/upvote inner SQL');
       }
-      res.json(upvotedPost);
+      res.json({
+        message: 'ok'
+      });
     });
   });
 });
