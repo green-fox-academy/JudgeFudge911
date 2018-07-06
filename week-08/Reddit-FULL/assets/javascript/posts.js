@@ -34,6 +34,7 @@ window.onload = () => {
   function createPost(post) {
     let card = document.createElement('div');
     card.classList.add('card');
+    card.setAttribute('data-post_id', post.post_id);
 
     let title = document.createElement('h1');
     title.classList.add('title');
@@ -122,6 +123,16 @@ window.onload = () => {
           'Content-Type': 'application/json',
           delete_id:  e.target.getAttribute('data-post_id')
         },
+      }).then(res => res.json())
+      .then(data => {
+        if(data.message == 'ok'){
+          let cards = document.querySelectorAll('.card');
+          cards.forEach(card => {
+            if (card.getAttribute('data-post_id') == e.target.getAttribute('data-post_id')){
+              postsContainer.removeChild(card);
+            }
+          });
+        }
       })
     }
     postData('http://localhost:3000/posts');
