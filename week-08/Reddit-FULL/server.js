@@ -122,7 +122,7 @@ app.get('/data/posts', (req, res) => {
     return;
   }
   // vote JOIN votes USING(post_id) WHERE votes.user_id='${req.headers.username}'
-  let sql = `SELECT post_id, title, url, timestamp, score, name FROM posts JOIN users USING(user_id)`;
+  let sql = `SELECT posts.post_id, title, url, timestamp, score, name, vote FROM posts JOIN users USING(user_id) JOIN votes ON votes.user_id=users.user_id AND votes.post_id=posts.post_id`;
   conn.query(sql, (err, posts) => {
     if (err) {
       res.json({
@@ -135,8 +135,6 @@ app.get('/data/posts', (req, res) => {
 });
 
 app.delete('/posts', (req, res) => {
-  console.log(req.headers.delete_id);
-
   let sql = `DELETE posts, votes FROM posts LEFT   JOIN votes USING(post_id) WHERE post_id=${
     req.headers.delete_id
   }`;
@@ -172,7 +170,6 @@ app.get('/signup', (req, res) => {
 app.post('/signup', (req, res) => {
   let sql = `INSERT INTO users (name, password)
     VALUES ('${req.headers.username}','${req.body.password}')`;
-    console.log(sql);
     conn.query(sql, (err, data) => {
       if(err){
         console.log('Error: POST /signup');
