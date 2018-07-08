@@ -12,6 +12,11 @@ let volvo = {
     this.fuel -= km * this.consumption;
   }
 };
+console.log(`Volvo starting kms: ${volvo.kms} \nVolvo starting fuel: ${volvo.fuel}`);
+
+volvo.ride(42);
+
+console.log(`Volvo ending kms: ${volvo.kms} \nVolvo ending fuel: ${volvo.fuel}`);
 
 // 2nd
 // Call the refuel function on the ferrari object using the bind method, with
@@ -31,6 +36,11 @@ let ferrari = {
 function refuel(liters) {
   this.fuel += liters
 }
+console.log(`Ferrari starting fuel: ${ferrari.fuel}`);
+
+refuel.bind(ferrari)(52)
+
+console.log(`Ferrari ending fuel: ${ferrari.fuel}`);
 
 // 3rd
 // Create a tesla object that has 3 properties
@@ -40,6 +50,17 @@ function refuel(liters) {
 //  - consunption: number
 // And a method called ride, that takes a parameter celled km,
 // and increments kms with it, then drains the battery based on the consumpltion
+
+let tesla = {
+    type: "Good",
+    battery: 2000,
+    kms: 0,
+    consumption: 0.12,
+    ride: function(celledKm) {
+        this.kms += celledKm;
+        this.battery -= celledKm * this.consumption;
+    }
+}
 
 tesla.ride(36);
 console.log(tesla.kms);
