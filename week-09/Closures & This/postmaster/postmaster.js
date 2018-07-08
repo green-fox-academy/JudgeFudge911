@@ -9,7 +9,11 @@
 // If the poBox matches the targetBox only that case call the dispatchFunction
 
 function postMaster(poBox, dispatchFunction) {
-    // your code here
+    return (targetBox, message) => {
+        if(poBox === targetBox){
+            dispatchFunction(message);
+        }
+    }
 }
 
 function myAction( message ) {
