@@ -1,7 +1,9 @@
 // Create the multiplier function that you can use like this:
 
-function multiplier(){
-
+function multiplier(multiplyWith){
+    return (x) => {
+        return multiplyWith * x;
+    }
 }
 
 const duplicator = multiplier(2);
