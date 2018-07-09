@@ -16,14 +16,15 @@ button:hover {
     cursor: pointer;
 }
 
-.directionButtons {
-    margin-bottom: 100px;
+.elevatorContainer {
+    margin: 20px auto;
 }
 
 .floor {
     width: 100px;
     height: 36px;
     background-color: #fff;
+    border: solid 2px black;
 }
 
 
