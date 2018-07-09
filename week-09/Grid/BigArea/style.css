@@ -1,23 +1,26 @@
 .container {
-    display: grid;
-    width: 100%;
-    grid-gap: 10px;
-    padding: 0;
-background-color: #000;
+  display: grid;
+  width: 100%;
+  grid-gap: 10px;
+  padding: 0;
+  background-color: #000;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 div {
-    padding: 30px;
+  padding: 30px;
 }
 
 .purple {
-    background-color: purple;
+  background-color: purple;
 }
 
 .green {
-    background-color: green;
+  grid-column: 2 / 4;
+  grid-row: 1 / span 2;
+  background-color: green;
 }
 
 .yellow {
-    background-color: yellow;
+  background-color: yellow;
 }
