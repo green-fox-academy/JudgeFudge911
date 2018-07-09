@@ -20,4 +20,10 @@ button:hover {
     margin-bottom: 100px;
 }
 
+.floor {
+    width: 100px;
+    height: 36px;
+    background-color: #fff;
+}
+
 
