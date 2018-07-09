@@ -19,7 +19,11 @@ window.onload = () => {
           model.removePeople();
           break;
       }
-      view.render();
+      view.render(model.getPosition(), model.getPeople(), model.getDirection());
+    }
+
+    function getMaxFloor() {
+      return maxFloor;
     }
 
     function getModel() {
@@ -33,21 +37,30 @@ window.onload = () => {
     return {
       eventHandler,
       getModel,
-      getView
+      getView,
+      getMaxFloor
     };
   };
 
   const createElevatorModel = (maxFloor, maxPeople) => {
     let position = 0;
-    let direction = 0;
+    let direction = 1;
     let people = 0;
 
-    function isValidPeopleOrFloor(isFloor) {
-      return isFloor ? position < maxFloor : people < maxPeople;
+    function isValidPeopleOrFloor(isAdd = -1) {
+      return isAdd !== -1 ? checkPeople(isAdd) : checkFloor();
+    }
+
+    function checkFloor() {
+      return direction === 1 ? position < maxFloor-1 : position > 0;
+    }
+
+    function checkPeople(isAdd) {
+      return isAdd === true ? people < maxPeople : people > 0;
     }
 
     function addPeople() {
-      if (isValidPeopleOrFloor(false)) {
+      if (isValidPeopleOrFloor(true)) {
         people++;
       }
     }
@@ -63,13 +76,15 @@ window.onload = () => {
     }
 
     function moveUp() {
-      if (isValidPeopleOrFloor(true)) {
+      direction = 1;
+      if (isValidPeopleOrFloor()) {
         position++;
       }
     }
 
     function moveDown() {
-      if (isValidPeopleOrFloor(true)) {
+      direction = -1;
+      if (isValidPeopleOrFloor()) {
         position--;
       }
     }
@@ -93,20 +108,36 @@ window.onload = () => {
   };
 
   const createElevatorView = (maxFloor, maxPeople) => {
-    const elevatorContainer = document.querySelector('.elevatorContainer');
-    function render() {
-      for (let i = 0; i < maxFloor; i++) {
-        let floor = document.createElement('div');
-        floor.classList.add(i, 'floor');
-        elevatorContainer.appendChild(floor);
-      }
+    function setActiveFloor(floorNumber, people) {
+      Array.from(elevatorContainer.children).forEach(e => {
+        if (e.classList.contains(`${floorNumber}`)) {
+          e.classList.add('activeFloor');
+          e.innerHTML = people;
+        }
+      });
+    }
+
+    function removeActiveFloor() {
+      Array.from(elevatorContainer.children).forEach(e => {
+        if (e.classList.contains('activeFloor')) {
+          e.classList.remove('activeFloor');
+          e.innerHTML = '';
+        }
+      });
+    }
+
+    function render(position, people, direction) {
+      removeActiveFloor();
+      setActiveFloor(position, people);
     }
     return {
       render
     };
   };
 
-  let controller = createElevatorController();
+  const controller = createElevatorController();
+  const view = controller.getView();
+  const model = controller.getModel();
 
   const up = document.querySelector('.up');
   const down = document.querySelector('.down');
@@ -125,4 +156,16 @@ window.onload = () => {
   remove.addEventListener('click', () => {
     controller.eventHandler('remove');
   });
+
+  const elevatorContainer = document.querySelector('.elevatorContainer');
+
+  const numberOfFloors = controller.getMaxFloor();
+
+  for (let i = numberOfFloors - 1; i > -1; i--) {
+    let floor = document.createElement('div');
+    floor.classList.add(i, 'floor');
+    elevatorContainer.appendChild(floor);
+  }
+
+  view.render(0, 0);
 };
