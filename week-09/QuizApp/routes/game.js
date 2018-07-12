@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
       res.status(500).json({
         error: "There shound't be an error here. Question id"
       });
+      return;
     }
     randomId = rowId[0].id;
     let sqlRandomQuestion = `SELECT * FROM questions
@@ -28,10 +29,22 @@ router.get('/', (req, res) => {
         res.status(500).json({
           error: "There shound't be an error here. Question"
         });
+        return;
       }
-      res.status(200).json({
-        data
-      });
+      let result = {};
+      let firstAnswer = data[0];
+      result.id = firstAnswer.question_id;
+      result.question = firstAnswer.question;
+      result.answers = [];
+      for (const answer of data) {
+        result.answers.push({
+          question_id: result.id,
+          id: answer.id,
+          answer: answer.answer,
+          is_correct: answer.is_correct
+        });
+      }
+      res.status(200).json(result);
     });
   });
 });
