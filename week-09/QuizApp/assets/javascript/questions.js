@@ -1,10 +1,5 @@
-const express = require('express');
-const router = express.Router();
+window.onload = () => {
 
-router.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'questions'
-    })
-})
+    
 
-module.exports = router;
+};

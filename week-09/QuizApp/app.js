@@ -18,4 +18,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'static/game.html'));
 });
 
+app.get('/q', (req, res) => {
+  res.sendFile(path.join(__dirname,'static/questions.html'));
+});
+
 module.exports = app;
