@@ -23,4 +23,20 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post('/', (req, res) => {
+  const sql = 'INSERT INTO questions';
+});
+
+router.delete('/:id', (req, res) => {
+  const sqlDeleteQuestion = `DELETE * FROM questions WHERE id=${req.params.id}`;
+  conn.query(sqlDeleteQuestion, (err, deletedQuestion) => {
+    if (err) {
+      res.status(500).json({
+        Error: 'There was an error while deleting question from the database'
+      });
+    }
+    res.status(204);
+  });
+});
+
 module.exports = router;
