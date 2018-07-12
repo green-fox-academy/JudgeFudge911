@@ -21,11 +21,14 @@ window.onload = () => {
         : incorrectAnswer(e);
     }
     buttonsBox.removeEventListener('click', checkAnswer);
-    setTimeout(getQuestion, 3000);
+    setTimeout(getQuestion, 2000);
   }
 
   function correctAnswer(e) {
     e.target.classList.add('active');
+    let scoreValue =
+      parseInt(score.innerHTML.substr(score.innerHTML.length - 1)) + 1;
+    score.innerHTML = `SCORE: ${scoreValue}`;
   }
 
   function incorrectAnswer(e) {
