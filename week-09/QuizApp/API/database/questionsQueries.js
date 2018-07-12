@@ -22,16 +22,16 @@ function getAllQuestions(req, res) {
 }
 
 function addQuestion(req, res) {
-  let sqlInsertQuestion = `BEGIN;
-  INSERT INTO questions (question)
+  let sqlInsertQuestion =
+  `INSERT INTO questions (question)
   VALUES (?);
   INSERT INTO answers (question_id, answer, is_correct)
-  VALUES
+  VALUES(
     (LAST_INSERT_ID(), ?, ?),
     (LAST_INSERT_ID(), ?, ?),
     (LAST_INSERT_ID(), ?, ?),
-    (LAST_INSERT_ID(), ?, ?);
-  COMMIT;`;
+    (LAST_INSERT_ID(), ?, ?)
+  )`;
   const values = [
     req.body.question,
     req.body.answer1.answer,
@@ -44,12 +44,13 @@ function addQuestion(req, res) {
     req.body.answer4.is_correct
   ];
   conn.query(sqlInsertQuestion, values, (err, data) => {
-    // if (err) {
-    //   res.status(500).json({
-    //     Error: 'There was an error while inserting new question to the database'
-    //   });
-    //   return;
-    // }
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        Error: 'There was an error while inserting new question to the database'
+      });
+      return;
+    }
     res.status(200).json({
       message: 'Question was added to database'
     });
