@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
 const mysql = require('mysql');
 
@@ -54,7 +53,7 @@ router.post('/', (req, res) => {
       return;
     }
     res.status(200).json({
-      message: 'Question was added.'
+      message: 'Question was added to database'
     });
   });
 });
@@ -68,7 +67,9 @@ router.delete('/:id', (req, res) => {
       });
       return;
     }
-    res.status(204);
+    res.status(200).json({
+      message: 'Question was removed from database'
+    });
   });
 });
 
