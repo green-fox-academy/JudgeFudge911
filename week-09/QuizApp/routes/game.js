@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const mysql = require('mysql');
-const path = require('path');
-
-app.use(express.json());
 
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -33,7 +30,7 @@ router.get('/', (req, res) => {
         });
       }
       res.status(200).json({
-        ok: data
+        data
       });
     });
   });

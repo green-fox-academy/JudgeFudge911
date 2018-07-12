@@ -4,6 +4,8 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+
 const gameRoutes = require('./routes/game');
 const questionsRoutes = require('./routes/questions');
 
