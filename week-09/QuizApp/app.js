@@ -1,3 +1,6 @@
+'use strict';
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 
@@ -8,9 +11,7 @@ app.use('/game', gameRoutes);
 app.use('/questions', questionsRoutes);
 
 app.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'ok'
-    })
-})
+  res.redirect('http://localhost:3000/game');
+});
 
 module.exports = app;
