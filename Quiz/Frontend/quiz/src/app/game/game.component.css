@@ -43,3 +43,8 @@ html {
   color: blue;
   text-decoration: none;
 }
+
+.b-profilPic__picture {
+  border-radius: 100%;
+  overflow: hidden;
+}

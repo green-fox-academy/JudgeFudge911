@@ -12,4 +12,12 @@ export class QuestionService {
   getRandomQuestion(): Observable<Question> {
     return this.http.get<Question>('/api/game');
   }
+
+  getAllQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>('/api/questions');
+  }
+
+  deleteQuestion(id): Observable<Question> {
+    return this.http.delete<Question>(`/api/questions/${id}`);
+  }
 }
