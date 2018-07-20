@@ -7,7 +7,7 @@ import { QuestionService } from '../question.service';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-
+  answerClass: String = 'b-answers__answer';
   score: Number;
   question: String;
   answers: String[];
@@ -21,5 +21,11 @@ export class GameComponent implements OnInit {
       this.question = data.question;
       this.answers = data.answers;
     });
+  }
+
+  checkAnswer(answer: Object) {
+    this.answerClass = answer.is_correct
+      ? 'b-answers__answer b-answer--correct'
+      : 'b-answers__answer b-answer--incorrect';
   }
 }
