@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  test() {
-    console.log('cica');
+  getRandomQuestion() {
+    return this.http.get('http://localhost:4200/api/game');
   }
 }

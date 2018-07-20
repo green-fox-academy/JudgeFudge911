@@ -7,9 +7,11 @@ import { QuestionService } from '../question.service';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  question: Object;
+
   constructor(private svc: QuestionService) {}
 
   ngOnInit() {
-    this.svc.test();
+    this.svc.getRandomQuestion().subscribe(data => (this.question = data));
   }
 }
