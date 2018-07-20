@@ -54,4 +54,11 @@ export class GameComponent implements OnInit {
     }
     this.renderNewQuestion();
   }
+
+  restartGame() {
+    this.score = 0;
+    this.lives = 3;
+    this.isGameOver = false;
+    this.renderNewQuestion();
+  }
 }
