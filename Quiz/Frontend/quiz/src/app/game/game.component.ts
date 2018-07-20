@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../question.service';
+import { log } from 'util';
+import { convertInjectableProviderToFactory } from '@angular/core/src/di/injectable';
 
 @Component({
   selector: 'app-game',
@@ -8,7 +10,7 @@ import { QuestionService } from '../question.service';
 })
 export class GameComponent implements OnInit {
   answerClass: String = 'b-answers__answer';
-  score: Number;
+  score: number;
   question: String;
   answers: String[];
 
@@ -17,6 +19,10 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.renderNewQuestion();
+  }
+
+  renderNewQuestion() {
     this.svc.getRandomQuestion().subscribe(data => {
       this.question = data.question;
       this.answers = data.answers;
@@ -24,8 +30,17 @@ export class GameComponent implements OnInit {
   }
 
   checkAnswer(answer: Object) {
-    this.answerClass = answer.is_correct
-      ? 'b-answers__answer b-answer--correct'
-      : 'b-answers__answer b-answer--incorrect';
+    setTimeout(() => {
+      answer.is_correct ? this.correct() : this.incorrect();
+    }, 1000);
+  }
+
+  correct() {
+    this.score++;
+    this.renderNewQuestion();
+  }
+
+  incorrect() {
+    this.renderNewQuestion();
   }
 }

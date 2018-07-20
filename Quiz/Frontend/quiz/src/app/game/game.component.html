@@ -6,7 +6,8 @@
   <div class="b-question">
     <h2 class="b-question__title">{{question}}</h2>
     <div class="b-question__answers">
-      <div [ngClass]="answerClass" *ngFor="let answer of answers" (click)="checkAnswer(answer)">{{answer.answer}}</div>
+      <div [ngClass]="answerClass" *ngFor="let answer of answers"
+        (click)="checkAnswer(answer)">{{answer.answer}}</div>
     </div>
   </div>
 
