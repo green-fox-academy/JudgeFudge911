@@ -1,3 +1,14 @@
-<p>
-  game works! {{question.question}}
-</p>
+<div class="b-header">
+  <h1 class="b-header__score">SCORE: {{score}}</h1>
+</div>
+
+<div class="b-question">
+  <h2 class="b-question__title">{{question}}</h2>
+  <div class="b-question__answers">
+    <div class="b-answers__answer" *ngFor="let answer of answers">{{answer.answer}}</div>
+  </div>
+
+  <div class="b-footer">
+    <a class="b-footer__navigation" routerLink="/questions"> Manage questions</a>
+  </div>
+</div>
