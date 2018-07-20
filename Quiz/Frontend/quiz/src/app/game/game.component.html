@@ -1,5 +1,6 @@
-<div class="b-content">
+<div *ngIf="!isGameOver" class="b-content">
   <div class="b-header">
+    <h1 class="b-header__lives">LIVES: {{lives}}</h1>
     <h1 class="b-header__score">SCORE: {{score}}</h1>
   </div>
 
@@ -15,3 +16,4 @@
     <a class="b-footer__navigation" routerLink="/questions"> Manage questions</a>
   </div>
 </div>
+

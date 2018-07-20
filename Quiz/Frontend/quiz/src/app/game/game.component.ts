@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../question.service';
-import { log } from 'util';
-import { convertInjectableProviderToFactory } from '@angular/core/src/di/injectable';
+import { Answer } from '../answer';
 
 @Component({
   selector: 'app-game',
@@ -9,13 +8,17 @@ import { convertInjectableProviderToFactory } from '@angular/core/src/di/injecta
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  answerClass: String = 'b-answers__answer';
+  answerClass = 'b-answers__answer';
   score: number;
-  question: String;
-  answers: String[];
+  lives: number;
+  isGameOver: boolean;
+  question: string;
+  answers: Answer[];
 
   constructor(private svc: QuestionService) {
     this.score = 0;
+    this.lives = 3;
+    this.isGameOver = false;
   }
 
   ngOnInit() {
@@ -23,13 +26,16 @@ export class GameComponent implements OnInit {
   }
 
   renderNewQuestion() {
-    this.svc.getRandomQuestion().subscribe(data => {
-      this.question = data.question;
-      this.answers = data.answers;
+    this.svc.getRandomQuestion().subscribe({
+      next: data => {
+        this.question = data.question;
+        this.answers = data.answers;
+      },
+      error: err => console.error(err)
     });
   }
 
-  checkAnswer(answer: Object) {
+  checkAnswer(answer: Answer) {
     setTimeout(() => {
       answer.is_correct ? this.correct() : this.incorrect();
     }, 1000);
@@ -41,6 +47,11 @@ export class GameComponent implements OnInit {
   }
 
   incorrect() {
+    this.lives--;
+    if (this.lives === -1) {
+      this.isGameOver = true;
+      return;
+    }
     this.renderNewQuestion();
   }
 }
