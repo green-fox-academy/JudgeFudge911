@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { QuestionService } from './question.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'game', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
     PageNotFoundComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
-  providers: [],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

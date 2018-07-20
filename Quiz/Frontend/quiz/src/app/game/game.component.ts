@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'app-game',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-
-  constructor() { }
+  constructor(private svc: QuestionService) {}
 
   ngOnInit() {
+    this.svc.test();
   }
-
 }
