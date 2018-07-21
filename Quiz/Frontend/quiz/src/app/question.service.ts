@@ -20,4 +20,8 @@ export class QuestionService {
   deleteQuestion(id): Observable<Question> {
     return this.http.delete<Question>(`/api/questions/${id}`);
   }
+
+  createQuestion(data: Object): Observable<Question> {
+    return this.http.post<Question>('/api/questions', data);
+  }
 }
