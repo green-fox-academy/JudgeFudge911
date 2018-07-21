@@ -55,7 +55,10 @@ export class QuestionsComponent implements OnInit {
     };
     newQuestion.answers[form.value.isCorrect].is_correct = true;
     this.svc.createQuestion(newQuestion).subscribe({
-      next: data => this.renderQuestions(),
+      next: data => {
+        this.renderQuestions();
+        form.reset();
+      },
       error: err => console.error(err)
     });
   }
