@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../quiestion';
 import { QuestionService } from '../question.service';
-import { log } from 'util';
 
 @Component({
   selector: 'app-questions',
@@ -40,7 +39,6 @@ export class QuestionsComponent implements OnInit {
   }
 
   onSubmit(form: FormData) {
-    //TODO
     console.log(form);
   }
 }

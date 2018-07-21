@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
@@ -23,7 +24,12 @@ const appRoutes: Routes = [
     QuestionsComponent,
     PageNotFoundComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    FormsModule
+  ],
   providers: [QuestionService],
   bootstrap: [AppComponent]
 })

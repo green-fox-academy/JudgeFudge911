@@ -1,29 +1,43 @@
 <div class="b-content">
 
   <div class="b-manage">
-    <h1 class="b-title">Manage questions</h1>
+    <h1 class="b-title">
+      Manage questions
+    </h1>
     <div class="b-questionsCard">
       <div class="b-question" *ngFor="let question of questions">
-        <p class="b-question__title">{{question.question}}</p>
-        <button class="b-question__editButton" (click)="editQuestion(question)">EDIT</button>
-        <button class="b-question__deleteButton" (click)="deleteQuestion(question)">DELETE</button>
+        <p class="b-question__title">
+          {{question.question}}
+        </p>
+        <button class="b-question__editButton" (click)="editQuestion(question)">
+          EDIT
+        </button>
+        <button class="b-question__deleteButton" (click)="deleteQuestion(question)">
+          DELETE
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- TODO Rework form-->
   <div class="b-create">
-    <h1 class="b-title">Create a new question</h1>
+    <h1 class="b-title">
+      Create a new question
+    </h1>
     <div class="b-formCard">
-      <form class="b-createForm" #createForm="ngForm" (ngSubmit)="onSubmit(createForm)">
-        <input #question class="b-createForm__input" type="text" placeholder="Type your question here">
-        <h2 class="b-createForm__title">Answers</h2>
+      <form class="b-createForm" #createQuestionForm="ngForm" (ngSubmit)="onSubmit(createQuestionForm)">
+        <input ngModel name="question" #question="ngModel" class="b-createForm__input" type="text" placeholder="Type your question here"
+          required>
+        <h2 class="b-createForm__title">
+          Answers
+        </h2>
         <div class="b-createForm__answer" *ngFor="let number of [0,1,2,3]; let i=index">
-          <p class="b-answer__number">#{{i+1}}</p>
-          <input type="text" placeholder="Type your answer here" class="b-createForm__input">
-          <input type="radio" name="correct" class="b-createForm__radioButton">
+          <p class="b-answer__number">
+            #{{i+1}}
+          </p>
+          <input ngModel name="answer{{i}}" #answer{{i}}="ngModel" type="text" placeholder="Type your answer here" required class="b-createForm__input">
+          <input ngModel name="isCorrect" #isCorrect="ngModel" type="radio" value="{{i}}" required class="b-createForm__radioButton">
         </div>
-        <button class="b-createForm__submitButton">SUBMIT</button>
+        <button [disabled]="!createQuestionForm.valid" type="submit" class="b-formCard__submitButton">SUBMIT</button>
       </form>
     </div>
   </div>
