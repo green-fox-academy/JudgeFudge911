@@ -10,7 +10,6 @@ import { QuestionsComponent } from './questions/questions.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QuestionService } from './question.service';
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
-import { QuestionEditorComponent } from './question-editor/question-editor.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'game', pathMatch: 'full' },
@@ -20,7 +19,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, GameComponent, QuestionsComponent, PageNotFoundComponent, QuestionFormComponent, QuestionEditorComponent],
+  declarations: [AppComponent, GameComponent, QuestionsComponent, PageNotFoundComponent, QuestionFormComponent],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, ReactiveFormsModule, FormsModule],
   providers: [QuestionService],
   bootstrap: [AppComponent]
