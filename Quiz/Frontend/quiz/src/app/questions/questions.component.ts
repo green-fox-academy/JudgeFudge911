@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from '../quiestion';
+import { Question } from '../question';
 import { QuestionService } from '../question.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-questions',
@@ -10,6 +9,8 @@ import { NgForm } from '@angular/forms';
 })
 export class QuestionsComponent implements OnInit {
   questions: Question[];
+
+  edit = { index: -1, isToggled: false };
 
   constructor(private svc: QuestionService) {}
 
@@ -26,11 +27,6 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
-  editQuestion(question: Question) {
-    //TODO edit pop out
-    console.log('Editting question...');
-  }
-
   deleteQuestion(question: Question) {
     this.questions = this.questions.filter(e => {
       if (e !== question) {
@@ -43,23 +39,11 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
-  onSubmit(form: NgForm): void {
-    const newQuestion = {
-      question: form.value.question,
-      answers: [
-        { answer: form.value.answer0, is_correct: false },
-        { answer: form.value.answer1, is_correct: false },
-        { answer: form.value.answer2, is_correct: false },
-        { answer: form.value.answer3, is_correct: false }
-      ]
-    };
-    newQuestion.answers[form.value.isCorrect].is_correct = true;
-    this.svc.createQuestion(newQuestion).subscribe({
-      next: data => {
-        this.renderQuestions();
-        form.reset();
-      },
-      error: err => console.error(err)
-    });
+  toggleEdit(index: number): void {
+    if (this.edit.index === index) {
+      this.edit = { index: index, isToggled: !this.edit.isToggled };
+    } else {
+      this.edit = { index: index, isToggled: true };
+    }
   }
 }

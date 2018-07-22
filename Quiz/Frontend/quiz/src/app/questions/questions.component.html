@@ -5,16 +5,19 @@
       Manage questions
     </h1>
     <div class="b-questionsCard">
-      <div class="b-question" *ngFor="let question of questions">
+      <div class="b-question" *ngFor="let question of questions; let i=index">
         <p class="b-question__title">
           {{question.question}}
         </p>
-        <button class="b-question__editButton" (click)="editQuestion(question)">
+        <button class="b-question__editButton" (click)="toggleEdit(i)">
           EDIT
         </button>
         <button class="b-question__deleteButton" (click)="deleteQuestion(question)">
           DELETE
         </button>
+        <div *ngIf="edit.index === i && edit.isToggled">
+          <app-question-form (save)="renderQuestions()" [editQuestion]="question"></app-question-form>
+        </div>
       </div>
     </div>
   </div>
@@ -23,23 +26,7 @@
     <h1 class="b-title">
       Create a new question
     </h1>
-    <div class="b-formCard">
-      <form class="b-createForm" #createQuestionForm="ngForm" (ngSubmit)="onSubmit(createQuestionForm)">
-        <input ngModel name="question" #question="ngModel" class="b-createForm__input" type="text" placeholder="Type your question here"
-          required>
-        <h2 class="b-createForm__title">
-          Answers
-        </h2>
-        <div class="b-createForm__answer" *ngFor="let number of [0,1,2,3]; let i=index">
-          <p class="b-answer__number">
-            #{{i+1}}
-          </p>
-          <input ngModel name="answer{{i}}" #answer{{i}}="ngModel" type="text" placeholder="Type your answer here" required class="b-createForm__input">
-          <input ngModel name="isCorrect" #isCorrect="ngModel" type="radio" value="{{i}}" required class="b-createForm__radioButton">
-        </div>
-        <button [disabled]="!createQuestionForm.valid" type="submit" class="b-formCard__submitButton">SUBMIT</button>
-      </form>
-    </div>
+    <app-question-form (save)="renderQuestions()"></app-question-form>
   </div>
 
 </div>
