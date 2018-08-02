@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WeatherService } from '../../services/weather-service.service';
 import { Weather } from '../../models/weather';
 
@@ -8,20 +8,9 @@ import { Weather } from '../../models/weather';
   styleUrls: ['./weathers-container.component.css']
 })
 export class WeathersContainerComponent implements OnInit {
-  weathers: Weather[] = [];
+  @Input() weathers;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.weatherService.get('hello').subscribe({
-      next: data => {
-        this.weathers.push({
-          city: data.name,
-          country: data.sys.country,
-          temp: data.main.temp,
-          icon: data.weather[0].icon
-        } as Weather);
-      }
-    });
-  }
+  ngOnInit() {}
 }

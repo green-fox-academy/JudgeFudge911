@@ -10,7 +10,7 @@ export class WeatherService {
 
   get(input: string): Observable<any> {
     return this.http.get(
-      'https://api.openweathermap.org/data/2.5/weather?q=London&APPID=2e11b33cc6091bfcde38b9180eeff743'
+      `https://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=2e11b33cc6091bfcde38b9180eeff743`
     );
   }
 }
