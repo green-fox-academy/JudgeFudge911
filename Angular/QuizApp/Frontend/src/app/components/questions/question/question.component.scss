@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 108px 108px;
+  border-bottom: 1px solid #999999;
+}
+
+button {
+  margin: auto 0;
+  height: 36px;
+
+  &.delete {
+    color: tomato;
+  }
+}

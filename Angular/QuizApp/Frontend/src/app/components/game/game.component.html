@@ -1,0 +1,5 @@
+<div *ngIf="!isGameOver" class="container">
+  <app-stats [score]="score" [lives]="lives"></app-stats>
+  <app-current-question [questionLoaded]="questionLoaded" [question]="currentQuestion" [timer]="timer" (clickedAnswer)="userAnswer($event)"></app-current-question>
+</div>
+<app-game-over *ngIf="isGameOver" (startOver)="restart($event)" [score]="score"></app-game-over>

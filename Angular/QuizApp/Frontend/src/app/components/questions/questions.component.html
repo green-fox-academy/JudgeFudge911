@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="questionsContainer">
+    <div class="question" *ngFor="let question of questions">
+      <app-question [question]="question" (editId)="toggleEdit($event)" (deleteId)="deleteQuestion($event)"></app-question>
+      <app-edit-question *ngIf="currentEditId === question._id" [question]="question" (editDone)="closeEdit($event)" (invokeEditQuestion)="editQuestion($event)"></app-edit-question>
+    </div>
+  </div>
+  <app-add-question (invokeAddQuestion)="addQuestion($event)"></app-add-question>
+</div>

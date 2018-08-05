@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="title">Edit your question</h1>
+  <form class="editForm" [formGroup]="editQuestionForm" (ngSubmit)="onSubmit()">
+    <input formControlName="_id" type="hidden">
+    <mat-form-field id="questionInput" appearance="outline" class="full-width">
+      <mat-label>Edit your question</mat-label>
+      <input matInput formControlName="description" type="text" placeholder="Type your question here">
+    </mat-form-field>
+    <h1 class="subTitle">Answers</h1>
+    <mat-radio-group formControlName="is_correct">
+      <div class="answerContainer" *ngFor="let answer of question.answers; let i=index">
+        <p class="order">{{i+1}}# </p>
+        <mat-form-field class="answer" appearance="outline">
+          <mat-label>Edit your answer here</mat-label>
+          <input matInput formControlName="answer{{i}}" type="text">
+        </mat-form-field>
+        <mat-radio-button value="{{i}}" [checked]="answer.is_correct" type="radio">Correct</mat-radio-button>
+      </div>
+    </mat-radio-group>
+    <button mat-flat-button [disabled]="!editQuestionForm.valid" type="submit">SUBMIT</button>
+  </form>
+</div>
