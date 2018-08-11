@@ -19,10 +19,8 @@ export class CurrentQuestionComponent {
   onAnswerClick(answer: Answer) {
     this.question.answers.forEach((e, index) => {
       const button = document.getElementById(`${index}`);
-      console.log(button);
       if (e === answer) {
         button.classList.add('--clicked');
-        console.log('kutya');
       }
       e.is_correct ? button.classList.add('--correct') : button.classList.add('--inCorrect');
     });
