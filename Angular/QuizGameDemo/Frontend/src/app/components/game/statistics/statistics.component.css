@@ -1,0 +1,10 @@
+.statContainer {
+  display: flex;
+  justify-content: center;
+  margin: 64px auto 32px;
+}
+
+.stat {
+  margin: 32px;
+  font-size: 48px;
+}

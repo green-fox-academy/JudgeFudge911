@@ -1,0 +1,50 @@
+.question {
+  font-size: 24px;
+  margin: 16 auto;
+  text-align: center;
+}
+
+.answers {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 16px auto;
+  text-align: center;
+  width: 600px;
+}
+
+.answer {
+  background-color: blue;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 16px;
+  padding: 16px;
+  width: 80%;
+}
+
+.answer:hover {
+  opacity: 0.8;
+}
+
+.answer:hover:disabled {
+  opacity: 1;
+}
+
+.answer:focus {
+  outline: none;
+}
+
+.--clicked {
+  border: solid 3px #333333;
+}
+
+.--correct {
+  background-color: seagreen;
+}
+
+.--wrong {
+  background-color: tomato;
+}
