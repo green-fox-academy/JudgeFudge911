@@ -1,0 +1,41 @@
+.title {
+  font-size: 48px;
+  text-align: center;
+  margin: 64px auto 24px;
+}
+
+.stats {
+  font-size: 32px;
+  text-align: center;
+  margin: 16px auto;
+}
+
+.description {
+  font-size: 24px;
+  text-align: center;
+  margin: 16px auto;
+}
+
+div {
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  padding: 16px;
+  background-color: blue;
+  border-radius: 4px;
+  color: white;
+  margin: 16px auto;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:focus {
+  outline: none;
+}
