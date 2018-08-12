@@ -1,6 +1,6 @@
 <p class="title">GAME OVER</p>
-<p class="stats">You answered {{ correctQuestions }} questions correctly.</p>
-<p class="description">Do you want to try again?</p>
-<div>
-  <button (click)="tryAgain()">RESTART</button>
+<p class="statistics">You answered {{ numberOfCorrectlyAnsweredQuestions }} questions correctly.</p>
+<div class="restartContainer">
+  <p class="description">Do you want to try again?</p>
+  <button class="restart" (click)="restart.emit()">RESTART</button>
 </div>

@@ -1,22 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-over',
   templateUrl: './game-over.component.html',
   styleUrls: ['./game-over.component.css']
 })
-export class GameOverComponent implements OnInit {
+export class GameOverComponent {
   @Input()
-  correctQuestions: number;
+  numberOfCorrectlyAnsweredQuestions: number;
 
   @Output()
   restart = new EventEmitter<boolean>();
-
-  constructor() {}
-
-  ngOnInit() {}
-
-  tryAgain(): void {
-    this.restart.emit();
-  }
 }

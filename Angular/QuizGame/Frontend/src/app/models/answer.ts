@@ -1,4 +1,4 @@
 export interface Answer {
-  answer: string;
-  is_correct: boolean;
+  description: string;
+  isCorrect: boolean;
 }

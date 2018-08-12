@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  timeBetweenQuestions: 3000,
+  lives: 3
 };

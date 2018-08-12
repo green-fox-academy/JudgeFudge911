@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { Statistics } from '../../../models/statistics';
 
 @Component({
@@ -6,11 +7,7 @@ import { Statistics } from '../../../models/statistics';
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.css']
 })
-export class StatisticsComponent implements OnInit {
+export class StatisticsComponent {
   @Input()
-  stats: Statistics;
-
-  constructor() {}
-
-  ngOnInit() {}
+  statistics: Statistics;
 }

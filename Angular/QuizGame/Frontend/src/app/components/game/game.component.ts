@@ -1,56 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { Statistics } from '../../models/statistics';
+
+import { environment } from '../../../environments/environment';
 import { Question } from '../../models/question';
+import { Statistics } from '../../models/statistics';
 import { QuestionService } from '../../services/question.service';
-import { StopwatchService } from '../../services/stopwatch.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css'],
-  providers: [StopwatchService]
+  styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
   isGameOver = false;
 
-  statistic: Statistics = { lives: 1, score: 0 };
+  timeInSeconds: number;
+
+  private readonly DELAY = environment.timeBetweenQuestions;
+
+  statistics: Statistics = { lives: environment.lives, score: 0 };
 
   question: Question;
 
   notificationMessage = 'Next question in';
 
-  constructor(private questionSvc: QuestionService, private stopwatchSvc: StopwatchService) {}
+  constructor(private questionSvc: QuestionService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getNewQuestion();
   }
 
   getNewQuestion(): void {
-    this.questionSvc.getRandom().subscribe(result => (this.question = result), err => console.error(err));
+    this.questionSvc.getRandom().subscribe(randomQuestion => (this.question = randomQuestion), err => console.error(err));
   }
 
-  onUserAnswer(isCorrect: boolean) {
+  onUserAnswer(isCorrect: boolean): void {
     isCorrect ? this.onCorrectAnswer() : this.onWrongAnswer();
-    this.stopwatchSvc.countTillNextQuestion();
-    this.stopwatchSvc.callAfterDelay(() => this.getNewQuestion());
+    this.timeInSeconds = this.DELAY / 1000;
+    const countDown = setInterval(() => (this.timeInSeconds = this.timeInSeconds - 1), 1000);
+    setTimeout(() => {
+      clearInterval(countDown);
+      this.getNewQuestion();
+    }, this.DELAY);
   }
 
   onCorrectAnswer(): void {
-    this.statistic = { lives: this.statistic.lives, score: this.statistic.score + 1 };
+    this.statistics = { ...this.statistics, score: this.statistics.score + 1 };
   }
 
   onWrongAnswer(): void {
-    this.statistic = { lives: this.statistic.lives - 1, score: this.statistic.score };
-    if (this.statistic.lives < 0) {
+    this.statistics = { ...this.statistics, lives: this.statistics.lives - 1 };
+    if (this.statistics.lives < 0) {
       this.notificationMessage = 'You lost and will be redirected in';
-      this.stopwatchSvc.callAfterDelay(() => {
-        this.isGameOver = true;
-      });
+      setTimeout(() => (this.isGameOver = true), this.DELAY);
     }
   }
 
   onRestart(): void {
-    this.statistic = { lives: 1, score: 0 };
+    this.statistics = { lives: environment.lives, score: 0 };
     this.notificationMessage = 'Next question in';
     this.isGameOver = false;
   }

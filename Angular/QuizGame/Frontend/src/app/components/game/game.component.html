@@ -1,6 +1,8 @@
-<div *ngIf="!isGameOver">
-  <app-statistics [stats]="statistic"></app-statistics>
-  <app-question [quest]="question" (userAnswer)="onUserAnswer($event)"></app-question>
-  <p *ngIf="stopwatchSvc.timeInSeconds > 0"> {{ notificationMessage }} {{ stopwatchSvc.timeInSeconds }} seconds</p>
-</div>
-<app-game-over *ngIf="isGameOver" [correctQuestions]="statistic.score" (restart)="onRestart()"></app-game-over>
+<ng-container *ngIf="!isGameOver; else gameOver">
+  <app-statistics [statistics]="statistics"></app-statistics>
+  <app-question [question]="question" (userAnswer)="onUserAnswer($event)"></app-question>
+  <p class="notification" *ngIf="timeInSeconds > 0"> {{ notificationMessage }} {{ timeInSeconds }} seconds</p>
+</ng-container>
+<ng-template #gameOver>
+  <app-game-over [numberOfCorrectlyAnsweredQuestions]="statistics.score" (restart)="onRestart()"></app-game-over>
+</ng-template>
