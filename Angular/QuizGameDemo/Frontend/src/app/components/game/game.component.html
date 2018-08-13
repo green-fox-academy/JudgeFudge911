@@ -1,3 +1,7 @@
-<p>
-  game works!
-</p>
+<ng-container *ngIf="!isGameOver; else gameOver">
+  <app-statistics></app-statistics>
+  <app-question></app-question>
+</ng-container>
+<ng-template #gameOver>
+  <app-game-over></app-game-over>
+</ng-template>
