@@ -1,5 +1,5 @@
 <ng-container *ngIf="!isGameOver; else gameOver">
-  <app-statistics></app-statistics>
+  <app-statistics [statistics]="gameStatistics"></app-statistics>
   <app-question></app-question>
 </ng-container>
 <ng-template #gameOver>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Statistics } from '../../models/statistics';
 
 @Component({
   selector: 'app-game',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class GameComponent {
   isGameOver = false;
+
+  gameStatistics: Statistics = { lives: 1, score: 0 };
 }
