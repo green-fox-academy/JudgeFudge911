@@ -1,3 +1,8 @@
-<p>
-  question works!
-</p>
+<p class="question">{{ quest.description }}</p>
+<div class="answers" *ngFor="let answer of quest?.answers; let i=index">
+  <button
+  class="answer"
+  (click)="handleUserInput(answer, i)"
+  [ngClass]="{'--clicked': clickedAnswerIndex === i, '--wrong': !answer.isCorrect && clickedAnswerIndex !== undefined, '--correct': answer.isCorrect && clickedAnswerIndex !== undefined}"
+  >{{ answer?.description }}</button>
+</div>
