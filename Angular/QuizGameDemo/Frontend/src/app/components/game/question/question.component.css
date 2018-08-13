@@ -31,6 +31,7 @@
 
 .answer:hover:disabled {
   opacity: 1;
+  cursor: not-allowed;
 }
 
 .answer:focus {
