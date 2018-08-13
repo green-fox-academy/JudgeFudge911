@@ -7,7 +7,12 @@ import { Statistics } from '../../models/statistics';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent {
-  isGameOver = false;
+  isGameOver = true;
 
   gameStatistics: Statistics = { lives: 1, score: 0 };
+
+  onRestart(): void {
+    this.isGameOver = false;
+    this.gameStatistics = { lives: 1, score: 0 } as Statistics;
+  }
 }
