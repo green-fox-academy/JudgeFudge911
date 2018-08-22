@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-game-over',
@@ -6,9 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./game-over.component.css']
 })
 export class GameOverComponent {
-  @Input()
-  numberOfCorrectlyAnsweredQuestions: number;
+  @Input() numberOfCorrectAnswers: number;
 
-  @Output()
-  restart = new EventEmitter<boolean>();
+  @Output()  restart = new EventEmitter<void>();
 }

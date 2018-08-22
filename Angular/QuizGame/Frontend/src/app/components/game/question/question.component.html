@@ -1,6 +1,0 @@
-<p class="question"> {{question?.description}} </p>
-<div class="answers">
-<button class="answer" *ngFor="let answer of question?.answers; let i=index;" (click)="handleUserInput(answer, i)"
-  [ngClass]="{'--clicked': clickedAnswerId === i, '--wrong': !answer.isCorrect && clickedAnswerId !== undefined, '--correct': answer.isCorrect && clickedAnswerId !== undefined}"
-  [disabled]="clickedAnswerId !== undefined"> {{ answer?.description }} </button>
-</div>

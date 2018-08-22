@@ -1,28 +1,28 @@
 .question {
-  text-align: center;
-  margin: 16 auto;
   font-size: 24px;
+  margin: 16 auto;
+  text-align: center;
 }
 
 .answers {
-  width: 600px;
-  text-align: center;
-  margin: 16px auto;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: 16px auto;
+  text-align: center;
+  width: 600px;
 }
 
 .answer {
-  padding: 16px;
-  width: 80%;
   background-color: blue;
+  border: none;
   border-radius: 4px;
   color: white;
-  margin: 16px;
-  border: none;
   cursor: pointer;
   font-size: 16px;
+  margin: 16px;
+  padding: 16px;
+  width: 80%;
 }
 
 .answer:hover {
@@ -31,6 +31,7 @@
 
 .answer:hover:disabled {
   opacity: 1;
+  cursor: not-allowed;
 }
 
 .answer:focus {

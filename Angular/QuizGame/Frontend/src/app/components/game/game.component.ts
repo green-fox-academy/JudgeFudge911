@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { environment } from '../../../environments/environment';
-import { Question } from '../../models/question';
 import { Statistics } from '../../models/statistics';
 import { QuestionService } from '../../services/question.service';
+import { Question } from '../../models/question';
 
 @Component({
   selector: 'app-game',
@@ -13,30 +11,35 @@ import { QuestionService } from '../../services/question.service';
 export class GameComponent implements OnInit {
   isGameOver = false;
 
-  timeInSeconds: number;
-
-  private readonly DELAY = environment.timeBetweenQuestions;
-
-  statistics: Statistics = { lives: environment.lives, score: 0 };
+  gameStatistics: Statistics = { lives: 1, score: 0 };
 
   question: Question;
 
-  notificationMessage = 'Next question in';
+  timer: number;
+
+  readonly DELAY = 2000;
 
   constructor(private questionSvc: QuestionService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getNewQuestion();
   }
 
-  getNewQuestion(): void {
-    this.questionSvc.getRandom().subscribe(randomQuestion => (this.question = randomQuestion), err => console.error(err));
+  getNewQuestion() {
+    this.questionSvc
+      .getRandom()
+      .subscribe((randomQuestion: Question) => (this.question = randomQuestion), err => console.error(err));
   }
 
-  onUserAnswer(isCorrect: boolean): void {
-    isCorrect ? this.onCorrectAnswer() : this.onWrongAnswer();
-    this.timeInSeconds = this.DELAY / 1000;
-    const countDown = setInterval(() => (this.timeInSeconds = this.timeInSeconds - 1), 1000);
+  onRestart(): void {
+    this.isGameOver = false;
+    this.gameStatistics = { lives: 1, score: 0 } as Statistics;
+  }
+
+  onUserAnswer(clickedAnswerId: number): void {
+    clickedAnswerId === this.question.correctId ? this.onCorrectAnswer() : this.onWrongAnswer();
+    this.timer = this.DELAY / 1000;
+    const countDown = setInterval(() => (this.timer = this.timer - 1), 1000);
     setTimeout(() => {
       clearInterval(countDown);
       this.getNewQuestion();
@@ -44,20 +47,13 @@ export class GameComponent implements OnInit {
   }
 
   onCorrectAnswer(): void {
-    this.statistics = { ...this.statistics, score: this.statistics.score + 1 };
+    this.gameStatistics = { ...this.gameStatistics, score: this.gameStatistics.score + 1 };
   }
 
   onWrongAnswer(): void {
-    this.statistics = { ...this.statistics, lives: this.statistics.lives - 1 };
-    if (this.statistics.lives < 0) {
-      this.notificationMessage = 'You lost and will be redirected in';
-      setTimeout(() => (this.isGameOver = true), this.DELAY);
+    this.gameStatistics = { ...this.gameStatistics, lives: this.gameStatistics.lives - 1 };
+    if (this.gameStatistics.lives < 0) {
+      this.isGameOver = true;
     }
-  }
-
-  onRestart(): void {
-    this.statistics = { lives: environment.lives, score: 0 };
-    this.notificationMessage = 'Next question in';
-    this.isGameOver = false;
   }
 }
