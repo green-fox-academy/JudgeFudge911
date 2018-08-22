@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from '../../models/question';
 
 @Component({
   selector: 'app-questions',
@@ -6,10 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
