@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+.questions {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.currentQuestion {
+  background-color: #F3EEE8;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.add {
+  background-color: #efefef;
+  padding: 16px;
+  margin-top: 16px;
+  border-radius: 2px;
+  width: 34%;
+}
+
+.question {
+  border-bottom: solid 1px grey;
+  margin-bottom: 16px;
+}
