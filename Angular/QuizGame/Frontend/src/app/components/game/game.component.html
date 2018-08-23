@@ -1,8 +1,0 @@
-<ng-container *ngIf="!isGameOver; else gameOver">
-  <app-statistics [statistics]="gameStatistics"></app-statistics>
-  <app-current-question [quest]="question" (userAnswer)="onUserAnswer($event)"></app-current-question>
-  <p class="notification" *ngIf="timer > 0"> {{ timer }}</p>
-</ng-container>
-<ng-template #gameOver>
-  <app-game-over (restart)="onRestart()" [numberOfCorrectAnswers]="gameStatistics.score"></app-game-over>
-</ng-template>

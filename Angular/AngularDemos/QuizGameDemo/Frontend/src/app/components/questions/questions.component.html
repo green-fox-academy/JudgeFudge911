@@ -1,9 +1,0 @@
-<div class="container">
-  <div class="questions">
-    <div class="question" [ngClass]="{currentQuestion: selected === question}" *ngFor="let question of questions">
-      <app-quest [question]="question" (select)="onSelect($event)" (delete)="onDelete($event)"></app-quest>
-      <app-question-manager *ngIf="selected === question" [question]="question" (save)="onSave($event)"></app-question-manager>
-    </div>
-  </div>
-  <app-question-manager class="add" (save)=onSave($event)></app-question-manager>
-</div>
