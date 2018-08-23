@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+ul {
+  padding: 0;
+}
+
+.achievement {
+  list-style: none;
+  padding-top: 8px;
+  margin-right: 16px;
+}
+
+.achievementContainer {
+  display: flex;
+}
+
+.username {
+  margin: 16px 0 0;
+}
+
+button {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+.editButton {
+  margin-right: 16px;
+}
+
+

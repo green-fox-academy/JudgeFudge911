@@ -1,0 +1,24 @@
+<h1>{{title}}</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    <input type="hidden" formControlName="_id">
+  </label>
+  <h2>Question</h2>
+  <label>
+    <input type="text" formControlName="description">
+  </label>
+  <h2>Answers</h2>
+  <div formArrayName="answers">
+    <label *ngFor="let answer of form.get('answers').controls; let i=index">
+      <p>{{i+1}}.</p>
+      <input type="text" [formControlName]="i">
+    </label>
+  </div>
+  <h2>Select the number of the correct answer</h2>
+  <div class="radioButtons" *ngFor="let element of form.get('answers').controls; let i=index">
+    <label>
+      <input type="radio" formControlName="correctId" value="{{i}}" [checked]="i == question?.correctId"> Number {{i+1}}
+    </label>
+  </div>
+  <button type="submit" [disabled]="!form.valid">SUBMIT</button>
+</form>

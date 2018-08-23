@@ -1,0 +1,19 @@
+<div class="container">
+  <img class="profilePicture" [src]="user?.profilePictureUrl" alt="Profile picture">
+  <h1 class="username">{{user?.username}}</h1>
+  <ul class="achievementList">
+    <h2 class="achievementTitle">Achievements</h2>
+    <div class="achievementContainer" *ngFor='let achievement of user?.achievements'>
+      <div *ngIf="selected !== achievement; else edit">
+        <li class="achievement">{{ achievement.title }} - {{ achievement.date | date: 'yyyy/MM/dd' }}
+        </li>
+        <button class="editButton" (click)="editRequest(achievement)">EDIT</button>
+        <button class="deleteButton">DELETE</button>
+      </div>
+      <ng-template #edit>
+        <app-user-manager></app-user-manager>
+      </ng-template>
+    </div>
+  </ul>
+  <button class="addButton">ADD</button>
+</div>

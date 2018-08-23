@@ -1,0 +1,8 @@
+<p class="question">{{ quest?.description }}</p>
+<div class="answers" *ngFor="let answer of quest?.answers; let i=index">
+  <button
+  class="answer"
+  (click)="handleUserInput(i)"
+  [ngClass]="{'--clicked': clickedAnswerIndex === i, '--wrong': i !== quest.correctId && clickedAnswerIndex !== undefined, '--correct': i === quest.correctId && clickedAnswerIndex !== undefined}"
+  >{{ answer }}</button>
+</div>
