@@ -1,7 +1,4 @@
-.idea
-out
-*.iml
-*.xml
+
 node_modules
 .env
 
